@@ -1,0 +1,3720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aplikacja C# od Zera EventSourcing z RabbitMQ</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,900&amp;subset=latin-ext" rel="stylesheet" />
+    <!-- Shower Theme -->
+    <link rel="stylesheet" href="vendors/shower-ribbon/styles/screen-16x9.css" />
+    <link rel="stylesheet" href="vendors/shower-CezaryWalenciuk/styles/main.css" />
+    <!-- Prism.js -->
+    <link rel="stylesheet" href="vendors/prism/prism-my.css" />
+    <link rel="stylesheet" href="vendors/prism/custom-prism.css" />
+    <link rel="stylesheet" href="codegrid.css" />
+</head>
+<body class="shower list">
+    <header class="caption">
+        <h1>Aplikacja C# od Zera DDD,EventSourcing z RabbitMQ</h1>
+        <p></p>
+    </header>
+
+    <section class="slide front-page">
+
+        <div class="details">
+            <!-- 1. Avatar -->
+
+
+            <h2>Cezary Walenciuk</h2>
+
+            <!-- 3. Presentation title -->
+            <h2 class="bigbig"><strong style="font-size: 35px;  line-height: 1.3;">
+
+                    <span class="titlec1">Aplikacja C# od Zera</span>
+                    <br />
+                    <span class="titlec5">DDD, EventSourcing z RabbitMQ</span>
+                    <span class="titlec3"></span></strong></h2>
+
+
+
+            <!-- 5. Contact the speaker -->
+            <h2><a href="https://twitter.com/WalenciukC">@walenciukC</a></h2>
+        </div>
+        <div>
+
+
+            <!-- 2. Speaker -->
+
+        </div>
+        <div class="imag">
+            <img src="images/my-avatar.jpg" alt="Speaker">
+        </div>
+    </section>
+
+
+
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Co zbudowaliśmy ostatnio ? <br />
+           <span> 😎
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-02.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-02-1.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide creamGGGragient ">
+        <span class="shout colors smallerfont2" >Jak był sens podziału na Command i Query ?
+           <br /> <span>🏗️</span><br /><br /> Mieliśmy Single Responsibility Principle
+            <br /> Łatwy testowalny kod
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Webinar.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Co chcemy zbudować teraz ? <span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-04.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP  fullscreen">
+        <div class="grid-containerOnlyTwo ">
+            <div class="ImageOnlyTwo1 "><img  src="pictures/iconsFr/depedencyInjection.png" /></div>
+            <div class="ImageOnlyTwo2 "><img src="pictures/iconsFr/mediator.png" /></div>
+            <div class="TitleOnlyTwo"><h3>Chemy mieć aplikacje z dwoma ścieżkami</h3></div>
+            <div class="TextOnlyTwo1 "><h3>Bez EventSourcing</h3></div>
+            <div class="TextOnlyTwo2 "><h3>Z EventSourcing</h3></div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-05.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/co budujemy.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-IconsText">
+            <div class="Image1"><img  src="pictures/iconsFr/01.png" /></div>
+            <div class="Image2"> <img src="pictures/iconsFr/02.png" /></div>
+            <div class="Image3"><img src="pictures/iconsFr/03.png" /></div>
+            <div class="Image4"><img src="pictures/iconsFr/04.png" /></div>
+            <div class="TitleMain"><h3>Jakie technologie użyje</h3></div>
+            <div class="Title1"><h3>Dapper (SQLite)</h3></div>
+            <div class="Title2"><h3>RabbitMq (Kolejka)</h3></div>
+            <div class="Title3"><h3>Swagger UI <br />(Do sprawdzenie REST API)</h3></div>
+            <div class="Title4"><h3>XUnit (Testy)</h3></div>
+          </div>
+    </section>
+    <section class="slide creamGG fullscreen smaller">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/nuget.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers ">
+                    <li class="next bold">Jakie paczki NuGet? (Spoiler)&nbsp;&nbsp; &nbsp;&nbsp;</li>
+                    <ol class="nonumbers">
+                        <li class="next">MediatR</li>
+                        <li class="next">AutoMapper</li>
+                        <li class="next">Fluent Validation</li>
+                        <li class="next">Swagger UI</li>
+                        <li class="next">Dapper (zamiast EF Core)</li>
+                        <li class="next">Newtonsoft.Json do serializacji&nbsp;&nbsp; &nbsp;&nbsp;</li>
+                        <li class="next">xUnit,Moq,FluentAssertions</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">FluentAssertions</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        [Fact]
+                        public void AgeInYears_PersonBorn1970_AfterBirthdateIn2019_45()
+                        {
+                            var age = AgeInYears.Between
+                                (new DateTime(1970, 6, 26),
+                                new DateTime(2019, 11, 28));
+                        
+                            age.Should().Be(49.Years());
+                        }
+                        
+                        [Fact]
+                        public void AgeInYears_PersonBorn1980_BeforeBirthdateIn2021_41()
+                        {
+                            var age = AgeInYears.Between(new DateTime(1980, 6, 26),
+                                new DateTime(2021, 5, 28));
+                        
+                            age.Should().Be(41.Years());
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Co do tego projektu. <br /><span>🛠️</span><br />Musiałem zaintalować ?
+        </span>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Oczywiście Visual Studio 2019 i .NET 5
+            <br />A poza tym
+        </span></span>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>MongoDB Community Sever 🖹<br />MongoDB Compass 🧭
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient   compact ">
+        <h2>MongoDB 🖹</h2>
+        <ol class="nonumbers">
+            <li class="next">Baza danych NoSql</li>
+            <li class="next">A dokładnie Document-oriented database</li>
+            <li class="next">"Podobno" dobra event sourcingu, ale [o tym później]</li>
+        </ol>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/mongodb.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGGGragient smaller  compact ">
+        <h2>Swoją drogą  mamy jeszcze inne  typy baz danych NoSql</h2>
+        <ol class="nonumbers">
+            <li class="next">Key-value database : Redis</li>
+            <li class="next">Wide-column stores : Cassandra </li>
+            <li class="next">Graph database : Neo4j</li>
+            <li class="next">Search Engine database : Elastic Search</li>
+            <li class="next">Multi Model database : FaunaDB</li>
+        </ol>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Czy baza danych event store musi być MongoDb?
+            <br /
+            Czy muszę mieć dwie bazy ?
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/twitter-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/twitter-02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/twitter-03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGGGragient   compact ">
+        <h2>Ograniczenia MongoDB Community Sever</h2>
+        <ol class="nonumbers">
+            <li class="next">Nie można używać transakcji</li>
+            <li class="next">Nie można robić insertów batchem</li>
+        </ol>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/05.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/07.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/08-1.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/08.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/09.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/10.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/11.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/12.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Przeglądarkę do baz danych Sqlite
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/02-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/02-02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/02-03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/02-04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Kolejka RabbitMQ <br />
+        </span></span>
+        <span style="font-size: 90% !important; color: gainsboro;" >Nawet nie próbowałem użyć MSMQ (poza tym jest martwy)</span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/13.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/14.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/15.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/16.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/17.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/18.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/19.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/20.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/20-1.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/20-2.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/21.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/22.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Mamy wszystko zainstalowane
+            <br /><span>🤗
+        </span></span>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Przypomny sobie szybko 
+            <br /> Clean Architecture
+        </span></span>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/old/layers/ilewartstw.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/old/layers/ilewartstw2.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/old/circular/inverted-layered-complex-dependency-graph.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/old/circular/onion-layers-dependency-graph.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/old/circular/hexagonal-architecture-dependency-graph.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPPP   compact ">
+        <h2>Mamy dwa style <span class="green">Clean Architecture</span></h2>
+        <ol class="nonumbers">
+            <li class="next">Onion 🧅</li>
+            <li class="next">Hexagonalna (Porty i Adaptery)</li>
+            <li class="next">Jeden architekt powie, że to jest to samo - drugi, że nie</li>
+        </ol>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/old/circular/Hexagonalna.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 https://bulldogjob.pl/news/1145-architektura-heksagonalna-w-javie-w-3-minuty</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/old/circular/Hexagonalna2.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 https://bulldogjob.pl/news/1145-architektura-heksagonalna-w-javie-w-3-minuty</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/old/circular/Hexagonalna3.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 https://bulldogjob.pl/news/1145-architektura-heksagonalna-w-javie-w-3-minuty</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Jak skoncentruje się na Cebuli ? <br />🧅
+        </span></span>
+    </section>
+    <section class="slide creamPP" >
+        <figure>
+            <img class="cover" src="pictures/old/circular/circular desing-0-t.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Onion Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP" >
+        <figure>
+            <img class="cover" src="pictures/old/circular/circular desing-t.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Onion Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP" >
+        <figure>
+            <img class="cover" src="pictures/old/circular/circular desing-1-t.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Onion Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/co budujemy.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Application Core</li>
+                    <ol class="nonumbers">
+                        <li class="next">Interfejsy i encje</li>
+                        <li class="next">Logika biznesowa i przypadki użycia, która jest centrum aplikacji</li>
+                        <li class="next">Niezależna od zewnętrznych kółek</li>
+                        <li class="next">Nie ma zależności</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>  
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Piszemy więc projekty<br /> <span>Domain i Core
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide creamGrey">
+        <span class="shout colors" ><span>..ale zaraz 😵 co mamy zbudować 🤨?
+            <br /> Mówiliśmy "JAK", ale co od strony biznesowej 🧐
+        </span></span>
+    </section>
+    <section class="slide creamSea">
+        <span class="shout colors" ><span>Wyobraż sobie, że wracasz ze spotkania i masz takie notaki 
+            <br />🗒️
+        </span></span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Poznaj <br /><span>GeekLemon Conference</span>
+
+            <br /><br />API Do zgłaszania mów na konfernecje <span>GeekLemon</span>
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/corobi.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/corobi3.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/corobi4.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/corobi5.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/corobi6.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/proces.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/kategorie.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/sedziowie.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/zgloszenia.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Jakie metody do REST API ?
+        <span>🙄</span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/rest api.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/rest api2.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Dlaczego ? <br />
+            <span>🤔</span></span>
+    </section>
+
+    <section class="slide creamGG fullscreen smaller">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/nuget.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers ">
+                    <li class="next bold">Normalne ID&nbsp;&nbsp; &nbsp;&nbsp;</li>
+                    <ol class="nonumbers">
+                        <li class="next">Normalne ID tworzony jest bazie w trakcie operacji INSERT</li>
+                        <li class="next">Problem : W EventSourcing nie wiemy kiedy te ID się utworzy i nie może być ono zwrócone</li>
+                        <li class="next">Te ID jest dla nas bezużyteczne</li>
+                        <li class="next">Chyba, że wyciagamy coś z bazy do ma napewno istnieć</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG fullscreen smaller">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/nuget.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers ">
+                    <li class="next bold">Po co nam unikatowe ID w EventSourcing&nbsp;&nbsp; &nbsp;&nbsp;</li>
+                    <ol class="nonumbers">
+                        <li class="next">Unikatowe ID można utworzyć przed wysłaniem zdarzenia i przed zapisem do bazy</li>
+                        <li class="next">Te unikatowe ID będzie na potrzebne do aggregacji zdarzeń na danej encji</li>
+                        <ol  class="nonumbers next">
+                            <li>Z UID stworzymy klucz <span class="green">AggregateKey</span></li>
+                        </ol>
+                        <li class="next">Ten <span class="green">AggregateKey</span> pomoże nam szukać w bazie zdarzeń poprzednich wersji</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-05.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG ">
+        <span class="shout colors smallerfont2" ><span>W sumie to metody z normalnym ID
+             nie są potrzebne dla zgłoszenia mowy 😄
+             <br /><br />
+             Dla ES to można wyrzucić normalne ID do kosza prawie zawsze
+             <br /><br />
+             Chyba, że pobieramy rekord z prawdziwej bazy
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/rest api3.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG smaller   compact ">
+        <h2>Natomiast w zgłoszeniach będziemy potrzebować ID sędziego czasami :</h2>
+        <ol class="nonumbers">
+            <li class="next">w Odrzuceniu zgłoszenia</li>
+            <li class="next">w Wstępne akceptacji</li>
+            <li class="next">i w Akceptacji</li>
+            <li class="next"><span class="red">Reguła biznesowa :</span> Sędzia musi być z tej samej kategorii co zgłoszenie mowy
+            aby wykonać te operacje</li>
+        </ol>
+    </section>
+    <section class="slide creamGG ">
+        <span class="shout colors smallerfont2" ><span>
+            Dlaczego?
+            <br />  <br /> Wole szukać sędziego w bazie gdy wiem, że on już istnieje niż bazie event store gdzie
+            jest w sferze limbo
+            <br />   <br />
+            To w sumie brzmi jak zły pomysł
+        </span></span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Teraz wyobraź sobie, że te notatki zmieniamy na kod
+            <br />
+            <span>😜</span></span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >...albo zobaczmy efekt końcowy naszego API
+            <br />
+            <span>😲</span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/spoiler/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-05.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/spoiler/02.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Tym razem zanim napiszem kod zaprojektujmy bazę danych w SQLite
+            <br />👷
+        </span></span>
+    </section>
+    <section class="slide creamGG">
+        <span class="shout colors" ><span>Tylko ile mamy baz
+            <br />
+            🤔
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-05.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-06.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-07.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/spoiler/03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/spoiler/kategorie.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/spoiler/sedziowie.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/spoiler/tabela_call.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Gdy mamy bazę danych to możemy tworzyć w końcu kod
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/vs1/vs1.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/vs1/vs2.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/vs1/vs3.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/vs1/vs4.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/vs1/vs4-2.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/vs1/vs4-1.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/BADCQRS.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Dlaczego .NET 5</li>
+                    <ol class="nonumbers">
+                        <li class="next">C# 9.0</li>
+                        <li class="next">Zaraz to wyprze .NET Standard &nbsp;&nbsp;</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP">
+        <span class="shout colors" ><span>Trzeba ręcznie zmienić wersje .NET CORE 3.1 na .NET 5
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Zmiana wersji .NET 3 na .NET 5</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-xml">
+                    <code style="line-height: 29px !important;">
+
+                        &lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+                            &lt;PropertyGroup&gt;
+                            &lt;TargetFramework&gt;netcoreapp3.1&lt;/TargetFramework&gt;
+                            &lt;/PropertyGroup&gt;
+                      
+                        &lt;/Project&gt;
+                      
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Zmiana wersji .NET 3 na .NET 5</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-xml">
+                    <code style="line-height: 29px !important;">
+                        &lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+                            &lt;PropertyGroup&gt;
+                            &lt;TargetFramework&gt;net5.0&lt;/TargetFramework&gt;
+                            &lt;/PropertyGroup&gt;
+                      
+                        &lt;/Project&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Jak rozwiązać problem z testowanie przypadków
+            <br />      <br />
+            ...gdzie logika bazuje na <span>DataTime.Now</span>
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class AppTime
+                        {
+                            public static Func&lt;DateTime&gt; CurrentTimeProvider
+                            { get; set; } = () =&gt; DateTime.Now;
+                                            
+                            public static DateTime Now() =&gt; CurrentTimeProvider();
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Pogadajmy o  <br />
+            <span>Domain Driven Desing</span>
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">ValueObject</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        public abstract class ValueObject&lt;T&gt; where T : ValueObject&lt;T&gt;
+                        {
+
+                            protected abstract IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck();
+
+                        
+                            public override bool Equals(object other)
+                            {
+                                return Equals(other as T);
+                            }
+
+                        
+                            public virtual bool Equals(T other)
+                            {
+                                if (other == null)
+                                {
+                                    return false;
+                                }
+                                return GetAttributesToIncludeInEqualityCheck().SequenceEqual(other.GetAttributesToIncludeInEqualityCheck());
+                            }
+                        
+
+                            public static bool operator ==(ValueObject&lt;T&gt; left, ValueObject&lt;T&gt; right)
+                            {
+                                return Equals(left, right);
+                            }
+                        
+
+                            public static bool operator !=(ValueObject&lt;T&gt; left, ValueObject&lt;T&gt; right)
+                            {
+                                return !(left == right);
+                            }
+                        
+
+                            public override int GetHashCode()
+                            {
+                                var hash = 19;
+                                foreach (var obj in this.GetAttributesToIncludeInEqualityCheck())
+                                    hash = hash * 31 + (obj == null ? 0 : obj.GetHashCode());
+                        
+                                return hash;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Entity</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 19px !important;">
+
+
+
+
+                        public abstract class Entity&lt;T1, T2&gt;
+                        {
+                            public T1 Id { get; protected set; }
+                            public T2 UniqueId { get; set; }
+                        
+                            public int Version { get; set; }
+                        
+                            //public string CreatedBy { get; set; }
+                            //public DateTime CreatedDate { get; set; }
+                            //public string LastModifiedBy { get; set; }
+                            //public DateTime? LastModifiedDate { get; set; }
+                        }
+
+
+                        public abstract class Entity&lt;T&gt;
+                        {
+                            public T Id { get; protected set; }
+                        
+                            //public Guid UniqueId { get; set; }
+                            public int Version { get; set; }
+                        
+                            //public string CreatedBy { get; set; }
+                            //public DateTime CreatedDate { get; set; }
+                            //public string LastModifiedBy { get; set; }
+                            //public DateTime? LastModifiedDate { get; set; }
+                        }
+
+
+                    
+                    </code>
+                </pre>
+            </div>
+
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Dobra o co chodzi z tym ValueObject i Entity
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Warto przypomnieć jak ważne jest nazewnictwo<br /> - zwłaszcza encji
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/05.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/kategorie.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Category</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        public abstract class Entity&lt;T1, T2&gt;
+                        {
+                            public T1 Id { get; protected set; }
+                            public T2 UniqueId { get; set; }
+                        
+                            public int Version { get; set; }
+                        }
+
+                        public class Category : Entity&lt;CategoryId, CategoryUniqueId&gt;
+                        {
+                            public string Name { get; init; }
+                        
+                            public string DisplayName { get; init; }
+                        
+                            public string WhatWeAreLookingFor { get; init; }
+                        
+                            public Category(CategoryId Id, string name, string displayName,
+                                string whatWeAreLookingFor) : base()
+                            {
+                                this.Id = Id;
+                                Name = name;
+                                DisplayName = displayName;
+                                UniqueId = CategoryUniqueId.NewUniqueId();
+                                WhatWeAreLookingFor = whatWeAreLookingFor;
+                            }
+                        
+                            //tylko do testów
+                            public void InjectUniqueId(CategoryUniqueId uniqueId)
+                            {
+                                this.UniqueId = uniqueId;
+                            }
+                        
+                            public Category(CategoryId Id)
+                            {
+                                this.Id = Id;
+                                UniqueId = CategoryUniqueId.NewUniqueId();
+                        
+                            }
+                        
+                            public Category()
+                            {
+                                UniqueId = CategoryUniqueId.NewUniqueId();
+                                this.Id = CategoryId.Empty();
+                            }
+                        
+                            public CategoryIds Ids()
+                            {
+                                if (this.Id != null &amp;&amp; this.Id.Value != default)
+                                    return new CategoryIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id
+                                    };
+                                else
+                                    return new CategoryIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id,
+                                        Status = IdsStatus.DudeYouCantReturnCreatedIdWhenYouAreEventSourcing
+                        
+                                    };
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPP">
+        <span class="shout colors" ><span>Zaraz chcesz mi powiedzieć, że "ID" i "Unique ID" jest klasą
+            <br /><br />
+            Dlaczego nie "int" i "Guid"?
+        </span></span>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Wady</li>
+                    <ol class="nonumbers">
+                        <li class="next">Interfejsy i encje</li>
+
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zalety</li>
+                    <ol class="nonumbers">
+                        <li class="next">Interfejsy i encje</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>  
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">ValueObject</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public abstract class BaseId&lt;T&gt; : ValueObject&lt;T&gt; 
+                        where T : ValueObject&lt;T&gt;
+                        {
+                            public BaseId()
+                            {
+                        
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">ValueObject</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+
+
+
+
+
+
+
+                        public class CategoryId : BaseId&lt;CategoryId&gt;
+                        {
+                            public int Value { get; set; }
+                        
+                            public CategoryId(int value)
+                            {
+                                Value = value;
+                            }
+                        
+                            public CategoryId()
+                            {
+                        
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; 
+                                GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Value;
+                            }
+                        
+                            public static CategoryId Empty()
+                            {
+                                return new CategoryId(0);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz unikatowe ID
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">BaseUniqueId</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+
+
+                        
+
+                        public abstract class BaseUniqueId&lt;T&gt; : 
+                        ValueObject&lt;T&gt; where T : ValueObject&lt;T&gt;
+                        {
+                            public abstract string ValueInString();
+                        
+                            protected abstract string GetName();
+                        
+                            public AggregateKey GetAggregateKey()
+                            {
+                                return new AggregateKey
+                                {
+                                    Id = ValueInString(),
+                                    Type = GetName()
+                                };
+                            }
+                        
+                            public BaseUniqueId()
+                            {
+                        
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    
+
+
+    
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>AggregateKey czyli identyfikator dla zdarzeń w eventstore
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">BaseUniqueId</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+                        public class AggregateKey : ValueObject&lt;AggregateKey&gt;
+                        {
+                            public string Type { get; set; }
+                            public string Id { get; set; }
+                        
+                            protected override IEnumerable&lt;object&gt; 
+                            GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Type;
+                                yield return Id;
+                            }
+                        
+                            public static readonly AggregateKey Empty = new AggregateKey();
+                        
+                            public override string ToString()
+                            {
+                                return Id;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">ValueObject</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+                        public class CategoryUniqueId : BaseUniqueId&lt;CategoryUniqueId&gt;
+                        {
+                            public Guid Value { get; set; }
+                        
+                            public CategoryUniqueId(Guid value)
+                            {
+                                Value = value;
+                            }
+                        
+                            //[JsonConstructor]
+                            public CategoryUniqueId()
+                            {
+                                Value = Guid.NewGuid();
+                            }
+                        
+                            public static CategoryUniqueId Empty()
+                            {
+                                return new CategoryUniqueId(Guid.Empty);
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Value;
+                            }
+                        
+                            public static CategoryUniqueId NewUniqueId()
+                            {
+                                return new CategoryUniqueId();
+                            }
+                        
+                            protected override string GetName()
+                            {
+                                return &quot;Category&quot;;
+                            }
+                        
+                            public override string ValueInString() =&gt; Value.ToString();
+                        }
+                    </code>
+                </pre>
+            </div>
+
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Analogicznie robimy z sędziami
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/sedziowie.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Judge</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+
+
+
+
+                        public abstract class Entity&lt;T1, T2&gt;
+                        {
+                            public T1 Id { get; protected set; }
+                            public T2 UniqueId { get; set; }
+                        
+                            public int Version { get; set; }
+                        }
+
+                        public class Judge : Entity&lt;JudgeId, JudgeUniqueId&gt;
+                        {
+                            public Login Login { get; init; }
+                            public Password Password { get; init; }
+                            public Name Name { get; init; }
+                        
+                            public Category Category { get; init; }
+                        
+                            public DateTime Birthdate { get; set; }
+                        
+                            public Judge(Login login, Password password, Name name,
+                             Category category)
+                            {
+                                Id = new JudgeId(0);
+                                Login = login;
+                                Password = password;
+                                Name = name;
+                                Category = category;
+                                UniqueId = JudgeUniqueId.NewUniqueId();
+                                Version = 1;
+                            }
+                        
+                            public Judge(int id, Login login, Password password, Name name,
+                             Category category)
+                            {
+                                Id = new JudgeId(id);
+                                Login = login;
+                                Password = password;
+                                Name = name;
+                                Category = category;
+                                UniqueId = JudgeUniqueId.NewUniqueId();
+                                Version = 1;
+                            }
+                        
+                            //For serialization if used
+                            public Judge()
+                            {
+                                UniqueId = JudgeUniqueId.NewUniqueId();
+                                Version = 1;
+                            }
+                        
+                            public bool CanAccept(CategoryId categoryId)
+                            {
+                                if (Category != null)
+                                    return categoryId == Category.Id;
+                                return false;
+                            }
+                        
+                            public AgeInYears AgeInYearsAt(DateTime date)
+                            {
+                                return AgeInYears.Between(Birthdate, date);
+                            }
+                        
+                            public JudgeIds Ids()
+                            {
+                                if (this.Id != null &amp;&amp; this.Id.Value != default)
+                                    return new JudgeIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id
+                                    };
+                                else
+                                    return new JudgeIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id,
+                                        Status = IdsStatus.DudeYouCantReturnCreatedIdWhenYouAreEventSourcing
+                        
+                                    };
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz czy logika powinna być w obiektach domenowych
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Judge CanAccept</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                            public bool CanAccept(CategoryId categoryId)
+                            {
+                                if (Category != null)
+                                    return categoryId == Category.Id;
+                                return false;
+                            }
+
+                            public AgeInYears AgeInYearsAt(DateTime date)
+                            {
+                                return AgeInYears.Between(Birthdate, date);
+                            }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Domain vs Anemic Domain Model
+        </span></span>
+    </section>
+
+    
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Judge CanAccept</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                            public bool CanAccept(CategoryId categoryId)
+                            {
+                                if (Category != null)
+                                    return categoryId == Category.Id;
+                                return false;
+                            }
+
+                            public AgeInYears AgeInYearsAt(DateTime date)
+                            {
+                                return AgeInYears.Between(Birthdate, date);
+                            }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AgeInYears</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 21px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 21px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        public class AgeInYears : ValueObject&lt;AgeInYears&gt;,
+                         IComparable&lt;AgeInYears&gt;
+                        {
+                            private readonly int age;
+                        
+                            public int Age
+                            {
+                                get { return age; }
+                            }
+                        
+                            public AgeInYears(int age)
+                            {
+                                this.age = age;
+                            }
+                        
+                            public static AgeInYears Between(DateTime start, DateTime end)
+                            {
+                                return new AgeInYears(end.Year - start.Year);
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return age;
+                            }
+                        
+                            public static bool operator &gt;(AgeInYears one, AgeInYears two) =&gt; one.CompareTo(two) &gt; 0;
+                        
+                            public static bool operator &lt;(AgeInYears one, AgeInYears two) =&gt; one.CompareTo(two) &lt; 0;
+                        
+                            public static bool operator &gt;=(AgeInYears one, AgeInYears two) =&gt; one.CompareTo(two) &gt;= 0;
+                        
+                            public static bool operator &lt;=(AgeInYears one, AgeInYears two) =&gt; one.CompareTo(two) &lt;= 0;
+                        
+                        
+                            public int CompareTo(AgeInYears other)
+                            {
+                                return this.age.CompareTo(other.age);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AgeInYearsExtensions</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public static class AgeInYearsExtensions
+                        {
+                            public static AgeInYears Years(this int age) 
+                            => new AgeInYears(age);
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AgeInYearsExtensions</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Judge : Entity&lt;JudgeId, JudgeUniqueId&gt;
+                        {
+                            public Login Login { get; init; }
+                            public Password Password { get; init; }
+                            public Name Name { get; init; }
+                        
+                            public Category Category { get; init; }
+                        
+                            public DateTime Birthdate { get; set; }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/07.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Login</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Login : ValueObject&lt;Login&gt;
+                        {
+                            public string Value { get; }
+                            public Login(string value)
+                            {
+                                if (string.IsNullOrWhiteSpace(value))
+                                    throw new ArgumentException(&quot;Login cannot be null or empty string&quot;);
+                                Value = value;
+                            }
+                        
+                        
+                            public static Login Of(string login) =&gt; new Login(login);
+                        
+                            public static implicit operator string(Login login) =&gt; login.Value;
+                        
+                            public override string ToString()
+                            {
+                                return Value;
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Value;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+        <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Password</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Password : ValueObject&lt;Password&gt;
+                        {
+                            public string Value { get; }
+                        
+                        
+                            public Password(string value)
+                            {
+                                if (string.IsNullOrWhiteSpace(value))
+                                    throw new ArgumentException(&quot;Password cannot be null or empty string&quot;);
+                                Value = value;
+                            }
+                        
+                        
+                            public static Password Of(string value) =&gt; new Password(value);
+                        
+                            public static implicit operator string(Password password) =&gt; password.Value;
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Value;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Name</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Name : ValueObject&lt;Name&gt;
+                        {
+                            public Name(string first, string last)
+                            {
+                                if (string.IsNullOrWhiteSpace(first))
+                                    throw new ArgumentException(&quot;First name cannot be empty&quot;);
+                                if (string.IsNullOrWhiteSpace(last))
+                                    throw new ArgumentException(&quot;First name cannot be empty&quot;);
+                        
+                                First = first;
+                                Last = last;
+                            }
+                        
+                        
+                            protected Name()
+                            {
+                            }
+                        
+                            public string First { get; }
+                            public string Last { get; }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return First;
+                                yield return Last;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz zgłosznenie na mowe
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/zgloszenia.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/08.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">CallForSpeech</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+
+
+
+
+                        public abstract class Entity&lt;T1, T2&gt;
+                        {
+                            public T1 Id { get; protected set; }
+                            public T2 UniqueId { get; set; }
+                        
+                            public int Version { get; set; }
+                        }
+
+                        public class CallForSpeech : Entity&lt;CallForSpeechId, CallForSpeechUniqueId&gt;
+                        {
+                            public Speaker Speaker { get; set; }
+                            public Speech Speech { get; set; }
+                            public Registration Registration { get; set; }
+                            public CallForSpeechNumber Number { get; set; }
+                        
+                            public Category Category { get; private set; }
+                            public CallForSpeechStatus Status { get; private set; }
+                        
+                            public CallForSpeechScoringResult Score { get; private set; }
+                        
+                            public Decision PreliminaryDecision { get; private set; }
+                            public Decision FinalDecision { get; private set; }
+                        
+                        
+                            public CallForSpeech(CallForSpeechNumber number, Speech speech,
+                                   Speaker speaker, Category cat)
+                                : this(number, CallForSpeechStatus.New, speaker, speech, cat,
+                            null, new Registration(AppTime.Now()), null, null,
+                            new CallForSpeechId(0))
+                            {
+                        
+                            }
+                        
+                            public CallForSpeech(
+                                CallForSpeechNumber number,
+                                CallForSpeechStatus status,
+                                Speaker speaker,
+                                Speech speech,
+                                Category category,
+                                CallForSpeechScoringResult score,
+                                Registration registration,
+                                Decision preliminaryDecision,
+                                Decision finalDecision,
+                                CallForSpeechId callForSpeechId)
+                            {
+                                if (category == null)
+                                    throw new ArgumentException(&quot;Category cannot be null&quot;);
+                                if (number == null)
+                                    throw new ArgumentException(&quot;Number cannot be null&quot;);
+                                if (speech == null)
+                                    throw new ArgumentException(&quot;speech cannot be null&quot;);
+                                if (speaker == null)
+                                    throw new ArgumentException(&quot;speaker cannot be null&quot;);
+                                if (registration == null)
+                                    throw new ArgumentException(&quot;Registration cannot be null&quot;);
+                        
+                                Id = callForSpeechId;
+                                Number = number;
+                                Status = status;
+                                Score = score;
+                                Speech = speech;
+                                Speaker = speaker;
+                                Registration = registration;
+                                PreliminaryDecision = preliminaryDecision;
+                                FinalDecision = finalDecision;
+                                Category = category;
+                                Version = 1;
+                                UniqueId = CallForSpeechUniqueId.NewUniqueId();
+                            }
+                        
+                            // To satisfyserialization
+                            protected CallForSpeech()
+                            {
+                                UniqueId = CallForSpeechUniqueId.NewUniqueId();
+                                Version = 1;
+                            }
+                        
+                            public void Evaluate(ScoringRules rules)
+                            {
+                                if (Status != CallForSpeechStatus.New)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that isn&#39;t new&quot;);
+                                }
+                        
+                                Score = rules.Evaluate(this);
+                                if (!Score.IsRed())
+                                {
+                                    Status = CallForSpeechStatus.EvaluatedByMachine;
+                                }
+                                else
+                                {
+                                    Status = CallForSpeechStatus.Rejected;
+                                }
+                            }
+                        
+                            public ExecutionStatus TryEvaluate(ScoringRules rules)
+                            {
+                                if (Status != CallForSpeechStatus.New)
+                                {
+                                    return ExecutionStatus.LogicError(&quot;Cannot accept application that isn&#39;t new&quot;);
+                                }
+                        
+                                Score = rules.Evaluate(this);
+                                if (!Score.IsRed())
+                                {
+                                    Status = CallForSpeechStatus.EvaluatedByMachine;
+                                }
+                                else
+                                {
+                                    Status = CallForSpeechStatus.Rejected;
+                                }
+                                return ExecutionStatus.LogicOk();
+                            }
+                        
+                            public void PreliminaryAccept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;You already PreliminaryAcceptedByJudge this CallForSpeech&quot;);
+                                }
+                        
+                                if (Status != CallForSpeechStatus.EvaluatedByMachine)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that WASNT&#39;T in EvaluatedByMachine&quot;);
+                                }
+                        
+                                if (Score == null)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application before scoring&quot;);
+                                }
+                        
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    throw new ApplicationException(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                        
+                                Status = CallForSpeechStatus.PreliminaryAcceptedByJudge;
+                                PreliminaryDecision = new Decision(AppTime.Now(), decisionBy);
+                            }
+                        
+                            public ExecutionStatus TryPreliminaryAccept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;You already PreliminaryAcceptedByJudge this CallForSpeech&quot;);
+                                }
+                        
+                                if (Status != CallForSpeechStatus.EvaluatedByMachine)
+                                {
+                                    return ExecutionStatus.LogicError(&quot;Cannot accept application that WASNT&#39;T in EvaluatedByMachine&quot;);
+                                }
+                        
+                                if (Score == null)
+                                {
+                                    return ExecutionStatus.LogicError(&quot;Cannot accept application before scoring&quot;);
+                                }
+                        
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                        
+                                Status = CallForSpeechStatus.PreliminaryAcceptedByJudge;
+                                PreliminaryDecision = new Decision(AppTime.Now(), decisionBy);
+                                return ExecutionStatus.LogicOk();
+                            }
+                        
+                        
+                        
+                            public void Accept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;You already Accepted this CallForSpeech&quot;);
+                                }
+                        
+                                if (Status == CallForSpeechStatus.Rejected)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that is already rejected&quot;);
+                                }
+                        
+                                if (Status != CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that wasn&#39;t PreliminaryAccepted FIRST&quot;);
+                                }
+                        
+                                if (Score == null)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application before scoring&quot;);
+                                }
+                        
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    throw new ApplicationException(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                        
+                                Status = CallForSpeechStatus.AcceptedByJudge;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                            }
+                        
+                            public ExecutionStatus TryAccept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;You already Accepted this CallForSpeech&quot;);
+                                }
+                        
+                                if (Status == CallForSpeechStatus.Rejected)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot accept application that is already rejected&quot;);
+                                }
+                        
+                                if (Status != CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot accept application that wasn&#39;t PreliminaryAccepted FIRST&quot;);
+                                }
+                        
+                                if (Score == null)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot accept application before scoring&quot;);
+                                }
+                        
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                        
+                                Status = CallForSpeechStatus.AcceptedByJudge;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                                return ExecutionStatus.LogicOk();
+                            }
+                        
+                    
+                        
+                            public void Reject(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.Rejected ||
+                                    Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;Cannot reject application that is already accepted or rejected&quot;);
+                                }
+                        
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    throw new ApplicationException(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                        
+                                Status = CallForSpeechStatus.Rejected;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                            }
+                        
+                            public ExecutionStatus TryReject(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.Rejected ||
+                                    Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot reject application that is already accepted or rejected&quot;);
+                                }
+                        
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                        
+                                Status = CallForSpeechStatus.Rejected;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                        
+                                return ExecutionStatus.LogicOk();
+                            }
+                        
+                            public CallForSpeechIds Ids()
+                            {
+                                if (this.Id != null &amp;&amp; this.Id.Value != default)
+                                    return new CallForSpeechIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id
+                                    };
+                                else
+                                    return new CallForSpeechIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id,
+                                        Status = IdsStatus.DudeYouCantReturnCreatedIdWhenYouAreEventSourcing
+                        
+                                    };
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/09.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speaker</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Speaker : ValueObject&lt;Speaker&gt;
+                        {
+                            public DateTime Birthdate { get; init; }
+                            public Name Name { get; init; }
+                            public Address Address { get; init; }
+                            public SpeakerWebsites SpeakerWebsites { get; init; }
+                        
+                            public string Biography { get; init; }
+                            public Contact Contact { get; init; }
+                        
+                            public Speaker(Name name, DateTime birthdate,
+                                Address address, SpeakerWebsites socialMedia, string Bio,
+                                Contact contact)
+                            {
+                                if (contact == null)
+                                    throw new ArgumentException(&quot;Contact cannot be null&quot;);
+                                if (Bio == null)
+                                    throw new ArgumentException(&quot;BIO cannot be null&quot;);
+                                if (name == null)
+                                    throw new ArgumentException(&quot;Name cannot be null&quot;);
+                                if (address == null)
+                                    throw new ArgumentException(&quot;Address cannot be null&quot;);
+                                if (birthdate == default)
+                                    throw new ArgumentException(&quot;Birthdate cannot be empty&quot;);
+                                if (socialMedia == default)
+                                    throw new ArgumentException(&quot;SpeakerWebsites cannot be empty&quot;);
+                        
+                                Name = name;
+                                Birthdate = birthdate;
+                                Address = address;
+                                SpeakerWebsites = socialMedia;
+                                Biography = Bio;
+                                Contact = contact;
+                            }
+                        
+                            public AgeInYears AgeInYearsAt(DateTime date)
+                            {
+                                return AgeInYears.Between(Birthdate, date);
+                            }
+                        
+                        
+                        
+                            protected Speaker()
+                            {
+                        
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                return new List&lt;object&gt;
+                                {
+                                    Name,
+                                    Birthdate,
+                                    Address
+                                };
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/zgloszenia.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speaker</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class SpeakerWebsites : ValueObject&lt;SpeakerWebsites&gt;
+                        {
+                            public string Facebook { get; init; }
+                            public string LinkedIN { get; init; }
+                            public string Twitter { get; init; }
+                            public string Instagram { get; init; }
+                            public string TikTok { get; init; }
+                            public string YouTube { get; init; }
+                            public string FanPageOnFacebook { get; init; }
+                        
+                            public string GitHub { get; init; }
+                            public string Blog { get; init; }
+                        
+                            public SpeakerWebsites(string facebook = null, string linkedIN = null,
+                                string twitter = null, string instagram = null, string tikTok = null,
+                                string gitHub = null, string blog = null)
+                            {
+                                Facebook = facebook;
+                                LinkedIN = linkedIN;
+                                Twitter = twitter;
+                                Instagram = instagram;
+                                TikTok = tikTok;
+                                GitHub = gitHub;
+                                Blog = blog;
+                            }
+                        
+                            public SpeakerWebsites()
+                            {
+                        
+                            }
+                        
+                            public bool HaveSocialMedia()
+                            {
+                                if (!string.IsNullOrWhiteSpace(Facebook)
+                                    || !string.IsNullOrWhiteSpace(LinkedIN)
+                                    || !string.IsNullOrWhiteSpace(Twitter)
+                                    || !string.IsNullOrWhiteSpace(Instagram)
+                                    || !string.IsNullOrWhiteSpace(TikTok)
+                                    || !string.IsNullOrWhiteSpace(YouTube)
+                                    || !string.IsNullOrWhiteSpace(FanPageOnFacebook))
+                                    return true;
+                        
+                                return false;
+                            }
+                        
+                            public bool HaveGitHub()
+                            {
+                                if (!string.IsNullOrWhiteSpace(GitHub))
+                                    return true;
+                        
+                                return false;
+                            }
+                        
+                            public bool HaveBlog()
+                            {
+                                if (!string.IsNullOrWhiteSpace(Blog))
+                                    return true;
+                        
+                                return false;
+                            }
+                        
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Facebook;
+                                yield return LinkedIN;
+                                yield return Twitter;
+                                yield return Instagram;
+                                yield return TikTok;
+                                yield return GitHub;
+                                yield return Blog;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Contact</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Contact : ValueObject&lt;Contact&gt;
+                        {
+                            public string Phone { get; }
+                            public string Email { get; }
+                    
+                            public Contact(string phone, string email)
+                            {
+                                if (phone == null)
+                                    throw new ArgumentException(&quot;phone cannot be null&quot;);
+                                if (email == null)
+                                    throw new ArgumentException(&quot;email cannot be null&quot;);
+                    
+                                Phone = phone;
+                                Email = email;
+                            }
+                    
+                            protected Contact()
+                            {
+                    
+                            }
+                    
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                return new List&lt;object&gt;
+                                {
+                                    Phone,
+                                    Email
+                                };
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Address</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Address : ValueObject&lt;Address&gt;
+                        {
+                            public string Country { get; }
+                            public string ZipCode { get; }
+                            public string City { get; }
+                            public string Street { get; }
+                    
+                            public Address(string country, string zipCode, string city, string street)
+                            {
+                                if (string.IsNullOrWhiteSpace(country))
+                                    throw new ArgumentException(&quot;Country cannot be empty.&quot;);
+                                if (string.IsNullOrWhiteSpace(zipCode))
+                                    throw new ArgumentException(&quot;Zip code cannot be empty.&quot;);
+                                if (string.IsNullOrWhiteSpace(city))
+                                    throw new ArgumentException(&quot;City cannot be empty.&quot;);
+                                if (string.IsNullOrWhiteSpace(street))
+                                    throw new ArgumentException(&quot;Street cannot be empty.&quot;);
+                                if (!new Regex(&quot;[0-9]{2}-[0-9]{3}&quot;).Match(zipCode).Success)
+                                    throw new ArgumentException(&quot;Zip code must be NN-NNN format.&quot;);
+                    
+                                Country = country;
+                                ZipCode = zipCode;
+                                City = city;
+                                Street = street;
+                            }
+                    
+                    
+                            protected Address()
+                            {
+                            }
+                    
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Country;
+                                yield return ZipCode;
+                                yield return City;
+                                yield return Street;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz mowa
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speech</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class Speech : ValueObject&lt;Speech&gt;
+                        {
+                            public string Title { get; init; }
+                        
+                            public string Description { get; init; }
+                        
+                            public string[] Tags { get; init; }
+                        
+                            public ForWhichAudience ForWhichAudience { get; init; }
+                        
+                            public TechnologyOrBussinessStory TechnologyOrBussinessStory { get; init; }
+                        
+                            protected Speech()
+                            {
+                        
+                            }
+                        
+                            public Speech(string title, string description, string[] tags,
+                                ForWhichAudience forWhichAudience, TechnologyOrBussinessStory technologyOrBussinessStory)
+                            {
+                                Title = title;
+                                Description = description;
+                                Tags = tags;
+                                ForWhichAudience = forWhichAudience;
+                                TechnologyOrBussinessStory = technologyOrBussinessStory;
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                return new List&lt;object&gt;
+                                {
+                                    Title,
+                                    Description,
+                                    Tags
+                                };
+                        
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speech</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public enum ForWhichAudience
+                        {
+                            Beginers = 0,
+                            Intermediate = 1,
+                            Experts = 2,
+                            GrandMasters = 3
+                        }
+                    
+                        public enum TechnologyOrBussinessStory
+                        {
+                            OnlyAboutTechnologyAndTricks = 0,
+                            MoreAboutTechnologyAndTricksAndLessMyPersonalBussinessStory = 1,
+                            InTheMiddle = 2,
+                            LessAboutTechnologyAndTricksAndMoreMyPersonalBussinessStory = 3,
+                            OnlyMyPersonalBussinessStory = 4
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz wyjątki czy statusy
+        </span></span>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speech</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public enum CallForSpeechMachineScore
+                        {
+                            None = 0,
+                            Red = 1, //Rejected
+                            Yellow = 2, //WithWarrings
+                            Green = 3, //AllOkej
+                    
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speech</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class CallForSpeechNumber : ValueObject&lt;CallForSpeechNumber&gt;
+                        {
+                            public string Number { get; }
+                            public CallForSpeechNumber(string number)
+                            {
+                                if (string.IsNullOrWhiteSpace(number))
+                                    throw new ArgumentException(&quot;CallForSpeechNumber number cannot be null or empty string&quot;);
+                                Number = number;
+                            }
+                        
+                        
+                            public static CallForSpeechNumber NewNumber() =&gt; new CallForSpeechNumber(Guid.NewGuid().ToString());
+                        
+                            public static CallForSpeechNumber Of(string number) =&gt; new CallForSpeechNumber(number);
+                        
+                            public static implicit operator string(CallForSpeechNumber number) =&gt; number.Number;
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Number;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Speech</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public enum CallForSpeechStatus
+                        {
+                            New = 0,
+                            EvaluatedByMachine = 1,
+                            PreliminaryAcceptedByJudge = 2,
+                            AcceptedByJudge = 3,
+                            Rejected = 5
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">CallForSpeechScoringResult</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class CallForSpeechScoringResult : ValueObject&lt;CallForSpeechScoringResult&gt;
+                        {
+                            public CallForSpeechMachineScore Score { get; }
+                            public string RejectExplanation { get; }
+                            public string WarringExplanation { get; }
+                        
+                            //[JsonConstructor]
+                            public CallForSpeechScoringResult(CallForSpeechMachineScore score,
+                                string rejectexlanation)
+                            {
+                                Score = score;
+                                RejectExplanation = rejectexlanation;
+                            }
+                        
+                            public CallForSpeechScoringResult(CallForSpeechMachineScore score,
+                        string rejectexlanation, string warringExplanation)
+                            {
+                                Score = score;
+                                RejectExplanation = rejectexlanation;
+                                WarringExplanation = warringExplanation;
+                            }
+                        
+                            //To satisfy EF Core
+                            protected CallForSpeechScoringResult()
+                            {
+                            }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Score;
+                                yield return RejectExplanation;
+                            }
+                        
+                            public static CallForSpeechScoringResult Green()
+                            {
+                                return new CallForSpeechScoringResult(CallForSpeechMachineScore.Green, &quot;&quot;, &quot;&quot;);
+                            }
+                        
+                            public static CallForSpeechScoringResult Red(string[] messages)
+                            {
+                                return new CallForSpeechScoringResult(CallForSpeechMachineScore.Red, string.Join(Environment.NewLine, messages), &quot;&quot;);
+                            }
+                        
+                            public static CallForSpeechScoringResult Yellow(string[] messages)
+                            {
+                                return new CallForSpeechScoringResult(CallForSpeechMachineScore.Yellow, &quot;&quot;, string.Join(Environment.NewLine, messages));
+                            }
+                        
+                            public bool IsRed()
+                            {
+                                return Score == CallForSpeechMachineScore.Red;
+                            }
+                        
+                            public bool IsYellow()
+                            {
+                                return Score == CallForSpeechMachineScore.Yellow;
+                            }
+                        
+                            public bool IsGreen()
+                            {
+                                return Score == CallForSpeechMachineScore.Green;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz wyjątki czy statusy
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">CallForSpeechScoringResult</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class CallForSpeech : Entity&lt;CallForSpeechId, CallForSpeechUniqueId&gt;
+                        {
+                            public Speaker Speaker { get; set; }
+                            public Speech Speech { get; set; }
+                            public Registration Registration { get; set; }
+                            public CallForSpeechNumber Number { get; set; }
+                    
+                            public Category Category { get; private set; }
+                            public CallForSpeechStatus Status { get; private set; }
+                    
+                            public CallForSpeechScoringResult Score { get; private set; }
+                    
+                            public Decision PreliminaryDecision { get; private set; }
+                            public Decision FinalDecision { get; private set; }
+                    
+                    
+                            public CallForSpeech(CallForSpeechNumber number, Speech speech,
+                                   Speaker speaker, Category cat)
+                                : this(number, CallForSpeechStatus.New, speaker, speech, cat,
+                            null, new Registration(AppTime.Now()), null, null,
+                            new CallForSpeechId(0))
+                            {
+                    
+                            }
+                    
+                            public CallForSpeech(
+                                CallForSpeechNumber number,
+                                CallForSpeechStatus status,
+                                Speaker speaker,
+                                Speech speech,
+                                Category category,
+                                CallForSpeechScoringResult score,
+                                Registration registration,
+                                Decision preliminaryDecision,
+                                Decision finalDecision,
+                                CallForSpeechId callForSpeechId)
+                            {
+                                if (category == null)
+                                    throw new ArgumentException(&quot;Category cannot be null&quot;);
+                                if (number == null)
+                                    throw new ArgumentException(&quot;Number cannot be null&quot;);
+                                if (speech == null)
+                                    throw new ArgumentException(&quot;speech cannot be null&quot;);
+                                if (speaker == null)
+                                    throw new ArgumentException(&quot;speaker cannot be null&quot;);
+                                if (registration == null)
+                                    throw new ArgumentException(&quot;Registration cannot be null&quot;);
+                    
+                                Id = callForSpeechId;
+                                Number = number;
+                                Status = status;
+                                Score = score;
+                                Speech = speech;
+                                Speaker = speaker;
+                                Registration = registration;
+                                PreliminaryDecision = preliminaryDecision;
+                                FinalDecision = finalDecision;
+                                Category = category;
+                                Version = 1;
+                                UniqueId = CallForSpeechUniqueId.NewUniqueId();
+                            }
+                    
+                            // To satisfy EF Core
+                            protected CallForSpeech()
+                            {
+                                UniqueId = CallForSpeechUniqueId.NewUniqueId();
+                                Version = 1;
+                            }
+                    
+                            public void Evaluate(ScoringRules rules)
+                            {
+                                if (Status != CallForSpeechStatus.New)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that isn&#39;t new&quot;);
+                                }
+                    
+                                Score = rules.Evaluate(this);
+                                if (!Score.IsRed())
+                                {
+                                    Status = CallForSpeechStatus.EvaluatedByMachine;
+                                }
+                                else
+                                {
+                                    Status = CallForSpeechStatus.Rejected;
+                                }
+                            }
+                    
+                            public ExecutionStatus TryEvaluate(ScoringRules rules)
+                            {
+                                if (Status != CallForSpeechStatus.New)
+                                {
+                                    return ExecutionStatus.LogicError(&quot;Cannot accept application that isn&#39;t new&quot;);
+                                }
+                    
+                                Score = rules.Evaluate(this);
+                                if (!Score.IsRed())
+                                {
+                                    Status = CallForSpeechStatus.EvaluatedByMachine;
+                                }
+                                else
+                                {
+                                    Status = CallForSpeechStatus.Rejected;
+                                }
+                                return ExecutionStatus.LogicOk();
+                            }
+                    
+                            public void PreliminaryAccept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;You already PreliminaryAcceptedByJudge this CallForSpeech&quot;);
+                                }
+                    
+                                if (Status != CallForSpeechStatus.EvaluatedByMachine)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that WASNT&#39;T in EvaluatedByMachine&quot;);
+                                }
+                    
+                                if (Score == null)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application before scoring&quot;);
+                                }
+                    
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    throw new ApplicationException(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                    
+                                Status = CallForSpeechStatus.PreliminaryAcceptedByJudge;
+                                PreliminaryDecision = new Decision(AppTime.Now(), decisionBy);
+                            }
+                    
+                            public ExecutionStatus TryPreliminaryAccept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;You already PreliminaryAcceptedByJudge this CallForSpeech&quot;);
+                                }
+                    
+                                if (Status != CallForSpeechStatus.EvaluatedByMachine)
+                                {
+                                    return ExecutionStatus.LogicError(&quot;Cannot accept application that WASNT&#39;T in EvaluatedByMachine&quot;);
+                                }
+                    
+                                if (Score == null)
+                                {
+                                    return ExecutionStatus.LogicError(&quot;Cannot accept application before scoring&quot;);
+                                }
+                    
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                    
+                                Status = CallForSpeechStatus.PreliminaryAcceptedByJudge;
+                                PreliminaryDecision = new Decision(AppTime.Now(), decisionBy);
+                                return ExecutionStatus.LogicOk();
+                            }
+                    
+                    
+                    
+                            public void Accept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;You already Accepted this CallForSpeech&quot;);
+                                }
+                    
+                                if (Status == CallForSpeechStatus.Rejected)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that is already rejected&quot;);
+                                }
+                    
+                                if (Status != CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application that wasn&#39;t PreliminaryAccepted FIRST&quot;);
+                                }
+                    
+                                if (Score == null)
+                                {
+                                    throw new ApplicationException(&quot;Cannot accept application before scoring&quot;);
+                                }
+                    
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    throw new ApplicationException(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                    
+                                Status = CallForSpeechStatus.AcceptedByJudge;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                            }
+                    
+                            public ExecutionStatus TryAccept(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;You already Accepted this CallForSpeech&quot;);
+                                }
+                    
+                                if (Status == CallForSpeechStatus.Rejected)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot accept application that is already rejected&quot;);
+                                }
+                    
+                                if (Status != CallForSpeechStatus.PreliminaryAcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot accept application that wasn&#39;t PreliminaryAccepted FIRST&quot;);
+                                }
+                    
+                                if (Score == null)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot accept application before scoring&quot;);
+                                }
+                    
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                    
+                                Status = CallForSpeechStatus.AcceptedByJudge;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                                return ExecutionStatus.LogicOk();
+                            }
+                    
+                    
+                            public void Reject(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.Rejected ||
+                                    Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    throw new ApplicationException(&quot;Cannot reject application that is already accepted or rejected&quot;);
+                                }
+                    
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    throw new ApplicationException(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                    
+                                Status = CallForSpeechStatus.Rejected;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                            }
+                    
+                            public ExecutionStatus TryReject(Judge decisionBy)
+                            {
+                                if (Status == CallForSpeechStatus.Rejected ||
+                                    Status == CallForSpeechStatus.AcceptedByJudge)
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Cannot reject application that is already accepted or rejected&quot;);
+                                }
+                    
+                                if (!decisionBy.CanAccept(this.Category.Id))
+                                {
+                                    return ExecutionStatus.
+                                        LogicError(&quot;Judge is from diffrent category. Can&#39;t Accept&quot;);
+                                }
+                    
+                                Status = CallForSpeechStatus.Rejected;
+                                FinalDecision = new Decision(AppTime.Now(), decisionBy);
+                    
+                                return ExecutionStatus.LogicOk();
+                            }
+                    
+                            public CallForSpeechIds Ids()
+                            {
+                                if (this.Id != null &amp;&amp; this.Id.Value != default)
+                                    return new CallForSpeechIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id
+                                    };
+                                else
+                                    return new CallForSpeechIds()
+                                    {
+                                        UniqueId = this.UniqueId,
+                                        CreatedId = this.Id,
+                                        Status = IdsStatus.DudeYouCantReturnCreatedIdWhenYouAreEventSourcing
+                    
+                                    };
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz wyjątki czy statusy
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/10.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Contact</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public enum Reason
+                        {
+                            None,
+                            Error,
+                            NotControledException,
+                            ReturnedNull,
+                            ConcurrencyOlderVersionSendedWhenNewerIsInEventStore,
+                            AggregateOrEventMissingIdInEventStore,
+                            AggregateNotFoundInEventStore,
+                    
+                            EventsOutOfOrderInEventStore
+                    
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Contact</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public enum WhereExecuted
+                        {
+                            IDontKnow = 0,
+                            DataBase = 1,
+                            DomainLogic = 2,
+                            EventStore = 3
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Contact</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class ExecutionStatus
+                        {
+                            public bool Success { get; set; }
+                            public string MessageForClient { get; set; }
+                            public string MessageForDeveloper { get; set; }
+                            public Exception Exception { get; init; }
+                            public WhereExecuted Where { get; init; }
+                            public Reason Reason { get; set; }
+                        
+                        
+                        
+                            internal ExecutionStatus()
+                            {
+                                Reason = Reason.None;
+                            }
+                        
+                            public static ExecutionStatus LogicOk()
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.DomainLogic,
+                                    Success = true,
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreOk()
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = true,
+                                };
+                            }
+                        
+                            public static ExecutionStatus LogicError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.DomainLogic,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.Error
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.Error
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreConcurrencyError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.ConcurrencyOlderVersionSendedWhenNewerIsInEventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreEventsOutOfOrderError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.EventsOutOfOrderInEventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreAggregateOrEventMissingIdError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.AggregateNotFoundInEventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus LogicError(Exception ex)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.DomainLogic,
+                                    Success = false,
+                                    Reason = Reason.NotControledException,
+                                    Exception = ex,
+                                    MessageForClient = ex.Message
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreError(Exception ex)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    Reason = Reason.NotControledException,
+                                    Exception = ex,
+                                    MessageForClient = ex.Message
+                                };
+                            }
+                        
+                            public static ExecutionStatus DbOk()
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Success = true,
+                                };
+                            }
+                        
+                            public static ExecutionStatus DbError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Reason = Reason.Error,
+                                    Success = false,
+                                    MessageForClient = message
+                                };
+                            }
+                        
+                            public static ExecutionStatus DbError(Exception ex)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Success = false,
+                                    Exception = ex,
+                                    MessageForClient = ex.Message,
+                                    Reason = Reason.Error
+                                };
+                            }
+                        }
+                        
+                        public class ExecutionStatus&lt;T&gt;
+                        {
+                            public bool Success { get; init; }
+                            public string MessageForClient { get; init; }
+                            public string MessageForDeveloper { get; set; }
+                            public Exception Exception { get; init; }
+                            public WhereExecuted Where { get; init; }
+                        
+                            public T Value { get; init; }
+                            public Reason Reason { get; init; }
+                        
+                            protected ExecutionStatus()
+                            {
+                                Reason = Reason.None;
+                            }
+                        
+                            public ExecutionStatus RemoveGeneric()
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Success = this.Success,
+                                    Exception = this.Exception,
+                                    MessageForClient = this.MessageForClient,
+                                    MessageForDeveloper = this.MessageForDeveloper,
+                                    Reason = this.Reason,
+                                    Where = this.Where
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; DbOk(T value)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Success = true,
+                                    Value = value,
+                                    Where = WhereExecuted.DataBase
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; LogicOk(T value)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Success = true,
+                                    Value = value,
+                                    Where = WhereExecuted.DomainLogic
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; EventStoreOk(T value)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Success = true,
+                                    Value = value,
+                                    Where = WhereExecuted.EventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; LogicError(string message)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.Error,
+                                    Where = WhereExecuted.DomainLogic
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; EventStoreError(string message)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.Error,
+                                    Where = WhereExecuted.EventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; LogicError(Exception ex)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.DomainLogic,
+                                    Success = false,
+                                    Reason = Reason.NotControledException,
+                                    Exception = ex,
+                                    MessageForClient = ex.Message
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; EventStoreError(Exception ex)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    Reason = Reason.NotControledException,
+                                    Exception = ex,
+                                    MessageForClient = ex.Message
+                                };
+                            }
+                        
+                        
+                            public static ExecutionStatus&lt;T&gt; EventStoreConcurrencyError(string message)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.ConcurrencyOlderVersionSendedWhenNewerIsInEventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus EventStoreAggregateOrEventMissingIdError(string message)
+                            {
+                                return new ExecutionStatus()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.AggregateOrEventMissingIdInEventStore
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; EventStoreAggregateNotFoundError(string message)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.EventStore,
+                                    Success = false,
+                                    MessageForClient = message,
+                                    Reason = Reason.AggregateNotFoundInEventStore
+                                };
+                            }
+                        
+                        
+                        
+                            public static ExecutionStatus&lt;T&gt; LogicIfDefaultThenError(T value)
+                            {
+                                if (EqualityComparer&lt;T&gt;.Default.Equals(value, default(T)))
+                                {
+                                    return new ExecutionStatus&lt;T&gt;()
+                                    {
+                                        Where = WhereExecuted.DomainLogic,
+                                        Success = false,
+                                        MessageForClient = &quot;NotFound&quot;,
+                                        Reason = Reason.ReturnedNull
+                                    };
+                                }
+                        
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Success = true,
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; DbError(string message)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Success = false,
+                                    MessageForClient = message
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; DbError(Exception ex)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Success = false,
+                                    Reason = Reason.NotControledException,
+                                    Exception = ex,
+                                    MessageForDeveloper = ex.Message
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; DbIfDefaultThenError(T value)
+                            {
+                                if (EqualityComparer&lt;T&gt;.Default.Equals(value, default(T)))
+                                {
+                                    return new ExecutionStatus&lt;T&gt;()
+                                    {
+                                        Where = WhereExecuted.DataBase,
+                                        Success = false,
+                                        MessageForClient = &quot;NotFound&quot;,
+                                        Reason = Reason.ReturnedNull
+                                    };
+                                }
+                        
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = WhereExecuted.DataBase,
+                                    Success = true,
+                                    Value = value
+                                };
+                            }
+                        
+                            public static ExecutionStatus&lt;T&gt; From(ExecutionStatus addstatus)
+                            {
+                                return new ExecutionStatus&lt;T&gt;()
+                                {
+                                    Where = addstatus.Where,
+                                    Exception = addstatus.Exception,
+                                    MessageForClient = addstatus.MessageForClient,
+                                    MessageForDeveloper = addstatus.MessageForDeveloper,
+                                    Success = true,
+                                };
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">ExecutionFlow</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public static class ExecutionFlow
+                        {
+                            public static IExecutionOptions Options { get; set; }
+                    
+                            static ExecutionFlow()
+                            {
+                                Options = new ExecutionOptions();
+                            }
+                        }
+
+                        public interface IExecutionOptions
+                        {
+                            bool ThrowExceptions { get; set; }
+                        }
+                    
+                        public class ExecutionOptions : IExecutionOptions
+                        {
+                            public bool _throwExceptions;
+                    
+                            public ExecutionOptions()
+                            {
+                    
+                            }
+                    
+                            public ExecutionOptions(bool throwExceptions)
+                            {
+                                _throwExceptions = throwExceptions;
+                            }
+                    
+                    
+                            public bool ThrowExceptions
+                            {
+                                get => _throwExceptions;
+                                set => _throwExceptions = value;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPP">
+        <span class="shout colors" ><span>Teraz wyjątki czy statusy
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/11.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Contact</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public interface IScoringRejectRule
+                        {
+                            bool IsSatisfiedBy(CallForSpeech speechCandidate);
+                    
+                            string Message { get; }
+                        }
+                    
+                        public interface IScoringWarringRule
+                        {
+                            bool IsSatisfiedBy(CallForSpeech speechCandidate);
+                    
+                            string Message { get; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Contact</h2>
+            </div>
+            <div class="PlaceCodeHere ">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class ScoringRules
+                        {
+                            private readonly IList&lt;IScoringRejectRule&gt; rejectrules;
+                            private readonly IList&lt;IScoringWarringRule&gt; warringrules;
+                        
+                            public ScoringRules(IList&lt;IScoringRejectRule&gt; rejectrules,
+                                IList&lt;IScoringWarringRule&gt; warringrules)
+                            {
+                                this.rejectrules = rejectrules;
+                                this.warringrules = warringrules;
+                            }
+                        
+                            public CallForSpeechScoringResult Evaluate(CallForSpeech speechCandidate)
+                            {
+                                var brokenRules = this.rejectrules
+                                    .Where(r =&gt; !r.IsSatisfiedBy(speechCandidate))
+                                    .ToList();
+                        
+                                if (brokenRules.Any())
+                                    return CallForSpeechScoringResult.Red
+                                        (brokenRules.Select(r =&gt; r.Message).
+                                        ToArray());
+                        
+                                var warringrules = this.warringrules
+                                .Where(r =&gt; !r.IsSatisfiedBy(speechCandidate))
+                                .ToList();
+                        
+                                if (warringrules.Any())
+                                    return CallForSpeechScoringResult.Yellow
+                                        (brokenRules.Select(r =&gt; r.Message).
+                                        ToArray());
+                        
+                                return CallForSpeechScoringResult.Green();
+                        
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domain/12.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamG">
+        <span class="shout colors" ><span>Podsumowanie
+        </span></span>
+    </section>
+    <!-- <div class="progress"></div> -->
+    <footer class="badge badge-top-left">
+        <a href="#" class="fullscreen">Fullscreen</a>
+    </footer>
+
+    <script src="vendors/gamepad/gamepad.js"></script>
+    <script src="vendors/shower/shower.min.js"></script>
+    <script src="vendors/shower-gamepad/shower.gamepad.js"></script>
+
+    <!-- Prism.js -->
+    <script src="vendors/prism/prism.js"></script>
+    <script src="vendors/prism/custom-prism.js"></script>
+
+</body>
+
+</html>
