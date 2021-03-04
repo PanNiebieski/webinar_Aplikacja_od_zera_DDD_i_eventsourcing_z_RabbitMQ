@@ -195,6 +195,86 @@
         </div>
     </section>
     <section class="slide creamGGGragient">
+        <span class="shout colors" >Jakie techniki nam pomogą stworzyć kod luźnio powiążany
+        </span>
+    </section>
+    <section class="slide creamPP  fullscreen">
+        <div class="grid-containerOnlyTwo ">
+            <div class="ImageOnlyTwo1 "><img  src="pictures/iconsFr/depedencyInjection.png" /></div>
+            <div class="ImageOnlyTwo2 "> <img src="pictures/iconsFr/mediator.png" /></div>
+            <div class="TitleOnlyTwo"><h3>Dwie najważnieszje techniki</h3></div>
+            <div class="TextOnlyTwo1 "><h3>Depedency Inversion i Injection</h3></div>
+            <div class="TextOnlyTwo2 "><h3>Mediator i CQRS</h3></div>
+          </div>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Jakie zasady chcemy spełnić
+        </span>
+    </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-6Squares">
+            <div class="TitleMain9Squares"><h3>Ważne zasady projektowe</h3></div>
+            <div class="Square-1 square-background-orange"><span>Dependency Inversion</span></div>
+            <div class="Square-2 square-background-Blue"><span>Seperation of Concerns</span></div>
+            <div class="Square-3 square-background-pinkos"><span>Single Responsibility</span></div>
+            <div class="Square-4 square-background-Green"><span>DRY</span></div>
+            <div class="Square-5 square-background-gray"><span>Persistence Ignorance</span></div>
+        </div>
+    </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/singleresponsibilty.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="bold">Single Responsibility</li>
+                    <ol class="nonumbers">
+                        <li class="next">Każdy blok robi ma tylko jeden cel</li>
+                        <li class="next">Więcej klas, ale mniej scyzorków które robią wszystko</li>
+                        <li class="next">Mogą być rozszerzane</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/dry2.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="bold">DRY</li>
+                    <ol class="nonumbers">
+                        <li class="next">Im mniej powtarzający się kodu tym lepiej</li>
+                        <li class="next">Zmieniasz kod tylko w 1 miejscu</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/iconsFr/persistenceIgnorance.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="bold">Persistence Ignorance</li>
+                    <ol class="nonumbers">
+                        <li class="next">Klasy nie powinny być zależne od tego jak one są przetrzmywane</li>
+                        <ol class="nonumbers">
+                            <li class="next">Niektóre frameworki wymagają od Ciebie właściwości : virtual</li>
+                        </ol>
+                        <li class="next">Od tego masz jeszcze inne klasy</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide creamGGGragient">
         <span class="shout colors" >Co do tego projektu. <br /><span>🛠️</span><br />Musiałem zaintalować ?
         </span>
     </section>
@@ -458,9 +538,9 @@
         </span></span>
     </section>
 
-    <section class="slide" style="background-color:black">
+      <section class="slide" style="background-color:white">
         <figure>
-            <img class="cover" src="pictures/old/layers/ilewartstw.png" alt="blog">
+            <img class="cover" src="pictures/old/layers/ilewartstw2.png" alt="blog">
             <figcaption class="white">Copyright © 2021 Cezary Walenciuk</figcaption>
         </figure>
     </section>
@@ -598,6 +678,40 @@
             👨‍💻
         </span></span>
     </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/circular/circular desing-04-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Interface and Entities</li>
+                    <ol class="nonumbers">
+                        <li class="next">Centrum całej aplikacji</li>
+                        <li class="next">Ich nazewnictwo to ból głowy</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>  
+    <section class="slide creamPP fullscreen smaller">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/circular/circular desing-03-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Co idzie do Core</li>
+                    <ol class="nonumbers">
+                        <li class="next">Encję, Interfejsy</li>
+                        <li class="next">Services (usługi)</li>
+                        <li class="next">Exceptions</li>
+                        <li class="next">Nie ma zależności do kodu z Infrastury czy jego paczek</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>  
     <section class="slide creamGrey">
         <span class="shout colors" ><span>..ale zaraz 😵 co mamy zbudować 🤨?
             <br /> Mówiliśmy "JAK", ale co od strony biznesowej 🧐
@@ -1205,6 +1319,14 @@
         <span class="shout colors" >Taki kod będzie bardziej czytelny<br />
             <span>Domain Driven Desing</span>
         </span>
+    </section>
+    <section class="slide creamPP   compact ">
+        <h2>Bloki DDD</h2>
+        <ol class="nonumbers">
+            <li class="next"><span class="yellow">ValueObject</span></li>
+            <li class="next"><span class="green">Entity</span></li>
+            <li class="next"><span class="purple">Aggregate</span></li>
+        </ol>
     </section>
     <section class="slide" style="background-color:black">
         <figure>
@@ -8009,6 +8131,17 @@
         <span class="shout colors" ><span>CQRS<br />😌
         </span></span>
     </section>
+    <section class="slide creamPP  fullscreen">
+        <div class="grid-containerOnlyThree ">
+            <div class="ImageOnlyTwo1 "><img  src="pictures/iconsFr/mediator.png" /></div>
+            <div class="ImageOnlyTwo2 "> <img src="pictures/iconsFr/querycommand.png" /></div>
+            <div class="ImageOnlyThree "> <img src="pictures/iconsFr/heroSERP.png" /></div>
+            <div class="TitleOnlyTwo"><h3>...i CQRS</h3></div>
+            <div class="TextOnlyTwo1 "><h3>Command-Query<br />Responsibility<br />Segregation</h3></div>
+            <div class="TextOnlyTwo2 "><h3>Róźne modele<br /><span class="smallerfont">Command do aktualizacji danych <br />Query do odczytu</span></h3></div>
+            <div class="TextOnlyThree "><h3>Każdy <br /><span class="smallerfont"> ma swoją odpowiedzialność</span><br />&nbsp;</h3></div>
+          </div>
+    </section>
     <section class="slide creamPP fullscreen smaller">
         <div class="grid-container-slidepoint">
             <div class="SlidePointImage">
@@ -10774,6 +10907,49 @@
             👨‍💻
         </span></span>
     </section>
+    <section class="slide creamPP" >
+        <figure>
+            <img class="cover" src="pictures/circular/circular desing-02-t.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Onion Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/circular/circular desing-02-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Infrastruktura </li>
+                    <ol class="nonumbers">
+                        <li class="next">Zależny od Core</li>
+                        <li class="next">Implementuje on interfejsy z Core</li>
+                        <li class="next">Zależności są odwrócone</li>
+                
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>  
+    <section class="slide creamPP fullscreen smaller">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/circular/circular desing-03-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Co idzie do Infrastructure?</li>
+                    <ol class="nonumbers">
+                        <li class="next">Dostęp do danych (EF Core)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                        <li class="next">Loggowanie</li>
+                        <li class="next">Autoryzacja</li>
+                        <li class="next">API Klienckie</li>
+                        <li class="next">Dostęp do plików</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section> 
     <section class="slide creamPPPGragient">
         <span class="shout colors" >Wybieramy EF czy Dappera
         </span></span>
@@ -13507,7 +13683,7 @@
         </div>
     </section>
     <section class="slide cream">
-        <span class="shout colors" ><span>Teraz napiszmy testy integracyjne<br />
+        <span class="shout colors" ><span>Teraz napiszmy testy integracyjne aby przetestować te zapytania<br />
             🛑</span></span>
     </section>
     <section class="slide cream">
@@ -13925,6 +14101,40 @@
             👨‍💻
         </span></span>
     </section>
+    <section class="slide creamPP fullscreen">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/circular/circular desing-03-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">UI i API</li>
+                    <ol class="nonumbers">
+                        <li class="next">Zależne od Core</li>
+                        <li class="next">Logika z myślą o oczach użytkownika</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>  
+    <section class="slide creamPP fullscreen smaller">
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/circular/circular desing-03-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Co idzie do UI i API?</li>
+                    <ol class="nonumbers">
+                        <li class="next">ASP.NET MVC/Core, Razor Pages, Blazor &nbsp;&nbsp;</li>
+                        <li class="next">Specficzne dla ASP.NET CORE rzeczy jak : Middleware&nbsp;&nbsp;</li>
+                        <li class="next">Specficzne dla Blazor rzeczy jak : Razor Compoments &nbsp;&nbsp;</li>
+                        <li class="next">Interakcja z innymi usługami przez MediatR&nbsp;&nbsp;</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section> 
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/API/01.PNG" alt="blog">
@@ -14147,6 +14357,56 @@
             </div>
         </div>
     </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/API/04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Projekt API</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-json">
+                    <code style="line-height: 17px !important;">
+                        {
+                            &quot;ConnectionStrings&quot;: {
+                          
+                              &quot;GeekLemonConferenceConnectionString&quot;: &quot;DataSource=./DataBase/GeekLemonDB.db&quot;,
+                              &quot;ZEsGeekLemonConferenceConnectionString&quot;: &quot;DataSource=./DataBase/ZEsGeekLemonDB.db&quot;,
+                              &quot;EventStoreSQLiteConnectionString&quot;: &quot;DataSource=./DataBase/EventStoreDB.db&quot;
+                            },
+                            &quot;RabbitMqSetting&quot;: {
+                              &quot;username&quot;: &quot;guest&quot;,
+                              &quot;password&quot;: &quot;guest&quot;,
+                              &quot;hostname&quot;: &quot;localhost&quot;,
+                              &quot;uri&quot;: &quot;amqp://localhost:5672/&quot;,
+                              &quot;virtualhost&quot;: &quot;/&quot;
+                            },
+                            &quot;Logging&quot;: {
+                              &quot;LogLevel&quot;: {
+                                &quot;Default&quot;: &quot;Information&quot;,
+                                &quot;Microsoft&quot;: &quot;Warning&quot;,
+                                &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
+                              }
+                            },
+                            &quot;AllowedHosts&quot;: &quot;*&quot;
+                          }
+                      
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/API/05.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
@@ -14195,6 +14455,12 @@
            <span> 😎
             <br />🏗️
         </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/API/06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
     </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
@@ -15068,11 +15334,3139 @@
         <span class="shout colors" ><span>DEMO
         </span></span>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Pora na EventSourcing ?
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors">Co to jest jest event sourcing?
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide creamPP   compact ">
+        <h2>Event sourcing</h2>
+        <ol class="nonumbers">
+            <li class="next"><span class="yellow">Zdarzenie</span> jest to fakt który się dokonał i nie może być zmieniony</li>
+            <li class="next"><span class="green">Entity</span></li>
+            <li class="next"><span class="purple">Aggregate</span></li>
+        </ol>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Problemy i wady Event Sourcing</li>
+                    <ol class="nonumbers">
+                        <li class="next">Zwiększona złożoność aplikacji</li>
+                        <li class="next">Potrzeba unikatowych identyfikatorów encji przed operacjami</li>
+                        <li class="next">Problem z tak zwaną "eventual consistency"</li>
+                        <li class="next">Czyli dane tymczasowo nie są spójne</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >O to moja prawdziwa historia z zakupem abomanetu w Player TVN
+        </span></span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Kupiłem abonament, ale nawet po 5 minutach nie mogłem oglądać swojego pakietu
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Screenshot_20210304-220055_player.jpg" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Godzinę później już tak
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Screenshot_20210227-194753_player.jpg" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Lepszy Performance</li>
+                    <ol class="nonumbers">
+                        <li class="next">Prawdopodobnie najlepszy powód</li>
+                        <li class="next">A to wynika z innego powodu</li>
+
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Oddziela model odczytu i zapisu </li>
+                    <ol class="nonumbers">
+                        <li class="next">Każda operacja zmieniajaca coś jest zdarzeniem</li>
+                        <li class="next">Te zdarzenie trafia do kolejki</li>
+                        <li class="next">Kolejka może być asynchronicznie obsłużona przez wiele endpointów i baz danych</li>
+                        <li class="next">Kto powiedział, że możesz mieć jedną bazę do odczytu</li>
+                </ol>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Inne spojrzenie na bazę danych</li>
+                    <ol class="nonumbers">
+                        <li class="next">Dlaczego nie wyrzucić bazę relacyjną SQL do kosza</li>
+                        <li class="next">Może niech log zdarzeniowy będzie głównym źródłem informacji</li>
+                        <li class="next">Pomyśl o mikroserwisach które emitują zdarzenia, które są odczytywane wzajemnie</li>
+                        <li class="next">Redis (NoSql) z event sourcing mógłby dać kopa</li>
+
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Alternatywne modelowanie danych</li>
+                    <ol class="nonumbers">
+                        <li class="next">Event Sourcing  odwaraca związek pomiędzy danymi a zdarzeniami</li>
+                        <li class="next">Zdarzenia sterują logiką biznesową </li>
+                        <li class="next">Zdarzenia są niezmiena i są pewną gwarnacją dokonanego stanu</li>
+                        <li class="next">Zdarzenia byłby formą logów przepływu operacji na danej encji</li>
+
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/twitter.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Elastyczność </li>
+                    <ol class="nonumbers">
+                        <li class="next">Mamy sepracje akcji od efektu</li>
+                        <li class="next">Co daje elastyczność </li>
+                        <li class="next">Nie jesteś uwięziony w modelu który musi pasować do wszystkiego</li>
+                        <li class="next">Trzeba tylko dobrze prze testować swój strumień zdarzeń</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Audyt </li>
+                    <ol class="nonumbers">
+                        <li class="next">Masz historię operacji w swojej bazie danych</li>
+                        <li class="next">Możesz to wykorzystać do analizy, do regulacji bezpieczeństwa</li>
+                        <li class="next">Aplikację np. finasowe muszą posiadać taką historię</li>
+                        <li class="next">Wyobraż sobie bank który nie pamięta gdzie zrobiłeś przelew</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Problemy i wady Event Sourcing CDN</li>
+                    <ol class="nonumbers">
+                        <li class="next">Audyt? A co na to RODO ?</li>
+                        <li class="next">Jak kasować tą historię ?</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Piszemy więc projekty<br /> <span>Domain.Events
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/domainE/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IMessage
+                        {
+                        }
+                        
+                        public interface IEvent : IMessage
+                        {
+                            public int Version { get; set; }
+                            DateTimeOffset TimeStamp { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public abstract class DomainEvent : IEvent
+                        {
+                            public AggregateKey Key { get; set; }
+                        
+                            public int Version { get; set; }
+                            public DateTimeOffset TimeStamp { get; set; }
+                        
+                            protected DomainEvent(DateTimeOffset occuredOn, int version)
+                            {
+                                TimeStamp = occuredOn;
+                                Version = version;
+                            }
+                        
+                            protected DomainEvent(int version)
+                            {
+                                TimeStamp = AppTime.Now();
+                                Version = version;
+                            }
+                        
+                            protected DomainEvent()
+                            {
+                        
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class AggregateKey : ValueObject&lt;AggregateKey&gt;
+                        {
+                            public string Type { get; set; }
+                            public string Id { get; set; }
+                        
+                            protected override IEnumerable&lt;object&gt; GetAttributesToIncludeInEqualityCheck()
+                            {
+                                yield return Type;
+                                yield return Id;
+                            }
+                        
+                            public static readonly AggregateKey Empty = new AggregateKey();
+                        
+                            public override string ToString()
+                            {
+                                return Id;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public abstract class BaseUniqueId&lt;T&gt; : ValueObject&lt;T&gt; where T : ValueObject&lt;T&gt;
+                        {
+                            public abstract string ValueInString();
+                        
+                            protected abstract string GetName();
+                        
+                            public AggregateKey GetAggregateKey()
+                            {
+                                return new AggregateKey
+                                {
+                                    Id = ValueInString(),
+                                    Type = GetName()
+                                };
+                            }
+                        
+                            public BaseUniqueId()
+                            {
+                        
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CategoryCreateEvent : DomainEvent
+                        {
+                            public CategoryUniqueId UniqueId { get; init; }
+                        
+                            public string Name { get; init; }
+                        
+                            public string DisplayName { get; init; }
+                        
+                            public string WhatWeAreLookingFor { get; init; }
+                        
+                            public CategoryCreateEvent(CategoryUniqueId uniqueId,
+                                string Name, string displayName, string whatWeAreLookingFor,
+                                int version)
+                                : base(version)
+                            {
+                        
+                                UniqueId = uniqueId;
+                                Key = this.UniqueId.GetAggregateKey();
+                                DisplayName = displayName;
+                                WhatWeAreLookingFor = whatWeAreLookingFor;
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CategoryUpdateEvent : DomainEvent
+                        {
+                            public CategoryUniqueId UniqueId { get; init; }
+                    
+                            public string Name { get; init; }
+                    
+                            public string DisplayName { get; init; }
+                    
+                            public string WhatWeAreLookingFor { get; init; }
+                    
+                            public CategoryUpdateEvent(CategoryUniqueId uniqueId,
+                                string Name, string displayName, string whatWeAreLookingFor,
+                                int version)
+                                : base(version)
+                            {
+                    
+                                UniqueId = uniqueId;
+                                Key = this.UniqueId.GetAggregateKey();
+                                DisplayName = displayName;
+                                WhatWeAreLookingFor = whatWeAreLookingFor;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class JudgeCreatedEvent : DomainEvent
+                        {
+                            public Login Login { get; init; }
+                            public Password Password { get; init; }
+                            public Name Name { get; init; }
+                            public Category Category { get; init; }
+                            public DateTime Birthdate { get; init; }
+                            public JudgeUniqueId UniqueId { get; init; }
+                        
+                            public JudgeCreatedEvent(DateTime birthdate,
+                                Category category, JudgeUniqueId uniqueId,
+                                Login login, Password password, Name name,
+                                int version) :
+                                base(version)
+                            {
+                                Birthdate = birthdate;
+                                Category = category;
+                                UniqueId = uniqueId;
+                                Login = login;
+                                Name = name;
+                                Password = password;
+                                Key = this.UniqueId.GetAggregateKey();
+                                Version = version;
+                            }
+                        
+                            public JudgeCreatedEvent()
+                            {
+                        
+                            }
+                        
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class JudgeDeletedEvent : DomainEvent
+                        {
+                            public JudgeUniqueId UniqueId { get; init; }
+                    
+                            public JudgeDeletedEvent(int version) :
+                                base(version)
+                            {
+                    
+                    
+                            }
+                    
+                    
+                            public JudgeDeletedEvent()
+                            {
+                    
+                            }
+                    
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class JudgeUpdatedEvent : DomainEvent
+                        {
+                            public Login Login { get; init; }
+                            public Password Password { get; init; }
+                            public Name Name { get; init; }
+                            public Category Category { get; init; }
+                            public DateTime Birthdate { get; init; }
+                            public JudgeUniqueId UniqueId { get; init; }
+                    
+                            public JudgeUpdatedEvent(DateTime birthdate,
+                        Category category, JudgeUniqueId uniqueId,
+                        Login login, Password password, Name name,
+                        int version) :
+                        base(version)
+                            {
+                                Birthdate = birthdate;
+                                Category = category;
+                                UniqueId = uniqueId;
+                                Login = login;
+                                Name = name;
+                                Password = password;
+                                Key = this.UniqueId.GetAggregateKey();
+                                Version = version;
+                            }
+                    
+                            public JudgeUpdatedEvent()
+                            {
+                    
+                            }
+                    
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class JudgeUpdatedEvent : DomainEvent
+                        {
+                            public Login Login { get; init; }
+                            public Password Password { get; init; }
+                            public Name Name { get; init; }
+                            public Category Category { get; init; }
+                            public DateTime Birthdate { get; init; }
+                            public JudgeUniqueId UniqueId { get; init; }
+                    
+                            public JudgeUpdatedEvent(DateTime birthdate,
+                        Category category, JudgeUniqueId uniqueId,
+                        Login login, Password password, Name name,
+                        int version) :
+                        base(version)
+                            {
+                                Birthdate = birthdate;
+                                Category = category;
+                                UniqueId = uniqueId;
+                                Login = login;
+                                Name = name;
+                                Password = password;
+                                Key = this.UniqueId.GetAggregateKey();
+                                Version = version;
+                            }
+                    
+                            public JudgeUpdatedEvent()
+                            {
+                    
+                            }
+                    
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CallForSpeechSubmitEvent : DomainEvent
+                        {
+                            public Speaker Speaker { get; init; }
+                            public Speech Speech { get; init; }
+                            public Registration Registration { get; init; }
+                            public CallForSpeechNumber Number { get; init; }
+                    
+                            public Category Category { get; init; }
+                            public CallForSpeechStatus Status { get; init; }
+                    
+                            public CallForSpeechScoringResult Score { get; init; }
+                    
+                            public Decision PreliminaryDecision { get; init; }
+                            public Decision FinalDecision { get; init; }
+                    
+                            public CallForSpeechUniqueId UniqueId { get; init; }
+                    
+                            public CallForSpeechSubmitEvent(Speaker speaker, Speech speech,
+                                Registration registration, CallForSpeechNumber number, Category category,
+                                CallForSpeechStatus status, CallForSpeechScoringResult score,
+                                Decision preliminaryDecision, Decision finalDecision, CallForSpeechUniqueId uniqueId,
+                                int version)
+                                : base(version)
+                            {
+                                Speaker = speaker;
+                                Speech = speech;
+                                Registration = registration;
+                                Number = number;
+                                Category = category;
+                                Status = status;
+                                Score = score;
+                                PreliminaryDecision = preliminaryDecision;
+                                FinalDecision = finalDecision;
+                                UniqueId = uniqueId;
+                                this.Key = UniqueId.GetAggregateKey();
+                            }
+                    
+                            public CallForSpeechSubmitEvent()
+                            {
+                    
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CallForSpeechRejectedEvent : DomainEvent
+                        {
+                            //public CallForSpeechId CallForSpeechId { get; init; }
+                    
+                            //public JudgeId By { get; init; }
+                    
+                            public Speaker Speaker { get; init; }
+                            public Speech Speech { get; init; }
+                            public Registration Registration { get; init; }
+                            public CallForSpeechNumber Number { get; init; }
+                    
+                            public Category Category { get; init; }
+                            public CallForSpeechStatus Status { get; init; }
+                    
+                            public CallForSpeechScoringResult Score { get; init; }
+                    
+                            public Decision PreliminaryDecision { get; init; }
+                            public Decision FinalDecision { get; init; }
+                    
+                            public CallForSpeechUniqueId UniqueId { get; init; }
+                    
+                            public CallForSpeechRejectedEvent(Speaker speaker, Speech speech,
+                                Registration registration, CallForSpeechNumber number, Category category,
+                                CallForSpeechStatus status, CallForSpeechScoringResult score,
+                                Decision preliminaryDecision, Decision finalDecision, CallForSpeechUniqueId uniqueId,
+                                int version)
+                                : base(version)
+                            {
+                                Speaker = speaker;
+                                Speech = speech;
+                                Registration = registration;
+                                Number = number;
+                                Category = category;
+                                Status = status;
+                                Score = score;
+                                PreliminaryDecision = preliminaryDecision;
+                                FinalDecision = finalDecision;
+                                UniqueId = uniqueId;
+                                this.Key = UniqueId.GetAggregateKey();
+                            }
+                    
+                            //public CallForSpeechRejectedEvent()
+                            //{
+                    
+                            //}
+                    
+                    
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Piszemy więc projekty<br /> <span>.Application.EventSourcing
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/applicationE/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Co to jest wzorzec projektowy Aggregate ?<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Aggregate to najtrudniejszy blok DDD<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamPP   compact ">
+        <h2>Bloki DDD</h2>
+        <ol class="nonumbers">
+            <li class="next"><span class="yellow">ValueObject</span></li>
+            <li class="next"><span class="green">Entity</span></li>
+            <li class="next"><span class="purple">Aggregate</span></li>
+        </ol>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Aggregate : to kolekcja obiektów którą chcemy traktować jako jednostkę<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Aggregate : to encja która trzyma inne encje , a w niej są obiekty wartościowe<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Celem aggregatu jest trzymanie modelu domenowego do 1 typu<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Aggregat sam sobie też jest atomowy w swojej persystencji<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >Jak widzisz mamy zdarzenia różne per model domenowy<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+    <section class="slide creamGGGragient">
+        <span class="shout colors" >W tym przypadku będziemy mieli listę zdarzeń per model domenowy to nasz agreggat<span>😨
+            <br />🏗️
+        </span></span>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public abstract class AggregateRoot
+                        {
+                            private readonly List&lt;DomainEvent&gt; _changes = new List&lt;DomainEvent&gt;();
+                        
+                            public AggregateKey Key { get; protected set; }
+                            public int Version { get; protected set; }
+                        
+                            public override string ToString()
+                            {
+                                return Key.Id + Key.Type;
+                            }
+                        
+                            public IEnumerable&lt;DomainEvent&gt; GetUncommittedChanges()
+                            {
+                                lock (_changes)
+                                {
+                                    return _changes.ToArray();
+                                }
+                            }
+                        
+                            public void MarkChangesAsCommitted()
+                            {
+                                lock (_changes)
+                                {
+                                    Version = Version + _changes.Count;
+                                    _changes.Clear();
+                                }
+                            }
+                        
+                            public ExecutionStatus LoadFromHistory(IEnumerable&lt;DomainEvent&gt; history)
+                            {
+                                foreach (var e in history)
+                                {
+                                    if (e.Version != Version + 1)
+                                        //return ExecutionStatus.EventStoreEventsOutOfOrderError
+                                        //    ($&quot;Eventstore gave event for aggregate {e.Key} out of order&quot;);
+                                        throw new EventsOutOfOrderException(e.Key);
+                                    ApplyChange(e, false);
+                                }
+                        
+                                return ExecutionStatus.EventStoreOk();
+                            }
+                        
+                            protected void ApplyChange(DomainEvent @event)
+                            {
+                                ApplyChange(@event, true);
+                            }
+                        
+                            private void ApplyChange(DomainEvent @event, bool isNew)
+                            {
+                                lock (_changes)
+                                {
+                                    this.AsDynamic().Apply(@event);
+                        
+                                    if (isNew)
+                                    {
+                                        _changes.Add(@event);
+                                    }
+                                    else
+                                    {
+                                        Key = @event.Key;
+                                        Version++;
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        internal static class PrivateReflectionDynamicObjectExtensions
+                        {
+                            public static dynamic AsDynamic(this object o)
+                            {
+                                return PrivateReflectionDynamicObject.WrapObjectIfNeeded(o);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        internal class PrivateReflectionDynamicObject : DynamicObject
+                        {
+                            public object RealObject { get; set; }
+                            private const BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+                        
+                            internal static object WrapObjectIfNeeded(object o)
+                            {
+                                // Don&#39;t wrap primitive types, which don&#39;t have many interesting internal APIs
+                                if (o == null || o.GetType().IsPrimitive || o is string)
+                                    return o;
+                        
+                                return new PrivateReflectionDynamicObject() { RealObject = o };
+                            }
+                        
+                            // Called when a method is called
+                            public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)
+                            {
+                                result = InvokeMemberOnType(RealObject.GetType(), RealObject, binder.Name, args);
+                        
+                                // Wrap the sub object if necessary. This allows nested anonymous objects to work.
+                                result = WrapObjectIfNeeded(result);
+                        
+                                return true;
+                            }
+                        
+                            private static object InvokeMemberOnType(Type type, object target, string name, object[] args)
+                            {
+                                try
+                                {
+                                    // Try to incoke the method
+                                    return type.InvokeMember(
+                                        name,
+                                        BindingFlags.InvokeMethod | bindingFlags,
+                                        null,
+                                        target,
+                                        args);
+                                }
+                                catch (MissingMethodException)
+                                {
+                                    // If we couldn&#39;t find the method, try on the base class
+                                    if (type.BaseType != null)
+                                    {
+                                        return InvokeMemberOnType(type.BaseType, target, name, args);
+                                    }
+                                    //Don&#39;t care if the method don&#39;t exist.
+                                    return null;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        private void ApplyChange(DomainEvent @event, bool isNew)
+                        {
+                            lock (_changes)
+                            {
+                                this.AsDynamic().Apply(@event);
+                    
+                                if (isNew)
+                                {
+                                    _changes.Add(@event);
+                                }
+                                else
+                                {
+                                    Key = @event.Key;
+                                    Version++;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/applicationE/03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CategoryAggregate : AggregateRoot
+                        {
+                            public string Name { get; private set; }
+                        
+                            public string DisplayName { get; private set; }
+                        
+                            public string WhatWeAreLookingFor { get; private set; }
+                        
+                            public CategoryUniqueId UniqueId { get; private set; }
+                        
+                            private void Apply(CategoryCreateEvent e)
+                            {
+                                Version = e.Version;
+                                Name = e.Name;
+                                DisplayName = e.DisplayName;
+                                UniqueId = e.UniqueId;
+                                WhatWeAreLookingFor = e.WhatWeAreLookingFor;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                            private void Apply(CategoryUpdateEvent e)
+                            {
+                                Version = e.Version++;
+                                Name = e.Name;
+                                DisplayName = e.DisplayName;
+                                UniqueId = e.UniqueId;
+                                WhatWeAreLookingFor = e.WhatWeAreLookingFor;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                            public CategoryAggregate(Category cc)
+                            {
+                                var c = new CategoryCreateEvent(cc.UniqueId, cc.Name,
+                                    cc.DisplayName, cc.WhatWeAreLookingFor,
+                                    cc.Version);
+                        
+                                ApplyChange(c);
+                            }
+                        
+                            public CategoryAggregate()
+                            {
+                        
+                            }
+                        
+                            public void Update(Category cc)
+                            {
+                                var c = new CategoryUpdateEvent(cc.UniqueId, cc.Name,
+                                    cc.DisplayName, cc.WhatWeAreLookingFor,
+                                    cc.Version);
+                        
+                                ApplyChange(c);
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        private void ApplyChange(DomainEvent @event, bool isNew)
+                        {
+                            lock (_changes)
+                            {
+                                this.AsDynamic().Apply(@event);
+                    
+                                if (isNew)
+                                {
+                                    _changes.Add(@event);
+                                }
+                                else
+                                {
+                                    Key = @event.Key;
+                                    Version++;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static class AggregateFactory
+                        {
+                            public static T CreateAggregate&lt;T&gt;()
+                            {
+                                try
+                                {
+                                    return (T)Activator.CreateInstance(typeof(T), true);
+                                }
+                                catch (MissingMethodException)
+                                {
+                                    throw new MissingParameterLessConstructorException(typeof(T));
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class JudgeAggregate : AggregateRoot
+                        {
+                            public Login Login { get; private set; }
+                            public Password Password { get; private set; }
+                            public Name Name { get; private set; }
+                        
+                            public Category Category { get; private set; }
+                        
+                            public DateTime Birthdate { get; private set; }
+                            public JudgeUniqueId UniqueId { get; private set; }
+                        
+                            private void Apply(JudgeCreatedEvent e)
+                            {
+                                Version = e.Version;
+                                Login = e.Login;
+                                Password = e.Password;
+                                Category = e.Category;
+                                Birthdate = e.Birthdate;
+                                UniqueId = e.UniqueId;
+                                Key = e.Key;
+                            }
+                        
+                            private void Apply(JudgeUpdatedEvent e)
+                            {
+                                Version = e.Version++;
+                                Login = e.Login;
+                                Password = e.Password;
+                                Category = e.Category;
+                                Birthdate = e.Birthdate;
+                                UniqueId = e.UniqueId;
+                                Key = e.Key;
+                            }
+                        
+                            private void Apply(JudgeDeletedEvent e)
+                            {
+                                Version = e.Version++;
+                                UniqueId = e.UniqueId;
+                                Key = e.Key;
+                            }
+                        
+                            public JudgeAggregate()
+                            {
+                        
+                            }
+                        
+                            public JudgeAggregate(Judge j)
+                            {
+                                var c = new JudgeCreatedEvent(j.Birthdate,
+                                    j.Category, j.UniqueId,
+                                    j.Login,
+                                    j.Password,
+                                    j.Name, j.Version);
+                        
+                                ApplyChange(c);
+                            }
+                        
+                            public void Update(Judge j)
+                            {
+                        
+                        
+                                var c = new JudgeUpdatedEvent(Birthdate,
+                        Category, UniqueId,
+                        Login,
+                        Password,
+                        Name, Version);
+                        
+                                c.Key = c.UniqueId.GetAggregateKey();
+                                ApplyChange(c);
+                            }
+                        
+                            public void Delete(JudgeUniqueId id, int version)
+                            {
+                                var eve = new
+                                    JudgeDeletedEvent(version)
+                                { UniqueId = id };
+                        
+                                eve.Key = eve.UniqueId.GetAggregateKey();
+                        
+                                ApplyChange(eve);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CallForSpeechAggregate : AggregateRoot
+                        {
+                            public Speaker Speaker { get; set; }
+                            public Speech Speech { get; set; }
+                            public Registration Registration { get; set; }
+                            public CallForSpeechNumber Number { get; set; }
+                        
+                            public Category Category { get; set; }
+                            public CallForSpeechStatus Status { get; set; }
+                        
+                            public CallForSpeechScoringResult Score { get; set; }
+                        
+                            public CallForSpeechUniqueId UniqueId { get; set; }
+                        
+                            public Decision PreliminaryDecision { get; set; }
+                            public Decision FinalDecision { get; set; }
+                        
+                            private void Apply(CallForSpeechSubmitEvent e)
+                            {
+                                Speaker = e.Speaker;
+                                Speech = e.Speech;
+                                Registration = e.Registration;
+                                Number = e.Number;
+                                Category = e.Category;
+                                Status = e.Status;
+                                PreliminaryDecision = e.PreliminaryDecision;
+                                FinalDecision = e.FinalDecision;
+                                UniqueId = e.UniqueId;
+                                Version = e.Version++;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                            private void Apply(CallForSpeechRejectedEvent e)
+                            {
+                                Speaker = e.Speaker;
+                                Speech = e.Speech;
+                                Registration = e.Registration;
+                                Number = e.Number;
+                                Category = e.Category;
+                                Status = e.Status;
+                                PreliminaryDecision = e.PreliminaryDecision;
+                                FinalDecision = e.FinalDecision;
+                                UniqueId = e.UniqueId;
+                                Version = e.Version++;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                            private void Apply(CallForSpeechPreliminaryAcceptEvent e)
+                            {
+                                Speaker = e.Speaker;
+                                Speech = e.Speech;
+                                Registration = e.Registration;
+                                Number = e.Number;
+                                Category = e.Category;
+                                Status = e.Status;
+                                PreliminaryDecision = e.PreliminaryDecision;
+                                FinalDecision = e.FinalDecision;
+                                UniqueId = e.UniqueId;
+                                Version = e.Version++;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                        
+                            private void Apply(CallForSpeechAcceptedEvent e)
+                            {
+                                Speaker = e.Speaker;
+                                Speech = e.Speech;
+                                Registration = e.Registration;
+                                Number = e.Number;
+                                Category = e.Category;
+                                Status = e.Status;
+                                PreliminaryDecision = e.PreliminaryDecision;
+                                FinalDecision = e.FinalDecision;
+                                UniqueId = e.UniqueId;
+                                Version = e.Version++;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                            private void Apply(CallForSpeechEvaulatedEvent e)
+                            {
+                                Speaker = e.Speaker;
+                                Speech = e.Speech;
+                                Registration = e.Registration;
+                                Number = e.Number;
+                                Category = e.Category;
+                                Status = e.Status;
+                                PreliminaryDecision = e.PreliminaryDecision;
+                                FinalDecision = e.FinalDecision;
+                                UniqueId = e.UniqueId;
+                                Version = e.Version++;
+                                this.Key = e.UniqueId.GetAggregateKey();
+                            }
+                        
+                        
+                        
+                            public CallForSpeechAggregate(CallForSpeech cc)
+                            {
+                                var c = new CallForSpeechSubmitEvent
+                                    (cc.Speaker, cc.Speech, cc.Registration,
+                                    cc.Number, cc.Category, cc.Status, cc.Score,
+                                    cc.PreliminaryDecision, cc.FinalDecision,
+                                    cc.UniqueId, cc.Version);
+                                this.Key = c.UniqueId.GetAggregateKey();
+                                ApplyChange(c);
+                            }
+                        
+                            public void Rejected(CallForSpeech cc)
+                            {
+                                var c = new CallForSpeechRejectedEvent
+                                    (cc.Speaker, cc.Speech, cc.Registration,
+                                    cc.Number, cc.Category, cc.Status, cc.Score,
+                                    cc.PreliminaryDecision, cc.FinalDecision,
+                                    cc.UniqueId, cc.Version);
+                                this.Key = c.UniqueId.GetAggregateKey();
+                                ApplyChange(c);
+                            }
+                        
+                            public void PreliminaryAccepted(CallForSpeech cc)
+                            {
+                                var c = new CallForSpeechPreliminaryAcceptEvent
+                                    (cc.Speaker, cc.Speech, cc.Registration,
+                                    cc.Number, cc.Category, cc.Status, cc.Score,
+                                    cc.PreliminaryDecision, cc.FinalDecision,
+                                    cc.UniqueId, cc.Version);
+                                this.Key = c.UniqueId.GetAggregateKey();
+                                ApplyChange(c);
+                            }
+                        
+                            public void Evaulated(CallForSpeech cc)
+                            {
+                                var c = new CallForSpeechEvaulatedEvent
+                                    (cc.Speaker, cc.Speech, cc.Registration,
+                                    cc.Number, cc.Category, cc.Status, cc.Score,
+                                    cc.PreliminaryDecision, cc.FinalDecision,
+                                    cc.UniqueId, cc.Version);
+                                this.Key = c.UniqueId.GetAggregateKey();
+                                ApplyChange(c);
+                            }
+                        
+                            public void Accepted(CallForSpeech cc)
+                            {
+                                var c = new CallForSpeechAcceptedEvent
+                                    (cc.Speaker, cc.Speech, cc.Registration,
+                                    cc.Number, cc.Category, cc.Status, cc.Score,
+                                    cc.PreliminaryDecision, cc.FinalDecision,
+                                    cc.UniqueId, cc.Version);
+                                this.Key = c.UniqueId.GetAggregateKey();
+                                ApplyChange(c);
+                            }
+                        
+                            public CallForSpeechAggregate()
+                            {
+                        
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamG">
+        <span class="shout colors" ><span>Kontrakty czyli interfejsy
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/applicationE/04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamG">
+        <span class="shout colors" ><span>Przykład wzorca Unity Of Work
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface ISessionForEventSourcing
+                        {
+                            ExecutionStatus Add&lt;T&gt;(T aggregate) where T : AggregateRoot;
+                            ExecutionStatus&lt;T&gt; Get&lt;T&gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot;
+                            ExecutionStatus Commit();
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IEventRepository
+                        {
+                            void Save&lt;T&gt;(T aggregate, int? expectedVersion = null) where T : AggregateRoot;
+                            T Get&lt;T&gt;(AggregateKey aggregateId) where T : AggregateRoot;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session2.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session3.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IEventStore
+                        {
+                            void Save(DomainEvent @event);
+                            List&lt;DomainEvent&gt; Get(AggregateKey aggregateId, int fromVersion);
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IEventPublisher
+                        {
+                            void Publish&lt;T&gt;(T @event) where T : DomainEvent;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/applicationE/07.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class AggregateNotFoundException : System.Exception
+                        {
+                            public AggregateNotFoundException(AggregateKey id)
+                                : base(string.Format(&quot;Aggregate {0} was not found&quot;, id))
+                            {
+                            }
+                        }
+                        
+                        public class AggregateOrEventMissingIdException : System.Exception
+                        {
+                            public AggregateOrEventMissingIdException(Type aggregateType, Type eventType)
+                                : base(string.Format(&quot;An event of type {0} was tried to save from {1} but no id where set on either&quot;, eventType.FullName, aggregateType.FullName))
+                            {
+                        
+                            }
+                        }
+                        
+                        public class ConcurrencyException : System.Exception
+                        {
+                            public ConcurrencyException(AggregateKey id)
+                                : base(string.Format(&quot;A different version than expected was found in aggregate {0}&quot;, id))
+                            {
+                            }
+                        }
+                        
+                        public class EventsOutOfOrderException : System.Exception
+                        {
+                            public EventsOutOfOrderException(AggregateKey id)
+                                : base(string.Format(&quot;Eventstore gave event for aggregate {0} out of order&quot;, id))
+                            {
+                            }
+                        }
+                        
+                        public class MissingParameterLessConstructorException : System.Exception
+                        {
+                            public MissingParameterLessConstructorException(Type type)
+                                : base(string.Format(&quot;{0} has no constructor without paramerters. This can be either public or private&quot;, type.FullName))
+                            {
+                            }
+                        }
+                        
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Piszemy więc projekty<br /> <span>implementacje
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/nuget/RabbitMQ.Client.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/nuget/RabbitMQ.Client.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/infrE/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session3.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SessionForEventSourcing : ISessionForEventSourcing
+                        {
+                            private readonly IEventRepository _repository;
+                            private readonly Dictionary&amp;lt;AggregateKey, AggregateDescriptor&amp;gt; _trackedAggregates;
+                        
+                            public SessionForEventSourcing(IEventRepository repository)
+                            {
+                                if (repository == null)
+                                    throw new ArgumentNullException(&amp;quot;repository&amp;quot;);
+                        
+                                _repository = repository;
+                                _trackedAggregates = new Dictionary&amp;lt;AggregateKey, AggregateDescriptor&amp;gt;();
+                            }
+                        
+                            public ExecutionStatus Add&amp;lt;T&amp;gt;(T aggregate) where T : AggregateRoot
+                            {
+                                try
+                                {
+                                    if (!IsTracked(aggregate.Key))
+                                        _trackedAggregates.Add(aggregate.Key,
+                                            new AggregateDescriptor
+                                            {
+                                                Aggregate = aggregate,
+                                                Version = aggregate.Version
+                                            });
+                                    else if (_trackedAggregates[aggregate.Key].Aggregate != aggregate)
+                                        throw new ConcurrencyException(aggregate.Key);
+                                }
+                                catch (Exception ex)
+                                {
+                                    if (ExecutionFlow.Options.ThrowExceptions)
+                                    throw;
+                        
+                                    return ExecutionStatus.EventStoreError(ex);
+                                }
+                        
+                                return ExecutionStatus.EventStoreOk();
+                            }
+                        
+                            public ExecutionStatus&amp;lt;T&amp;gt; Get&amp;lt;T&amp;gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot
+                            {
+                                try
+                                {
+                                    //w pamięci sprawdzamy czy nie pr&amp;#243;bujemy ze złą wersją dodać zdarzenie
+                                    if (IsTracked(id))
+                                    {
+                                        var trackedAggregate = (T)_trackedAggregates[id].Aggregate;
+                                        if (expectedVersion != null &amp;amp;&amp;amp; trackedAggregate.Version != expectedVersion)
+                                            throw new ConcurrencyException(trackedAggregate.Key);
+                                        return ExecutionStatus&amp;lt;T&amp;gt;.EventStoreOk(trackedAggregate);
+                                    }
+                        
+                                    //jeśli nie mamy w pamieci to odpytujemy repozytorium
+                                    var aggregate = _repository.Get&amp;lt;T&amp;gt;(id);
+                                    if (expectedVersion != null &amp;amp;&amp;amp; aggregate.Version != expectedVersion)
+                                        throw new ConcurrencyException(id);
+                                    Add(aggregate); //dodaj do tej warstwy pamięci
+                        
+                                    return ExecutionStatus&amp;lt;T&amp;gt;.EventStoreOk(aggregate);
+                                }
+                                catch (Exception ex)
+                                {
+                                    if (ExecutionFlow.Options.ThrowExceptions)
+                                    throw;
+                        
+                                    return ExecutionStatus&amp;lt;T&amp;gt;.EventStoreError(ex);
+                                }
+                        
+                        
+                            }
+                        
+                            private bool IsTracked(AggregateKey id)
+                            {
+                                return _trackedAggregates.ContainsKey(id);
+                            }
+                        
+                            public ExecutionStatus Commit()
+                            {
+                                try
+                                {
+                                    foreach (var descriptor in _trackedAggregates.Values)
+                                    {
+                                        _repository.Save(descriptor.Aggregate, descriptor.Version);
+                                    }
+                                    _trackedAggregates.Clear();
+                                }
+                                catch (Exception ex)
+                                {
+                                    if (ExecutionFlow.Options.ThrowExceptions)
+                                    throw;
+                        
+                                    return ExecutionStatus.EventStoreError(ex);
+                                }
+                                return ExecutionStatus.EventStoreOk();
+                            }
+                        
+                            private class AggregateDescriptor
+                            {
+                                public AggregateRoot Aggregate { get; set; }
+                                public int Version { get; set; }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session3.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EventRepository : IEventRepository
+                        {
+                            private readonly IEventStore _eventStore;
+                            private readonly IEventPublisher _publisher;
+                        
+                            public EventRepository(IEventStore eventStore, IEventPublisher publisher)
+                            {
+                                if (eventStore == null)
+                                    throw new ArgumentNullException(&quot;eventStore&quot;);
+                                if (publisher == null)
+                                    throw new ArgumentNullException(&quot;publisher&quot;);
+                                _eventStore = eventStore;
+                                _publisher = publisher;
+                            }
+                        
+                            public void Save&lt;T&gt;(T aggregate, int? expectedVersion = null) where T : AggregateRoot
+                            {
+                                if (expectedVersion != null &amp;&amp; _eventStore.Get(
+                                        aggregate.Key, expectedVersion.Value).Any())
+                                    throw new ConcurrencyException(aggregate.Key);
+                                var i = 0;
+                                foreach (var @event in aggregate.GetUncommittedChanges())
+                                {
+                                    if (@event.Key == AggregateKey.Empty)
+                                        @event.Key = aggregate.Key;
+                                    if (@event.Key == AggregateKey.Empty)
+                                        throw new AggregateOrEventMissingIdException(
+                                            aggregate.GetType(), @event.GetType());
+                                    i++;
+                                    @event.Version = aggregate.Version + i;
+                                    @event.TimeStamp = DateTimeOffset.UtcNow;
+                                    _eventStore.Save(@event);
+                                    _publisher.Publish(@event);
+                                }
+                                aggregate.MarkChangesAsCommitted();
+                            }
+                        
+                            public T Get&lt;T&gt;(AggregateKey aggregateId) where T : AggregateRoot
+                            {
+                                return LoadAggregate&lt;T&gt;(aggregateId);
+                            }
+                        
+                            private T LoadAggregate&lt;T&gt;(AggregateKey id) where T : AggregateRoot
+                            {
+                                var aggregate = GeekLemonConference.Application.EventSourcing.AggregateFactory.CreateAggregate&lt;T&gt;();
+                        
+                                //#ToFix
+                                var events = _eventStore.Get(id, -1);
+                                if (!events.Any())
+                                    throw new AggregateNotFoundException(id);
+                        
+                                aggregate.LoadFromHistory(events);
+                                return aggregate;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/infrE/02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session4.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class Constants
+                        {
+                            public const string QUEUE_JUDGE_CREATED = &quot;judge_created&quot;;
+                            public const string QUEUE_JUDGE_UPDATED = &quot;judge_updated&quot;;
+                            public const string QUEUE_JUDGE_DELETED = &quot;judge_deleted&quot;;
+                        
+                            public const string QUEUE_CATEGORY_CREATED = &quot;category_created&quot;;
+                            public const string QUEUE_CATEGORY_UPDATED = &quot;category_updated&quot;;
+                        
+                            public const string QUEUE_CALLFORSPEECH_SUBMITC = &quot;callforspeech_submit&quot;;
+                            public const string QUEUE_CALLFORSPEECH_REJECTC = &quot;callforspeech_reject&quot;;
+                            public const string QUEUE_CALLFORSPEECH_PRELIMINARY_ACCEPT = &quot;callforspeech_preminal_accept&quot;;
+                            public const string QUEUE_CALLFORSPEECH_EVALUATE = &quot;callforspeech_evaluate&quot;;
+                            public const string QUEUE_CALLFORSPEECH_ACCEPT = &quot;callforspeech_accept&quot;;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static class DomainEventHelper
+                        {
+                            public static string WhatRabbitMQQueue(this DomainEvent @event)
+                            {
+                                string g = @event switch
+                                {
+                                    JudgeUpdatedEvent =&gt; Constants.QUEUE_JUDGE_UPDATED,
+                                    JudgeCreatedEvent =&gt; Constants.QUEUE_JUDGE_CREATED,
+                                    JudgeDeletedEvent =&gt; Constants.QUEUE_JUDGE_DELETED,
+                                    CategoryCreateEvent =&gt; Constants.QUEUE_CATEGORY_CREATED,
+                                    CategoryUpdateEvent =&gt; Constants.QUEUE_CATEGORY_UPDATED,
+                                    CallForSpeechAcceptedEvent =&gt; Constants.QUEUE_CALLFORSPEECH_ACCEPT,
+                                    CallForSpeechEvaulatedEvent =&gt; Constants.QUEUE_CALLFORSPEECH_EVALUATE,
+                                    CallForSpeechPreliminaryAcceptEvent =&gt; Constants.QUEUE_CALLFORSPEECH_PRELIMINARY_ACCEPT,
+                                    CallForSpeechRejectedEvent =&gt; Constants.QUEUE_CALLFORSPEECH_REJECTC,
+                                    CallForSpeechSubmitEvent =&gt; Constants.QUEUE_CALLFORSPEECH_SUBMITC,
+                                    _ =&gt; throw new NotImplementedException(),
+                                };
+                        
+                                return g;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class GeekLemonEventPublisher : IEventPublisher
+                        {
+                            private readonly ConnectionFactory connectionFactory;
+                        
+                            public GeekLemonEventPublisher(IHostingEnvironment env)
+                            {
+                                connectionFactory = new ConnectionFactory();
+                        
+                                var builder = new ConfigurationBuilder()
+                                .SetBasePath(env.ContentRootPath)
+                                .AddJsonFile(&quot;appsettings.json&quot;, optional: false, reloadOnChange: false)
+                                .AddEnvironmentVariables();
+                        
+                                builder.Build().GetSection(&quot;RabbitMqSetting&quot;).Bind(connectionFactory);
+                            }
+                        
+                        
+                        
+                            public void Publish&lt;T&gt;(T @event) where T : DomainEvent
+                            {
+                                using (IConnection conn = connectionFactory.CreateConnection())
+                                {
+                                    using (IModel channel = conn.CreateModel())
+                                    {
+                                        var queue = @event.WhatRabbitMQQueue();
+                        
+                                        channel.QueueDeclare(
+                                            queue: queue,
+                                            durable: false,
+                                            exclusive: false,
+                                            autoDelete: false,
+                                            arguments: null
+                        
+                                        );
+                        
+                                        var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event));
+                        
+                                        channel.BasicPublish(
+                                            exchange: &quot;&quot;,
+                                            routingKey: queue,
+                                            basicProperties: null,
+                                            body: body
+                                        );
+                                    }
+                                }
+                            }
+                        
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:white">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/Session5.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class InMemoryEventStore : IEventStore
+                        {
+                            private readonly Dictionary&amp;lt;AggregateKey, List&amp;lt;DomainEvent&amp;gt;&amp;gt; customerInMemDictionary = new Dictionary&amp;lt;AggregateKey, List&amp;lt;DomainEvent&amp;gt;&amp;gt;();
+                        
+                            public List&amp;lt;DomainEvent&amp;gt; Get(AggregateKey aggregateId, int fromVersion)
+                            {
+                                List&amp;lt;DomainEvent&amp;gt; geekLemonEvents;
+                                customerInMemDictionary.TryGetValue(aggregateId, out geekLemonEvents);
+                                if (geekLemonEvents != null)
+                                {
+                                    return geekLemonEvents.Where(x =&amp;gt; x.Version &amp;gt; fromVersion).ToList();
+                                }
+                        
+                                return new List&amp;lt;DomainEvent&amp;gt;();
+                            }
+                        
+                            public void Save(DomainEvent @event)
+                            {
+                                List&amp;lt;DomainEvent&amp;gt; geekLemonEvents;
+                                customerInMemDictionary.TryGetValue(@event.Key, out geekLemonEvents);
+                                if (geekLemonEvents == null)
+                                {
+                                    geekLemonEvents = new List&amp;lt;DomainEvent&amp;gt;();
+                                    customerInMemDictionary.Add(@event.Key, geekLemonEvents);
+                                }
+                                geekLemonEvents.Add(@event);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Pora na instalatora EventStore
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static partial class GeekLemonConferenceInstallers
+                        {
+                            public static IServiceCollection
+                            AddDefaultEventStore(this IServiceCollection services)
+                            {
+                                services.AddScoped&lt;IEventStore, InMemoryEventStore&gt;();
+                                return services;
+                            }
+                        
+                            public static IServiceCollection AddBusAndRepository
+                            (this IServiceCollection services,
+                            IConfiguration configuration)
+                            {
+                                services.AddOptions();
+                        
+                                //AddOption&lt;RabbitMqConfiguration&gt;(services, configuration);
+                                services.AddScoped&lt;ISessionForEventSourcing, SessionForEventSourcing&gt;();
+                                services.AddSingleton&lt;IEventPublisher, GeekLemonEventPublisher&gt;();
+                                services.AddScoped&lt;IEventRepository, EventRepository&gt;();
+                        
+                                //services.AddScoped&lt;IEventRepository, CacheRepository&gt;((services) =&gt;
+                                //{
+                                //    var iEventStore = services.GetRequiredService&lt;IEventStore&gt;();
+                                //    var iEventPublisher = services.GetRequiredService&lt;IEventPublisher&gt;();
+                                //    var eventRepository = new EventRepository(iEventStore, iEventPublisher);
+                        
+                                //    return new CacheRepository(eventRepository, iEventStore);
+                                //});
+                        
+                                return services;
+                            }
+                        
+                            private static void AddOption&lt;T&gt;(IServiceCollection services, IConfiguration configuration) where T : class
+                            {
+                                services.Configure&lt;T&gt;(configuration.GetSection(typeof(T).Name));
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class CacheRepository : IEventRepository
+                        {
+                            private readonly IEventRepository _repository;
+                            private readonly IEventStore _eventStore;
+                            private readonly MemoryCache _cache;
+                            private readonly Func&lt;CacheItemPolicy&gt; _policyFactory;
+                        
+                            private static readonly ConcurrentDictionary&lt;string, object&gt; _locks =
+                                new ConcurrentDictionary&lt;string, object&gt;();
+                        
+                            public CacheRepository(IEventRepository repository, IEventStore eventStore)
+                            {
+                                if (repository == null)
+                                    throw new ArgumentNullException(&quot;repository&quot;);
+                                if (eventStore == null)
+                                    throw new ArgumentNullException(&quot;eventStore&quot;);
+                        
+                                _repository = repository;
+                                _eventStore = eventStore;
+                                _cache = MemoryCache.Default;
+                                _policyFactory = () =&gt; new CacheItemPolicy
+                                {
+                                    SlidingExpiration = new TimeSpan(0, 0, 15, 0),
+                                    RemovedCallback = x =&gt;
+                                    {
+                                        object o;
+                                        _locks.TryRemove(x.CacheItem.Key, out o);
+                                    }
+                                };
+                            }
+                        
+                            public void Save&lt;T&gt;(T aggregate, int? expectedVersion = null)
+                                where T : AggregateRoot
+                            {
+                                var idstring = aggregate.Key.ToString();
+                                try
+                                {
+                                    lock (_locks.GetOrAdd(idstring, _ =&gt; new object()))
+                                    {
+                                        if (aggregate.Key != AggregateKey.Empty &amp;&amp; !IsTracked(aggregate.Key))
+                                            _cache.Add(idstring, aggregate, _policyFactory.Invoke());
+                                        _repository.Save(aggregate, expectedVersion);
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    _cache.Remove(idstring);
+                                    throw;
+                                }
+                            }
+                        
+                            public T Get&lt;T&gt;(AggregateKey aggregateId) where T : AggregateRoot
+                            {
+                                var idstring = aggregateId.ToString();
+                                try
+                                {
+                                    lock (_locks.GetOrAdd(idstring, _ =&gt; new object()))
+                                    {
+                                        T aggregate;
+                                        if (IsTracked(aggregateId))
+                                        {
+                                            aggregate = (T)_cache.Get(idstring);
+                                            var events = _eventStore.Get(aggregateId, aggregate.Version);
+                                            if (events.Any() &amp;&amp; events.First().Version != aggregate.Version + 1)
+                                            {
+                                                _cache.Remove(idstring);
+                                            }
+                                            else
+                                            {
+                                                aggregate.LoadFromHistory(events);
+                                                return aggregate;
+                                            }
+                                        }
+                                        //jeśli nie ma go w Cache to poszukać w repozytorium prawdziwym
+                                        aggregate = _repository.Get&lt;T&gt;(aggregateId);
+                                        _cache.Add(
+                                            aggregateId.ToString(),
+                                            aggregate,
+                                            _policyFactory.Invoke());
+                                        return aggregate;
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    _cache.Remove(idstring);
+                                    throw;
+                                }
+                            }
+                        
+                            private bool IsTracked(AggregateKey id)
+                            {
+                                return _cache.Contains(id.ToString());
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Piszemy więc projekty<br /> <span>Infrastructure.EventStorePlugin.MongoDb
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/03.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/10.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/11.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/Instalacje/12.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EventData
+                        {
+                            public const string IdFieldName = "_id";
+                            public const string StreamIdFieldName = "_streamId";
+                            public const string VersionFieldName = "_version";
+                    
+                            [BsonElement(IdFieldName)]
+                            [BsonId(IdGenerator = typeof(GuidGenerator))]
+                            public Guid Id { get; set; }
+                    
+                            [BsonElement(StreamIdFieldName)]
+                            public string StreamId { get; set; }
+                    
+                            [BsonElement(VersionFieldName)]
+                            public int Version { get; set; }
+                    
+                            [BsonElement("_payload")]
+                            public DomainEvent PayLoad { get; set; }
+                    
+                            [BsonElement("_timestamp")]
+                            public DateTimeOffset TimeStamp { get; set; }
+                    
+                            [BsonElement("_clrTypeFullname")]
+                            public string AssemblyQualifiedName { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IMongoDbContext
+                        {
+                            IMongoDatabase Database { get; }
+                    
+                            IClientSessionHandle Session { get; }
+                    
+                            IClientSessionHandle StartSession
+                                ();
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class MongoDbContext : IMongoDbContext
+                        {
+                            public IMongoDatabase Database { get; }
+                        
+                            public IClientSessionHandle Session { get; private set; }
+                        
+                            private MongoClient _client;
+                        
+                            public MongoDbContext()
+                            {
+                        
+                                string connectionString = &quot;mongodb://localhost:27017/dbtest?readPreference=primary&quot;;
+                                var mongoUrl = new MongoUrl(connectionString);
+                                _client = new MongoClient(mongoUrl);
+                                Database = _client.GetDatabase(&quot;GeekLemon&quot;);
+                                ClassMapping();
+                            }
+                        
+                            private static void ClassMapping()
+                            {
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CategoryUpdateEvent))) { BsonClassMap.RegisterClassMap&lt;CategoryUpdateEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CategoryCreateEvent))) { BsonClassMap.RegisterClassMap&lt;CategoryCreateEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(JudgeCreatedEvent))) { BsonClassMap.RegisterClassMap&lt;JudgeCreatedEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(JudgeUpdatedEvent))) { BsonClassMap.RegisterClassMap&lt;JudgeUpdatedEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(JudgeDeletedEvent))) { BsonClassMap.RegisterClassMap&lt;JudgeDeletedEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CallForSpeechAcceptedEvent))) { BsonClassMap.RegisterClassMap&lt;CallForSpeechAcceptedEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CallForSpeechPreliminaryAcceptEvent))) { BsonClassMap.RegisterClassMap&lt;CallForSpeechPreliminaryAcceptEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CallForSpeechRejectedEvent))) { BsonClassMap.RegisterClassMap&lt;CallForSpeechRejectedEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CallForSpeechEvaulatedEvent))) { BsonClassMap.RegisterClassMap&lt;CallForSpeechEvaulatedEvent&gt;(); }
+                                if (!BsonClassMap.IsClassMapRegistered(typeof(CallForSpeechSubmitEvent))) { BsonClassMap.RegisterClassMap&lt;CallForSpeechSubmitEvent&gt;(); }
+                            }
+                        
+                            public IClientSessionHandle StartSession()
+                            {
+                                var session = _client.StartSession();
+                                Session = session;
+                                return session;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class MongoDbEventStore : IEventStore
+                        {
+                            private IMongoCollection&lt;EventData&gt; _events;
+                        
+                            private const string EventsCollection = &quot;eventstore&quot;;
+                        
+                            private readonly IMongoDbContext _mongoDbContext;
+                        
+                            public MongoDbEventStore(IEventPublisher publisher, IMongoDbContext mongoDbContext)
+                            {
+                                _mongoDbContext = mongoDbContext;
+                                _events = _mongoDbContext.Database.GetCollection&lt;EventData&gt;(EventsCollection);
+                            }
+                        
+                            public List&lt;DomainEvent&gt; Get(Application.EventSourcing.AggregateKey aggregateId, int fromVersion)
+                            {
+                                try
+                                {
+                                    var filterBuilder = Builders&lt;EventData&gt;.Filter;
+                                    var filter = filterBuilder.Eq(EventData.StreamIdFieldName, aggregateId) &amp;
+                                                filterBuilder.Gte(EventData.VersionFieldName, fromVersion);
+                        
+                                    var result = _events.Find(filter);
+                                    var r = result.ToList().Select(x =&gt; x.PayLoad).ToList();
+                                    return r;
+                                }
+                                catch (Exception)
+                                {
+                                    throw;
+                                }
+                            }
+                        
+                            public void Save(DomainEvent @event)
+                            {
+                                using var session = _mongoDbContext.StartSession();
+                        
+                                try
+                                {
+                                    //You can do atomic mass add
+                                    //but i have community version
+                                    var eventData = new EventData
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        StreamId = @event.Key.Id,
+                                        TimeStamp = @event.TimeStamp,
+                                        AssemblyQualifiedName = @event.GetType().AssemblyQualifiedName,
+                                        PayLoad = @event,
+                                        Version = @event.Version
+                                    };
+                        
+                                    _events.InsertOne(eventData);
+                                }
+                                catch (Exception exp)
+                                {
+                                    //session.AbortTransaction();
+                                    throw;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/monogoDB.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static partial class GeekLemonConferenceInstallers
+                        {
+                            public static IServiceCollection
+                                AddEventStoreMongoDb
+                                (this IServiceCollection services,
+                                IConfiguration configuration)
+                            {
+                        
+                                services.AddScoped&lt;IMongoDbContext, MongoDbContext&gt;();
+                        
+                                services.AddScoped&lt;IEventStore, MongoDbEventStore&gt;();
+                        
+                                return services;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Piszemy więc projekty<br /> <span>Infrastructure.EventStorePlugin.SQLite
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/Q-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/Q-02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">EvetStore w SQllite</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        BEGIN TRANSACTION;
+                        CREATE TABLE IF NOT EXISTS &quot;EventStore&quot; (
+                            &quot;Id&quot;    INTEGER NOT NULL UNIQUE,
+                            &quot;Key&quot;    TEXT NOT NULL,
+                            &quot;AssemblyQualifiedName&quot;    TEXT NOT NULL,
+                            &quot;Value&quot;    TEXT NOT NULL,
+                            &quot;Version&quot;    INTEGER,
+                            PRIMARY KEY(&quot;Id&quot; AUTOINCREMENT)
+                        );
+                        COMMIT;
+                        
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>   
+     <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">EvetStore w SQllite</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface IEventStoreSQLiteContext
+                        {
+                            string ConnectionString { get; }
+                        }
+                        
+                        public class EventStoreSQLiteContext : IEventStoreSQLiteContext
+                        {
+                            public EventStoreSQLiteContext(string connectionString)
+                            {
+                                _connectionString = connectionString;
+                            }
+
+                            private string _connectionString;
+
+                            public string ConnectionString
+                            {
+                                get
+                                {
+                                    return _connectionString;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SqlLiteEventStore : IEventStore
+                        {
+                            private IEventStoreSQLiteContext _geekLemonContext;
+                        
+                            public SqlLiteEventStore(IEventStoreSQLiteContext context)
+                            {
+                                _geekLemonContext = context;
+                            }
+                        
+                            public List&lt;DomainEvent&gt; Get(AggregateKey aggregateId, int fromVersion)
+                            {
+                                using var connection = new SqliteConnection
+                                    (_geekLemonContext.ConnectionString);
+                        
+                                try
+                                {
+                                    var r = connection.Query&lt;EventTemp&gt;
+                                    (@&quot;SELECT Id,Key, Value, AssemblyQualifiedName, Version FROM EventSTORE
+                                        WHERE Key = @aggregateId and Version &gt; @Version;&quot;, new
+                                    {
+                                        @aggregateId = aggregateId.Id,
+                                        @Version = fromVersion
+                                    });
+                        
+                                    List&lt;DomainEvent&gt; de = new List&lt;DomainEvent&gt;();
+                        
+                                    foreach (var item in r)
+                                    {
+                                        Assembly asm = typeof(DomainEvent).Assembly;
+                                        Type type = TypeRecon.ReconstructType(item.AssemblyQualifiedName, true, asm);
+                        
+                                        var domain = JsonConvert.
+                                            DeserializeObject(item.Value, type);
+                        
+                                        de.Add(domain as DomainEvent);
+                                    }
+                        
+                                    return de;
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw;
+                                }
+                            }
+                        
+                            public void Save(DomainEvent @event)
+                            {
+                                using var connection = new SqliteConnection
+                                    (_geekLemonContext.ConnectionString);
+                        
+                        
+                                try
+                                {
+                                    var q = @&quot;INSERT INTO EventSTORE(Key, Value,
+                                        AssemblyQualifiedName
+                                        ,Version)
+                                        VALUES (@Key, @Value, @AssemblyQualifiedName,@Version);&quot;;
+                        
+                        
+                                    var result = connection.Execute(q, new
+                                    {
+                                        @Key = @event.Key.Id,
+                                        @Value = JsonConvert.SerializeObject(@event),
+                                        @AssemblyQualifiedName = @event.GetType().AssemblyQualifiedName,
+                                        @Version = @event.Version,
+                                    }
+                                    );
+                        
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw;
+                                }
+                            }
+                        
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EventTemp
+                        {
+                            public string Key { get; set; }
+                            public string Value { get; set; }
+                            public string AssemblyQualifiedName { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">Pomocnicza klas do odzyskiwania typów ze string</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static class TypeRecon
+                        {
+                            public static Type ReconstructType(string assemblyQualifiedName, bool throwOnError = true, params Assembly[] referencedAssemblies)
+                            {
+                                foreach (Assembly asm in referencedAssemblies)
+                                {
+                                    var fullNameWithoutAssemblyName = assemblyQualifiedName.Replace($&quot;, {asm.FullName}&quot;, &quot;&quot;);
+                                    var type = asm.GetType(fullNameWithoutAssemblyName, throwOnError: false);
+                                    if (type != null) return type;
+                                }
+                        
+                                if (assemblyQualifiedName.Contains(&quot;[[&quot;))
+                                {
+                                    Type type = ConstructGenericType(assemblyQualifiedName, throwOnError);
+                                    if (type != null)
+                                        return type;
+                                }
+                                else
+                                {
+                                    Type type = Type.GetType(assemblyQualifiedName, false);
+                                    if (type != null)
+                                        return type;
+                                }
+                        
+                                if (throwOnError)
+                                    throw new Exception($&quot;The type \&quot;{assemblyQualifiedName}\&quot; cannot be found in referenced assemblies.&quot;);
+                                else
+                                    return null;
+                            }
+                        
+                            private static Type ConstructGenericType(string assemblyQualifiedName, bool throwOnError = true)
+                            {
+                                Regex regex = new Regex(@&quot;^(?&lt;name&gt;\w+(\.\w+)*)`(?&lt;count&gt;\d)\[(?&lt;subtypes&gt;\[.*\])\](, (?&lt;assembly&gt;\w+(\.\w+)*)[\w\s,=\.]+)$?&quot;, RegexOptions.Singleline | RegexOptions.ExplicitCapture);
+                                Match match = regex.Match(assemblyQualifiedName);
+                                if (!match.Success)
+                                    if (!throwOnError) return null;
+                                    else throw new Exception($&quot;Unable to parse the type&#39;s assembly qualified name: {assemblyQualifiedName}&quot;);
+                        
+                                string typeName = match.Groups[&quot;name&quot;].Value;
+                                int n = int.Parse(match.Groups[&quot;count&quot;].Value);
+                                string asmName = match.Groups[&quot;assembly&quot;].Value;
+                                string subtypes = match.Groups[&quot;subtypes&quot;].Value;
+                        
+                                typeName = typeName + $&quot;`{n}&quot;;
+                                Type genericType = ReconstructType(typeName, throwOnError);
+                                if (genericType == null) return null;
+                        
+                                List&lt;string&gt; typeNames = new List&lt;string&gt;();
+                                int ofs = 0;
+                                while (ofs &lt; subtypes.Length &amp;&amp; subtypes[ofs] == &#39;[&#39;)
+                                {
+                                    int end = ofs, level = 0;
+                                    do
+                                    {
+                                        switch (subtypes[end++])
+                                        {
+                                            case &#39;[&#39;: level++; break;
+                                            case &#39;]&#39;: level--; break;
+                                        }
+                                    } while (level &gt; 0 &amp;&amp; end &lt; subtypes.Length);
+                        
+                                    if (level == 0)
+                                    {
+                                        typeNames.Add(subtypes.Substring(ofs + 1, end - ofs - 2));
+                                        if (end &lt; subtypes.Length &amp;&amp; subtypes[end] == &#39;,&#39;)
+                                            end++;
+                                    }
+                        
+                                    ofs = end;
+                                    n--;  // just for checking the count
+                                }
+                        
+                                if (n != 0)
+                                    // This shouldn&#39;t ever happen!
+                                    throw new Exception(&quot;Generic type argument count mismatch! Type name: &quot; + assemblyQualifiedName);
+                        
+                                Type[] types = new Type[typeNames.Count];
+                                for (int i = 0; i &lt; types.Length; i++)
+                                {
+                                    try
+                                    {
+                                        types[i] = ReconstructType(typeNames[i], throwOnError);
+                                        if (types[i] == null)  // if throwOnError, should not reach this point if couldn&#39;t create the type
+                                            return null;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        throw new Exception($&quot;Unable to reconstruct generic type. Failed on creating the type argument {(i + 1)}: {typeNames[i]}. Error message: {ex.Message}&quot;);
+                                    }
+                                }
+                        
+                                Type resultType = genericType.MakeGenericType(types);
+                                return resultType;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Instalator do
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public static partial class GeekLemonConferenceInstallers
+                        {
+                            public static IServiceCollection
+                                AddEventStoreSqlLite
+                                (this IServiceCollection services,
+                                IConfiguration configuration)
+                            {
+                                var connection = configuration.
+                                    GetConnectionString(&quot;EventStoreSQLiteConnectionString&quot;);
+                        
+                                services.AddScoped&lt;IEventStoreSQLiteContext, EventStoreSQLiteContext&gt;
+                                    (
+                                        (services) =&gt;
+                                        {
+                                            var c =
+                                            new EventStoreSQLiteContext(connection);
+                                            return c;
+                                        }
+                                    );
+                        
+                                services.AddScoped&lt;IEventStore, SqlLiteEventStore&gt;();
+                        
+                                return services;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Wracamy do projektu API<br /> <span>e
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class Startup
+                        {
+                        public IConfiguration Configuration { get; }
+                        
+                        public Startup(IConfiguration configuration)
+                        {
+                            Configuration = configuration;
+                        }
+                        
+                        public void ConfigureServices(IServiceCollection services)
+                        {
+                            services.AddSwaggerGen(c => .........
+                        
+                            services.AddGeekLemonConferenceCQRS(Configuration);
+                            services.AddGeekLemonPersistenceDapperSQLiteServices(Configuration);
+                            //services.AddDefaultEventStore();
+                            //services.AddEventStoreSqlLite(Configuration);
+                            services.AddEventStoreMongoDb(Configuration);
+                            services.AddBusAndRepository(Configuration);
+                        
+                            services.AddControllers();
+                            services.AddCors(options =>
+                            {
+                                options.AddPolicy("Open",
+                                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                            });
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class Startup
+                        {
+                        public IConfiguration Configuration { get; }
+                        
+                        public Startup(IConfiguration configuration)
+                        {
+                            Configuration = configuration;
+                        }
+                        
+                        public void ConfigureServices(IServiceCollection services)
+                        {
+                            services.AddSwaggerGen(c => .........
+                        
+                            services.AddGeekLemonConferenceCQRS(Configuration);
+                            services.AddGeekLemonPersistenceDapperSQLiteServices(Configuration);
+                            //services.AddDefaultEventStore();
+                            services.AddEventStoreSqlLite(Configuration);
+                            //services.AddEventStoreMongoDb(Configuration);
+                            services.AddBusAndRepository(Configuration);
+                        
+                            services.AddControllers();
+                            services.AddCors(options =>
+                            {
+                                options.AddPolicy("Open",
+                                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                            });
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Wracamy do projektu CQRS<br /> <span>e
+            👨‍💻
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/05.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class ESCreateCategoryCommand : IRequest&lt;ESCreateCategoryCommandResponse&gt;
+                        {
+                        
+                            public string Name { get; set; }
+                        
+                        
+                            public string DisplayName { get; set; }
+                        
+                        
+                            public string WhatWeAreLookingFor { get; set; }
+                        
+                            internal int Version { get; private set; }
+                        
+                            internal CategoryUniqueId UniqueId { get; private set; }
+                        
+                            public ESCreateCategoryCommand()
+                            {
+                                UniqueId = CategoryUniqueId.NewUniqueId();
+                                Version = 0;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class ESCreateCategoryCommandHandler
+                        : IRequestHandler&lt;ESCreateCategoryCommand, ESCreateCategoryCommandResponse&gt;
+                   {
+                       private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                       private readonly IMapper _mapper;
+                   
+                       public ESCreateCategoryCommandHandler(
+                           ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
+                       {
+                           _mapper = mapper;
+                           _sessionForEventSourcing = sessionForEventSourcing;
+                       }
+                   
+                       public async Task&lt;ESCreateCategoryCommandResponse&gt; Handle
+                           (ESCreateCategoryCommand request, CancellationToken cancellationToken)
+                       {
+                           var validator = new ESCreateCategoryCommandValidator();
+                           var validatorResult = await validator.ValidateAsync(request);
+                   
+                           if (!validatorResult.IsValid)
+                               return new ESCreateCategoryCommandResponse(validatorResult);
+                   
+                           var category = _mapper.Map&lt;Category&gt;(request);
+                   
+                           var item = new CategoryAggregate(category);
+                   
+                           _sessionForEventSourcing.Add&lt;CategoryAggregate&gt;(item);
+                           _sessionForEventSourcing.Commit();
+                   
+                           var ids = _mapper.Map&lt;IdsDto&gt;(category.Ids());
+                           return new ESCreateCategoryCommandResponse(ids);
+                       }
+                   
+                   }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class ESCreateCategoryCommandResponse : BaseResponse
+                        {
+                            public IdsDto CategoryIds { get; set; }
+                        
+                            public ESCreateCategoryCommandResponse(IdsDto Ids)
+                                 : base()
+                            {
+                                CategoryIds = Ids;
+                            }
+                        
+                            public ESCreateCategoryCommandResponse() : base()
+                            { }
+                        
+                            public ESCreateCategoryCommandResponse(ExecutionStatus status)
+                                : base(status)
+                            {
+                        
+                            }
+                        
+                            public ESCreateCategoryCommandResponse(ExecutionStatus status, string message)
+                        : base(status, message)
+                            {
+                        
+                            }
+                        
+                        
+                            public ESCreateCategoryCommandResponse(ValidationResult validationResult)
+                                : base(validationResult)
+                            { }
+                        
+                            public ESCreateCategoryCommandResponse(string message)
+                            : base(message)
+                            { }
+                        
+                            public ESCreateCategoryCommandResponse(string message, bool success)
+                                : base(message, success)
+                            { }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/create-category.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-02.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsUpdateCategoryCommand
+                        : IRequest&lt;EsUpdateCategoryCommandResponse&gt;
+                        {
+                            public Guid UniqueId { get; set; }
+                        
+                            public string Name { get; set; }
+                        
+                            public string DisplayName { get; set; }
+                        
+                            public string WhatWeAreLookingFor { get; set; }
+                        
+                            public int Version { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsUpdateCategoryCommandHandler : IRequestHandler
+                        &lt;EsUpdateCategoryCommand, EsUpdateCategoryCommandResponse&gt;
+                    
+                    {
+                        private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                        private readonly IMapper _mapper;
+                    
+                        public EsUpdateCategoryCommandHandler(
+                            ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
+                        {
+                            _mapper = mapper;
+                            _sessionForEventSourcing = sessionForEventSourcing;
+                        }
+                    
+                    
+                        public async Task&lt;EsUpdateCategoryCommandResponse&gt; Handle
+                            (EsUpdateCategoryCommand request, CancellationToken cancellationToken)
+                        {
+                            var validator = new EsUpdateCategoryCommandValidator();
+                            var validatorResult = await validator.ValidateAsync(request);
+                    
+                            if (!validatorResult.IsValid)
+                                return new EsUpdateCategoryCommandResponse(validatorResult);
+                    
+                            var category = _mapper.Map&lt;Category&gt;(request);
+                    
+                            var eventstoreResult = Get&lt;CategoryAggregate&gt;
+                                (category.UniqueId.GetAggregateKey());
+                    
+                            if (!eventstoreResult.Success)
+                                return new EsUpdateCategoryCommandResponse
+                                    (eventstoreResult.RemoveGeneric());
+                    
+                            if ((eventstoreResult.Value.Version - 1) &gt; category.Version )
+                                return new EsUpdateCategoryCommandResponse
+                                    (ExecutionStatus.EventStoreConcurrencyError(@$&quot;You sended old version.
+                                    Yours {category.Version}. In Event database :{eventstoreResult.Value.Version - 1}&quot;));
+                    
+                            eventstoreResult.Value.Update(category);
+                    
+                            var status = _sessionForEventSourcing.Commit();
+                    
+                            return new EsUpdateCategoryCommandResponse(status);
+                        }
+                    
+                        private ExecutionStatus&lt;T&gt; Get&lt;T&gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot
+                        {
+                            var a = _sessionForEventSourcing.Get&lt;T&gt;(id, expectedVersion);
+                            return a;
+                        }
+                    }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public async Task&lt;EsUpdateCategoryCommandResponse&gt; Handle
+                            (EsUpdateCategoryCommand request, CancellationToken cancellationToken)
+                        {
+                            var validator = new EsUpdateCategoryCommandValidator();
+                            var validatorResult = await validator.ValidateAsync(request);
+                    
+                            if (!validatorResult.IsValid)
+                                return new EsUpdateCategoryCommandResponse(validatorResult);
+                    
+                            var category = _mapper.Map&lt;Category&gt;(request);
+                    
+                            var eventstoreResult = Get&lt;CategoryAggregate&gt;
+                                (category.UniqueId.GetAggregateKey());
+                    
+                            if (!eventstoreResult.Success)
+                                return new EsUpdateCategoryCommandResponse
+                                    (eventstoreResult.RemoveGeneric());
+                    
+                            if (eventstoreResult.Value.Version &gt; category.Version)
+                                return new EsUpdateCategoryCommandResponse
+                                    (ExecutionStatus.EventStoreConcurrencyError(@$&quot;You sended old version.
+                                    Yours {category.Version}. In Event database :{eventstoreResult.Value.Version}&quot;));
+                    
+                            eventstoreResult.Value.Update(category);
+                    
+                            var status = _sessionForEventSourcing.Commit();
+                    
+                            return new EsUpdateCategoryCommandResponse(status);
+                        }
+                    
+                        private ExecutionStatus&lt;T&gt; Get&lt;T&gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot
+                        {
+                            var a = _sessionForEventSourcing.Get&lt;T&gt;(id, expectedVersion);
+                            return a;
+                        }
+                    }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/update kategory.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/json-create-category-01.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/json-create-category-02.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/json-create-category-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/json-create-category-04.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-0.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
 
     <section class="slide creamG">
         <span class="shout colors" ><span>Podsumowanie
         </span></span>
     </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class AppTime
+                        {
+                            public static Func&lt;DateTime&gt; CurrentTimeProvider
+                            { get; set; } = () =&gt; DateTime.Now;
+                                            
+                            public static DateTime Now() =&gt; CurrentTimeProvider();
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
     <!-- <div class="progress"></div> -->
     <footer class="badge badge-top-left">
         <a href="#" class="fullscreen">Fullscreen</a>
