@@ -443,8 +443,8 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 .green {
-    background-color: rgb(39, 175, 39);
-    color:white;
+    background-color: rgb(39, 175, 39) !important;
+    color:white !important;
     padding: 5px;
 }
 
@@ -456,8 +456,8 @@ code[class*="language-"], pre[class*="language-"] {
 
 
 .yellow {
-    background-color:  #FF6525;
-    color:white;
+    background-color:  #FF6525 !important;
+    color:white !important;
     padding: 5px;
 }
 
