@@ -9088,6 +9088,11 @@
             👨‍💻
         </span></span>
     </section>
+    <section class="slide conicG">
+        <span class="shout colors" >To ta część bez<br /> <span>EventSourcingu
+            👨‍💻
+        </span></span>
+    </section>
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/application/13.PNG" alt="blog">
@@ -10234,34 +10239,11 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">GetJudgeQuery</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 29px !important;">
-
-                        public class GetJudgeQuery : 
-                        IRequest&lt;GetJudgeQueryResponse&gt;
-                        {
-                            public JudgeId JudeId { get; set; }
-                        
-                            public JudgeUniqueId JudgeUniqueId { get; set; }
-                        
-                            public QueryWitchDataBase queryWitchDataBase { get; set; }
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
                 <h2 class="headerCODE PP PP">JudgeViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 29px !important;">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
 
 
 
@@ -10288,51 +10270,86 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">GetJudgeQuery</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        public class GetJudgeQuery : 
+                        IRequest&lt;GetJudgeQueryResponse&gt;
+                        {
+                            public JudgeId JudeId { get; set; }
+                        
+                            public JudgeUniqueId JudgeUniqueId { get; set; }
+                        
+                            public QueryWitchDataBase queryWitchDataBase { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
                 <h2 class="headerCODE PP PP">GetJudgeQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 15px !important;">
+
+
+
+
+
+
+
+
+
+
                         public class GetJudgeQueryHandler :
                         IRequestHandler&lt;GetJudgeQuery, GetJudgeQueryResponse&gt;
-                    {
-                        private readonly IJudgeRepository _judgeRepository;
-                        private readonly IMapper _mapper;
-                        private readonly IZEsJudgeRepository _zEsjudgeRepository;
-                    
-                        public GetJudgeQueryHandler(IMapper mapper,
-                            IJudgeRepository judgeRepository,
-                            IZEsJudgeRepository zEsjudgeRepository)
                         {
-                            _mapper = mapper;
-                            _judgeRepository = judgeRepository;
-                            _zEsjudgeRepository = zEsjudgeRepository;
-                        }
-                    
-                    
-                    
-                        public async Task&lt;GetJudgeQueryResponse&gt; Handle(GetJudgeQuery request, CancellationToken cancellationToken)
-                        {
-                            ExecutionStatus&lt;Judge&gt; databaseoperation;
-                            if (request.JudgeUniqueId != null)
-                                if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                                    databaseoperation = await _zEsjudgeRepository.GetByIdAsync(request.JudgeUniqueId);
+                            private readonly IJudgeRepository _judgeRepository;
+                            private readonly IMapper _mapper;
+                            private readonly IZEsJudgeRepository _zEsjudgeRepository;
+                        
+                            public GetJudgeQueryHandler(IMapper mapper,
+                                IJudgeRepository judgeRepository,
+                                IZEsJudgeRepository zEsjudgeRepository)
+                            {
+                                _mapper = mapper;
+                                _judgeRepository = judgeRepository;
+                                _zEsjudgeRepository = zEsjudgeRepository;
+                            }
+                        
+                        
+                        
+                            public async Task&lt;GetJudgeQueryResponse&gt; Handle
+                            (GetJudgeQuery request, CancellationToken cancellationToken)
+                            {
+                                ExecutionStatus&lt;Judge&gt; databaseoperation;
+                                if (request.JudgeUniqueId != null)
+                                    if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                        databaseoperation = await _zEsjudgeRepository.GetByIdAsync(request.JudgeUniqueId);
+                                    else
+                                        databaseoperation = await _judgeRepository.GetByIdAsync(request.JudgeUniqueId);
                                 else
-                                    databaseoperation = await _judgeRepository.GetByIdAsync(request.JudgeUniqueId);
-                            else
-                                if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                                    databaseoperation = await _zEsjudgeRepository.GetByIdAsync(request.JudeId);
-                            else
-                                databaseoperation = await _judgeRepository.GetByIdAsync(request.JudeId);
-                    
-                            if (!databaseoperation.Success)
-                                return new GetJudgeQueryResponse(databaseoperation.RemoveGeneric());
-                    
-                            var judgeViewModel = _mapper.Map&lt;JudgeViewModel&gt;(databaseoperation.Value);
-                    
-                            return new GetJudgeQueryResponse(judgeViewModel);
+                                    if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                        databaseoperation = await _zEsjudgeRepository.GetByIdAsync(request.JudeId);
+                                else
+                                    databaseoperation = await _judgeRepository.GetByIdAsync(request.JudeId);
+                        
+                                if (!databaseoperation.Success)
+                                    return new GetJudgeQueryResponse(databaseoperation.RemoveGeneric());
+                        
+                                var judgeViewModel = _mapper.Map&lt;JudgeViewModel&gt;(databaseoperation.Value);
+                        
+                                return new GetJudgeQueryResponse(judgeViewModel);
+                            }
                         }
-                    }
                     </code>
                 </pre>
             </div>
@@ -10369,7 +10386,7 @@
                             }
                         
                             public GetJudgeQueryResponse(ExecutionStatus status, string message)
-                        : base(status, message)
+                            : base(status, message)
                             {
                         
                             }
@@ -10398,6 +10415,18 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy teraz Command<br />
+            <span>🔎</span>
+        </span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command zmieniają coś w systemie<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/application/19.PNG" alt="blog">
@@ -10410,10 +10439,16 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy Command tworzący kategorię<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreatedCategoryCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -10444,83 +10479,111 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreatedCategoryCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 16px !important;">
+
+
+
+
+
+
                         public class CreatedCategoryCommandHandler
                         : IRequestHandler&lt;CreatedCategoryCommand, CreatedCategoryCommandResponse&gt;
-                    {
-                        private readonly ICategoryRepository _categoryRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public CreatedCategoryCommandHandler(ICategoryRepository categoryRepository,
-                            IMapper mapper)
                         {
-                            _mapper = mapper;
-                            _categoryRepository = categoryRepository;
+                            private readonly ICategoryRepository _categoryRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public CreatedCategoryCommandHandler(ICategoryRepository categoryRepository,
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _categoryRepository = categoryRepository;
+                            }
+                        
+                            public async Task&lt;CreatedCategoryCommandResponse&gt; Handle
+                                (CreatedCategoryCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new CreatedCategoryCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new CreatedCategoryCommandResponse(validatorResult);
+                        
+                                var category = _mapper.Map&lt;Category&gt;(request);
+                                category.Version = category.Version + 1;
+                                var databaseResult = await _categoryRepository.AddAsync(category);
+                        
+                                if (!databaseResult.Success)
+                                    return new CreatedCategoryCommandResponse(databaseResult.RemoveGeneric());
+                        
+                                var Idsdto = _mapper.Map&lt;IdsDto&gt;(databaseResult.Value);
+                                return new CreatedCategoryCommandResponse(Idsdto);
+                            }
                         }
-                    
-                        public async Task&lt;CreatedCategoryCommandResponse&gt; Handle
-                            (CreatedCategoryCommand request, CancellationToken cancellationToken)
-                        {
-                            var validator = new CreatedCategoryCommandValidator();
-                            var validatorResult = await validator.ValidateAsync(request);
-                    
-                            if (!validatorResult.IsValid)
-                                return new CreatedCategoryCommandResponse(validatorResult);
-                    
-                            var category = _mapper.Map&lt;Category&gt;(request);
-                            category.Version = category.Version + 1;
-                            var databaseResult = await _categoryRepository.AddAsync(category);
-                    
-                            if (!databaseResult.Success)
-                                return new CreatedCategoryCommandResponse(databaseResult.RemoveGeneric());
-                    
-                            var Idsdto = _mapper.Map&lt;IdsDto&gt;(databaseResult.Value);
-                            return new CreatedCategoryCommandResponse(Idsdto);
-                        }
-                    }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Każdy Command może mieć swoją walidacje przy użyciu FluentValidation  <br />
+            <span>🔎</span>
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/CQRS-07.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreatedCategoryCommandValidator</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
                         public class CreatedCategoryCommandValidator :
                         AbstractValidator&lt;CreatedCategoryCommand&gt;
-                    {
-                        public CreatedCategoryCommandValidator()
                         {
-                            RuleFor(c =&gt; c.Name)
-                                .MinimumLength(2).MaximumLength(15)
-                                .WithMessage(&quot;{PropertName} Length is beewten 2 and 15&quot;);
-                            RuleFor(c =&gt; c.DisplayName)
-                                .MinimumLength(2).MaximumLength(15)
-                                .WithMessage(&quot;{PropertName} Length is beewten 2 and 15&quot;);
+                            public CreatedCategoryCommandValidator()
+                            {
+                                RuleFor(c =&gt; c.Name)
+                                    .MinimumLength(2).MaximumLength(15)
+                                    .WithMessage(&quot;{PropertName} Length is beewten 2 and 15&quot;);
+                                RuleFor(c =&gt; c.DisplayName)
+                                    .MinimumLength(2).MaximumLength(15)
+                                    .WithMessage(&quot;{PropertName} Length is beewten 2 and 15&quot;);
+                            }
                         }
-                    }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            W tym projekcie ignorujemy prawie walidację bo i tak jest dużo do opowiadania<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreatedCategoryCommandResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 15px !important;">
+
+
+
                         public class CreatedCategoryCommandResponse : BaseResponse
                         {
                             public IdsDto CategoryIds { get; set; }
@@ -10541,7 +10604,7 @@
                             }
                     
                             public CreatedCategoryCommandResponse(ExecutionStatus status, string message)
-                        : base(status, message)
+                                : base(status, message)
                             {
                     
                             }
@@ -10564,14 +10627,20 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Tak tutaj są zwracana Id-ki<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">IdsDto</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 26px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 26px !important;">
                         public class IdsDto
                         {
                             public int CreatedId { get; set; }
@@ -10583,15 +10652,22 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+                Zobaczmy teraz Command aktualizujący Kategorię<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">UpdateCategoryCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class UpdateCategoryCommand : IRequest&lt;UpdateCategoryCommandResponse&gt;
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class UpdateCategoryCommand 
+                        : IRequest&lt;UpdateCategoryCommandResponse&gt;
                         {
                             public Guid? UniqueId { get; set; }
                             public int? Id { get; set; }
@@ -10610,7 +10686,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">UpdateCategoryCommandValidator</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -10636,48 +10712,54 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">UpdateCategoryCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 16px !important;">
+
+
+
+
+
+
+
+
                         public class UpdateCategoryCommandHandler : IRequestHandler
                         &lt;UpdateCategoryCommand, UpdateCategoryCommandResponse&gt;
-                    {
-                    
-                        private readonly ICategoryRepository _categoryRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository,
-                            IMapper mapper)
                         {
-                            _mapper = mapper;
-                            _categoryRepository = categoryRepository;
+                        
+                            private readonly ICategoryRepository _categoryRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository,
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _categoryRepository = categoryRepository;
+                            }
+                        
+                            public async Task&lt;UpdateCategoryCommandResponse&gt; Handle
+                                (UpdateCategoryCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new UpdateCategoryCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new UpdateCategoryCommandResponse(validatorResult);
+                        
+                                var catdtoegory = _mapper.Map&lt;CategoryDto&gt;(request);
+                                var category = _mapper.Map&lt;Category&gt;(catdtoegory);
+                        
+                                ExecutionStatus result;
+                                if (request.UniqueId != null)
+                                    result = await _categoryRepository.UpdateByUniqueIdAsync(category);
+                                else
+                                    result = await _categoryRepository.UpdateByIdAsync(category);
+                                return new UpdateCategoryCommandResponse(result);
+                            }
+    
                         }
-                    
-                        public async Task&lt;UpdateCategoryCommandResponse&gt; Handle
-                            (UpdateCategoryCommand request, CancellationToken cancellationToken)
-                        {
-                            var validator = new UpdateCategoryCommandValidator();
-                            var validatorResult = await validator.ValidateAsync(request);
-                    
-                            if (!validatorResult.IsValid)
-                                return new UpdateCategoryCommandResponse(validatorResult);
-                    
-                            var catdtoegory = _mapper.Map&lt;CategoryDto&gt;(request);
-                            var category = _mapper.Map&lt;Category&gt;(catdtoegory);
-                    
-                            //category.Version = category.Version + 1;
-                    
-                            ExecutionStatus result;
-                            if (request.UniqueId != null)
-                                result = await _categoryRepository.UpdateByUniqueIdAsync(category);
-                            else
-                                result = await _categoryRepository.UpdateByIdAsync(category);
-                            return new UpdateCategoryCommandResponse(result);
-                        }
-   
-                    }
                     </code>
                 </pre>
             </div>
@@ -10691,6 +10773,12 @@
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+                        
                         public class UpdateCategoryCommandResponse : BaseResponse
                         {
 
@@ -10727,49 +10815,11 @@
             </div>
         </div>
     </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class UpdateCategoryCommandResponse : BaseResponse
-                        {
-
-                            public UpdateCategoryCommandResponse() : base()
-                            { }
-                        
-                            public UpdateCategoryCommandResponse(ExecutionStatus status)
-                                : base(status)
-                            {
-                        
-                            }
-                        
-                            public UpdateCategoryCommandResponse(ExecutionStatus status, string message)
-                        : base(status, message)
-                            {
-                        
-                            }
-                        
-                        
-                            public UpdateCategoryCommandResponse(ValidationResult validationResult)
-                                : base(validationResult)
-                            { }
-                        
-                            public UpdateCategoryCommandResponse(string message)
-                            : base(message)
-                            { }
-                        
-                            public UpdateCategoryCommandResponse(string message, bool success)
-                                : base(message, success)
-                            { }
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Przejdźmy dla poleceń dla sędziów<br />
+            <span>🔎</span>
+        </span>
     </section>
     <section class="slide" style="background-color:black">
         <figure>
@@ -10777,14 +10827,29 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/application/21.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla tworzenia sędziego<br />
+            <span>🔎</span>
+        </span>
+    </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreateJudgeCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 18px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 18px !important;">
+
                         public class CreateJudgeCommand : IRequest&lt;CreateJudgeCommandResponse&gt;
                         {
                             public string Login { get; set; }
@@ -10798,7 +10863,7 @@
                             public CreateJudgeCommand()
                             {
                                 UniqueId = JudgeUniqueId.New();
-                                Version = 1;
+                                Version = 0;
                             }
                         
                             public int CategoryId { get; set; }
@@ -10810,7 +10875,6 @@
                                     return new CategoryDto() { Id = CategoryId };
                                 }
                             }
-                        
                             public DateTime Birthdate { get; set; }
                         }
                     </code>
@@ -10821,50 +10885,61 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreateJudgeCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
                         public class CreateJudgeCommandHandler
                         : IRequestHandler&lt;CreateJudgeCommand, CreateJudgeCommandResponse&gt;
-              {
-                  private readonly IJudgeRepository _judgeRepository;
-                  private readonly IMapper _mapper;
-              
-              
-                  public CreateJudgeCommandHandler(IJudgeRepository judgeRepository,
-                      IMapper mapper)
-                  {
-                      _mapper = mapper;
-                      _judgeRepository = judgeRepository;
-                  }
-              
-              
-                  public async Task&lt;CreateJudgeCommandResponse&gt;
-                      Handle(CreateJudgeCommand request, CancellationToken cancellationToken)
-                  {
-                      var validator = new CreateJudgeCommandValidator();
-                      var validatorResult = await validator.ValidateAsync(request);
-              
-                      if (!validatorResult.IsValid)
-                          return new CreateJudgeCommandResponse(validatorResult);
-              
-                      var judge = _mapper.Map&lt;Judge&gt;(request);
-              
-                      var databaseoperation = await _judgeRepository.AddAsync(judge);
-              
-                      if (!databaseoperation.Success)
-                          return new CreateJudgeCommandResponse
-                              (databaseoperation.RemoveGeneric());
-              
-                      var Idsdto = _mapper.Map&lt;IdsDto&gt;(databaseoperation.Value);
-                      return new CreateJudgeCommandResponse(Idsdto);
-                  }
-              
-              
-              
-              }
+                        {
+                            private readonly IJudgeRepository _judgeRepository;
+                            private readonly IMapper _mapper;
+                        
+                        
+                            public CreateJudgeCommandHandler(IJudgeRepository judgeRepository,
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _judgeRepository = judgeRepository;
+                            }
+                        
+                        
+                            public async Task&lt;CreateJudgeCommandResponse&gt;
+                                Handle(CreateJudgeCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new CreateJudgeCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new CreateJudgeCommandResponse(validatorResult);
+                        
+                                var judge = _mapper.Map&lt;Judge&gt;(request);
+                        
+                                var databaseoperation = await _judgeRepository.AddAsync(judge);
+                        
+                                if (!databaseoperation.Success)
+                                    return new CreateJudgeCommandResponse
+                                        (databaseoperation.RemoveGeneric());
+                        
+                                var Idsdto = _mapper.Map&lt;IdsDto&gt;(databaseoperation.Value);
+                                return new CreateJudgeCommandResponse(Idsdto);
+                            }
+                        
+                        
+                        
+                        }
                     </code>
                 </pre>
             </div>
@@ -10873,11 +10948,20 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CreateJudgeCommandResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 15px !important;">
+
+
+
+
+
+
+
+
+                        
                         public class CreateJudgeCommandResponse : BaseResponse
                         {
                             public IdsDto JudgeIds { get; set; }
@@ -10892,7 +10976,7 @@
                             }
                         
                             public CreateJudgeCommandResponse(ExecutionStatus status, string message)
-                        : base(status, message)
+                                : base(status, message)
                             {
                         
                             }
@@ -10920,17 +11004,23 @@
             </div>
         </div>
     </section>
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla kasowania sędziego<br />
+            <span>🔎</span>
+        </span>
+    </section>
 
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">DeleteJudgeCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class DeleteJudgeCommand : IRequest&lt;DeleteJudgeCommandResponse&gt;
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        public class DeleteJudgeCommand 
+                        : IRequest&lt;DeleteJudgeCommandResponse&gt;
                         {
                             public JudgeUniqueId UniqueId { get; set; }
                         
@@ -10947,9 +11037,12 @@
                 <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class DeleteJudgeCommandHandler : IRequestHandler&lt;DeleteJudgeCommand, DeleteJudgeCommandResponse&gt;
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+                        public class DeleteJudgeCommandHandler 
+                        : IRequestHandler&lt;DeleteJudgeCommand, DeleteJudgeCommandResponse&gt;
                         {
                             private readonly IJudgeRepository _judgeRepository;
                             private readonly IMapper _mapper;
@@ -10983,10 +11076,16 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla aktualizowania sędziego<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">UpdateJudgeCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -11020,73 +11119,113 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">UpdateJudgeCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class UpdateJudgeCommandHandler
                         : IRequestHandler&lt;UpdateJudgeCommand, UpdateJudgeCommandResponse&gt;
-                  {
-                      private readonly IJudgeRepository _judgeRepository;
-                      private readonly IMapper _mapper;
-                  
-                      public UpdateJudgeCommandHandler(IJudgeRepository judgeRepository,
-                          IMapper mapper)
-                      {
-                          _mapper = mapper;
-                          _judgeRepository = judgeRepository;
-                      }
-                  
-                      public async Task&lt;UpdateJudgeCommandResponse&gt; Handle(UpdateJudgeCommand request, CancellationToken cancellationToken)
-                      {
-                          var validator = new UpdateJudgeCommandValidator();
-                          var validatorResult = await validator.ValidateAsync(request);
-                  
-                          if (!validatorResult.IsValid)
-                              return new UpdateJudgeCommandResponse(validatorResult);
-                  
-                          var judgedto = _mapper.Map&lt;JudgeDto&gt;(request);
-                          var judge = _mapper.Map&lt;Judge&gt;(judgedto);
-                  
-                          ExecutionStatus statu;
-                          if (request.UniqueId != null)
-                              statu = await _judgeRepository.UpdateByUniqueIdAsync(judge);
-                          else
-                              statu = await _judgeRepository.UpdateByIdAsync(judge);
-                  
-                          if (statu.Success)
-                              return new UpdateJudgeCommandResponse();
-                          else
-                              return new UpdateJudgeCommandResponse(statu);
-                  
-                      }
-                  
-                  
-                  }
+                        {
+                            private readonly IJudgeRepository _judgeRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public UpdateJudgeCommandHandler(IJudgeRepository judgeRepository,
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _judgeRepository = judgeRepository;
+                            }
+                        
+                            public async Task&lt;UpdateJudgeCommandResponse&gt; Handle
+                            (UpdateJudgeCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new UpdateJudgeCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new UpdateJudgeCommandResponse(validatorResult);
+                        
+                                var judgedto = _mapper.Map&lt;JudgeDto&gt;(request);
+                                var judge = _mapper.Map&lt;Judge&gt;(judgedto);
+                        
+                                ExecutionStatus statu;
+                                if (request.UniqueId != null)
+                                    statu = await _judgeRepository.UpdateByUniqueIdAsync(judge);
+                                else
+                                    statu = await _judgeRepository.UpdateByIdAsync(judge);
+                        
+                                if (statu.Success)
+                                    return new UpdateJudgeCommandResponse();
+                                else
+                                    return new UpdateJudgeCommandResponse(statu);
+                        
+                            }
+                        
+                        
+                        }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
 
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Teraz wszystkie Command dla CallForSpeech<br />
+            <span>🔎</span>
+        </span>
+    </section>
 
     <section class="slide" style="background-color:black">
         <figure>
-            <img class="cover" src="pictures/application/20.PNG" alt="blog">
+            <img class="cover" src="pictures/application/22.PNG" alt="blog">
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla wysłki zgłoszenia na mowę<br />
+            <span>🔎</span>
+        </span>
     </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">SubmitCallForSpeechCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class SubmitCallForSpeechCommand : IRequest&lt;SubmitCallForSpeechCommandResponse&gt;
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+                        public class SubmitCallForSpeechCommand 
+                        : IRequest&lt;SubmitCallForSpeechCommandResponse&gt;
                         {
                             public int CategoryId { get; set; }
                         
@@ -11131,7 +11270,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">SubmitCallForSpeechCommandValidator</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -11141,17 +11280,8 @@
                         {
                             public SubmitCallForSpeechCommandValidator()
                             {
-                                //RuleFor(c =&gt; c.Login)
-                                //    .MinimumLength(2).MaximumLength(15)
-                                //    .WithMessage(&quot;{PropertName} Length is beewten 2 and 15&quot;);
-                        
-                                //RuleFor(c =&gt; c.Name.First)
-                                //    .MinimumLength(2)
-                                //    .WithMessage(&quot;{PropertName} Length is beewten 2 &quot;);
-                        
-                                //RuleFor(c =&gt; c.Name.Last)
-                                //    .MinimumLength(2)
-                                //    .WithMessage(&quot;{PropertName} Length is beewten 2 &quot;);
+
+                                // Tutaj wstaw walidację
                             }
                         }
                     </code>
@@ -11162,50 +11292,55 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">SubmitCallForSpeechCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 16px !important;">
+
+
+
+
+
+
+
+
                         public class SubmitCallForSpeechCommandHandler :
                         IRequestHandler&lt;SubmitCallForSpeechCommand, SubmitCallForSpeechCommandResponse&gt;
-                    {
-                        private readonly ICallForSpeechRepository _callRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public SubmitCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
-                            IMapper mapper)
                         {
-                            _mapper = mapper;
-                            _callRepository = callRepository;
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public SubmitCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _callRepository = callRepository;
+                            }
+                        
+                        
+                            public async Task&lt;SubmitCallForSpeechCommandResponse&gt;
+                                Handle(SubmitCallForSpeechCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new SubmitCallForSpeechCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new SubmitCallForSpeechCommandResponse(validatorResult);
+                        
+                                var cfs = _mapper.Map&lt;CallForSpeech&gt;(request);
+                        
+                                var id = await _callRepository.SubmitAsync(cfs);
+                        
+                                if (!id.Success)
+                                    return new SubmitCallForSpeechCommandResponse();
+                        
+                                return new SubmitCallForSpeechCommandResponse(id.Value);
+                        
+                        
+                            }
+
                         }
-                    
-                    
-                        public async Task&lt;SubmitCallForSpeechCommandResponse&gt;
-                            Handle(SubmitCallForSpeechCommand request, CancellationToken cancellationToken)
-                        {
-                            var validator = new SubmitCallForSpeechCommandValidator();
-                            var validatorResult = await validator.ValidateAsync(request);
-                    
-                            if (!validatorResult.IsValid)
-                                return new SubmitCallForSpeechCommandResponse(validatorResult);
-                    
-                            var cfs = _mapper.Map&lt;CallForSpeech&gt;(request);
-                    
-                            var id = await _callRepository.SubmitAsync(cfs);
-                    
-                            if (!id.Success)
-                                return new SubmitCallForSpeechCommandResponse();
-                    
-                            return new SubmitCallForSpeechCommandResponse(id.Value);
-                    
-                    
-                        }
-                    
-                    
-                    
-                    
-                    }
                     </code>
                 </pre>
             </div>
@@ -11214,11 +11349,18 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">SubmitCallForSpeechCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 15px !important;">
+
+
+
+
+
+
+
                         public class SubmitCallForSpeechCommandResponse : BaseResponse
                         {
                             public CallForSpeechIds CallForSpeechCommandIds { get; set; }
@@ -11261,23 +11403,27 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla odmowy zgłoszenia na mowę<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">RejectCallForSpeechCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
                         public class RejectCallForSpeechCommand :
                         IRequest&lt;RejectCallForSpeechCommandResponse&gt;
-                    {
-                        //public CallForSpeechUniqueId CallForSpeechUniqueId { get; set; }
-                        //public JudgeId JudgeId { get; set; }
-                    
-                        public Guid CallForSpeechUniqueId { get; set; }
-                        public int JudgeId { get; set; }
-                    }
+                        {
+                        
+                            public Guid CallForSpeechUniqueId { get; set; }
+                            public int JudgeId { get; set; }
+                        }
                     </code>
                 </pre>
             </div>
@@ -11286,90 +11432,123 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">RejectCallForSpeechCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 16px !important;">
+
+
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class RejectCallForSpeechCommandHandler :
                         IRequestHandler&lt;RejectCallForSpeechCommand, RejectCallForSpeechCommandResponse&gt;
-                    {
-                        private readonly ICallForSpeechRepository _callRepository;
-                        private readonly IJudgeRepository _judegRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public RejectCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
-                            IJudgeRepository judegRepository, IMapper mapper
-                           )
                         {
-                            _callRepository = callRepository;
-                            _judegRepository = judegRepository;
-                            _mapper = mapper;
-                        }
-                    
-                    
-                        public async Task&lt;RejectCallForSpeechCommandResponse&gt; Handle(RejectCallForSpeechCommand request, CancellationToken cancellationToken)
-                        {
-                            var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
-                            var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
-                    
-                            var databaseOperationCfs = await _callRepository.GetByIdAsync(cfsuniqueId);
-                            var databaseOperationJudge = await _judegRepository.GetByIdAsync(judgeId);
-                    
-                            if (!databaseOperationCfs.Success)
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IJudgeRepository _judegRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public RejectCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
+                                IJudgeRepository judegRepository, IMapper mapper
+                            )
                             {
-                                if (databaseOperationCfs.Reason == Reason.ReturnedNull)
-                                    return new RejectCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
-                                if (databaseOperationCfs.Reason == Reason.Error)
-                                    return new RejectCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                _callRepository = callRepository;
+                                _judegRepository = judegRepository;
+                                _mapper = mapper;
                             }
-                    
-                            if (!databaseOperationJudge.Success)
+                        
+                        
+                            public async Task&lt;RejectCallForSpeechCommandResponse&gt;
+                             Handle(RejectCallForSpeechCommand request, CancellationToken cancellationToken)
                             {
-                                if (databaseOperationJudge.Reason == Reason.ReturnedNull)
-                                    return new RejectCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
-                                if (databaseOperationJudge.Reason == Reason.Error)
-                                    return new RejectCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
+                                var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
+                        
+                                var databaseOperationCfs = await _callRepository.GetByIdAsync(cfsuniqueId);
+                                var databaseOperationJudge = await _judegRepository.GetByIdAsync(judgeId);
+                        
+                                if (!databaseOperationCfs.Success)
+                                {
+                                    if (databaseOperationCfs.Reason == Reason.ReturnedNull)
+                                        return new RejectCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
+                                    if (databaseOperationCfs.Reason == Reason.Error)
+                                        return new RejectCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                if (!databaseOperationJudge.Success)
+                                {
+                                    if (databaseOperationJudge.Reason == Reason.ReturnedNull)
+                                        return new RejectCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
+                                    if (databaseOperationJudge.Reason == Reason.Error)
+                                        return new RejectCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                var cfs = databaseOperationCfs.Value;
+                                var judge = databaseOperationJudge.Value;
+                        
+                                var result = cfs.TryReject(judge);
+                                if (!result.Success)
+                                    return new RejectCallForSpeechCommandResponse(result);
+                        
+                                await _callRepository.SaveRejectionAsync(cfsuniqueId, judgeId, cfs.Status);
+                        
+                                return new RejectCallForSpeechCommandResponse();
                             }
-                    
-                            var cfs = databaseOperationCfs.Value;
-                            var judge = databaseOperationJudge.Value;
-                    
-                            var result = cfs.TryReject(judge);
-                            if (!result.Success)
-                                return new RejectCallForSpeechCommandResponse(result);
-                    
-                            await _callRepository.SaveRejectionAsync(cfsuniqueId, judgeId, cfs.Status);
-                    
-                            return new RejectCallForSpeechCommandResponse();
+                        
+                        
+                        
+                        
                         }
-                    
-                    
-                    
-                    
-                    }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla wstępnej akceptacji zgłoszenia na mowę<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">PreliminaryAcceptCallForSpeechCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
                         public class PreliminaryAcceptCallForSpeechCommand
                         :
                         IRequest&lt;PreliminaryAcceptCallForSpeechCommandResponse&gt;
-                    {
-                    
-                    
-                        public Guid CallForSpeechUniqueId { get; set; }
-                        public int JudgeId { get; set; }
-                    }
+                        {
+
+                            public Guid CallForSpeechUniqueId { get; set; }
+                            public int JudgeId { get; set; }
+                        }
                     </code>
                 </pre>
             </div>
@@ -11378,79 +11557,105 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">PreliminaryAcceptCallForSpeechCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class PreliminaryAcceptCallForSpeechCommandHandler :
                         IRequestHandler&lt;PreliminaryAcceptCallForSpeechCommand, PreliminaryAcceptCallForSpeechCommandResponse&gt;
-                  {
-                      private readonly ICallForSpeechRepository _callRepository;
-                      private readonly IJudgeRepository _judegRepository;
-                      private readonly IMapper _mapper;
-                  
-                      public PreliminaryAcceptCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
-                          IJudgeRepository judegRepository, IMapper mapper
-                         )
-                      {
-                          _callRepository = callRepository;
-                          _judegRepository = judegRepository;
-                          _mapper = mapper;
-                      }
-                  
-                      public async Task&lt;PreliminaryAcceptCallForSpeechCommandResponse&gt; Handle(PreliminaryAcceptCallForSpeechCommand request, CancellationToken cancellationToken)
-                      {
-                          var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
-                          var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
-                  
-                          var databaseOperationCfs = await _callRepository.GetByIdAsync(cfsuniqueId);
-                          var databaseOperationJudge = await _judegRepository.GetByIdAsync(judgeId);
-                  
-                          if (!databaseOperationCfs.Success)
-                              return new PreliminaryAcceptCallForSpeechCommandResponse(databaseOperationCfs
-                                                     .RemoveGeneric(), &quot;CallForSpeech Problem&quot;);
-                  
-                          if (!databaseOperationJudge.Success)
-                              return new PreliminaryAcceptCallForSpeechCommandResponse(databaseOperationJudge
-                                                     .RemoveGeneric(), &quot;Judge Problem&quot;);
-                  
-                          var cfs = databaseOperationCfs.Value;
-                          var result = cfs.TryPreliminaryAccept(databaseOperationJudge.Value);
-                  
-                          if (!result.Success)
-                              return new PreliminaryAcceptCallForSpeechCommandResponse(result);
-                  
-                          await _callRepository.SavePreliminaryAcceptenceAsync(cfsuniqueId, judgeId, cfs.Status);
-                  
-                          return new PreliminaryAcceptCallForSpeechCommandResponse();
-                  
-                      }
-                  
-                  
-                  
-                  }
+                        {
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IJudgeRepository _judegRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public PreliminaryAcceptCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
+                                IJudgeRepository judegRepository, IMapper mapper
+                                )
+                            {
+                                _callRepository = callRepository;
+                                _judegRepository = judegRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public async Task&lt;PreliminaryAcceptCallForSpeechCommandResponse&gt; Handle(PreliminaryAcceptCallForSpeechCommand request, CancellationToken cancellationToken)
+                            {
+                                var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
+                                var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
+                        
+                                var databaseOperationCfs = await _callRepository.GetByIdAsync(cfsuniqueId);
+                                var databaseOperationJudge = await _judegRepository.GetByIdAsync(judgeId);
+                        
+                                if (!databaseOperationCfs.Success)
+                                    return new PreliminaryAcceptCallForSpeechCommandResponse(databaseOperationCfs
+                                                            .RemoveGeneric(), &quot;CallForSpeech Problem&quot;);
+                        
+                                if (!databaseOperationJudge.Success)
+                                    return new PreliminaryAcceptCallForSpeechCommandResponse(databaseOperationJudge
+                                                            .RemoveGeneric(), &quot;Judge Problem&quot;);
+                        
+                                var cfs = databaseOperationCfs.Value;
+                                var result = cfs.TryPreliminaryAccept(databaseOperationJudge.Value);
+                        
+                                if (!result.Success)
+                                    return new PreliminaryAcceptCallForSpeechCommandResponse(result);
+                        
+                                await _callRepository.SavePreliminaryAcceptenceAsync(cfsuniqueId, judgeId, cfs.Status);
+                        
+                                return new PreliminaryAcceptCallForSpeechCommandResponse();
+                        
+                            }
+                        
+                        
+                        
+                        }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Command dla akceptacji zgłoszenia na mowę<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">AcceptCallForSpeechCommand</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
                         public class AcceptCallForSpeechCommand :
-                        IRequest&lt;AcceptCallForSpeechCommandResponse&gt;
-                    {
-                        public Guid CallForSpeechUniqueId { get; set; }
-                        public int JudgeId { get; set; }
-                    
-                    
-                    }
+                            IRequest&lt;AcceptCallForSpeechCommandResponse&gt;
+                        {
+                            public Guid CallForSpeechUniqueId { get; set; }
+                            public int JudgeId { get; set; }
+                        }
                     </code>
                 </pre>
             </div>
@@ -11459,66 +11664,89 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">AcceptCallForSpeechComandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+
+
+
                         public class AcceptCallForSpeechComandHandler
                         : IRequestHandler&lt;AcceptCallForSpeechCommand, AcceptCallForSpeechCommandResponse&gt;
-                    {
-                        private readonly ICallForSpeechRepository _callRepository;
-                        private readonly IJudgeRepository _judegRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public AcceptCallForSpeechComandHandler(ICallForSpeechRepository callRepository,
-                            IJudgeRepository judegRepository, IMapper mapper
-                           )
                         {
-                            _callRepository = callRepository;
-                            _judegRepository = judegRepository;
-                            _mapper = mapper;
-                        }
-                    
-                    
-                        public async Task&lt;AcceptCallForSpeechCommandResponse&gt; Handle(AcceptCallForSpeechCommand request, CancellationToken cancellationToken)
-                        {
-                            var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
-                            var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
-                    
-                            var databaseOperationCfs = await _callRepository.GetByIdAsync(cfsuniqueId);
-                            var databaseOperationJudge = await _judegRepository.GetByIdAsync(judgeId);
-                    
-                            if (!databaseOperationCfs.Success)
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IJudgeRepository _judegRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public AcceptCallForSpeechComandHandler(ICallForSpeechRepository callRepository,
+                                IJudgeRepository judegRepository, IMapper mapper
+                            )
                             {
-                                if (databaseOperationCfs.Reason == Reason.ReturnedNull)
-                                    return new AcceptCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
-                                if (databaseOperationCfs.Reason == Reason.Error)
-                                    return new AcceptCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                _callRepository = callRepository;
+                                _judegRepository = judegRepository;
+                                _mapper = mapper;
                             }
-                    
-                            if (!databaseOperationJudge.Success)
+                        
+                        
+                            public async Task&lt;AcceptCallForSpeechCommandResponse&gt; Handle(AcceptCallForSpeechCommand request, CancellationToken cancellationToken)
                             {
-                                if (databaseOperationJudge.Reason == Reason.ReturnedNull)
-                                    return new AcceptCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
-                                if (databaseOperationJudge.Reason == Reason.Error)
-                                    return new AcceptCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
+                                var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
+                        
+                                var databaseOperationCfs = await _callRepository.GetByIdAsync(cfsuniqueId);
+                                var databaseOperationJudge = await _judegRepository.GetByIdAsync(judgeId);
+                        
+                                if (!databaseOperationCfs.Success)
+                                {
+                                    if (databaseOperationCfs.Reason == Reason.ReturnedNull)
+                                        return new AcceptCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
+                                    if (databaseOperationCfs.Reason == Reason.Error)
+                                        return new AcceptCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                if (!databaseOperationJudge.Success)
+                                {
+                                    if (databaseOperationJudge.Reason == Reason.ReturnedNull)
+                                        return new AcceptCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
+                                    if (databaseOperationJudge.Reason == Reason.Error)
+                                        return new AcceptCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                var cfs = databaseOperationCfs.Value;
+                                var judge = databaseOperationJudge.Value;
+                        
+                                var result = cfs.TryAccept(judge);
+                                if (!result.Success)
+                                    return new AcceptCallForSpeechCommandResponse(result);
+                        
+                                var saveop = await _callRepository.SaveAcceptenceAsync(cfsuniqueId, judgeId, cfs.Status);
+                        
+                                return new AcceptCallForSpeechCommandResponse(saveop);
                             }
-                    
-                            var cfs = databaseOperationCfs.Value;
-                            var judge = databaseOperationJudge.Value;
-                    
-                            var result = cfs.TryAccept(judge);
-                            if (!result.Success)
-                                return new AcceptCallForSpeechCommandResponse(result);
-                    
-                            var saveop = await _callRepository.SaveAcceptenceAsync(cfsuniqueId, judgeId, cfs.Status);
-                    
-                            return new AcceptCallForSpeechCommandResponse(saveop);
+                        
+                        
                         }
-                    
-                    
-                    }
                     </code>
                 </pre>
             </div>
