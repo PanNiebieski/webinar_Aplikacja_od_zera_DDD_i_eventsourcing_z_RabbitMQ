@@ -169,8 +169,22 @@ border-color: transparent transparent #FF6525;
     color: white;
 }
 
+.slide.conicG {
 
+    background: conic-gradient(at 125% 50%, #b78cf7, #ff7c94, #ffcf0d, #ff7c94, #b78cf7);
+    color: white;
+}
 
+.slide.conicG2 {
+
+    background: conic-gradient(at 125% 50%, rgb(34, 204, 96) ,rgb(74, 72, 155) , rgb(53, 133, 82), rgb(79, 47, 83) ,  rgb(74, 72, 155) );
+    color: white;
+}
+.slide.conicG3 {
+
+    background: conic-gradient(at 125% 50%, rgba(31,56,40,1) ,rgba(33,32,58,1) , rgba(31,56,40,1), rgb(79, 47, 83),  rgba(31,56,40,1) );
+    color: white;
+}
 
 .slide.creamG {
     background-color: var(--for-slides-ALT6);
@@ -249,6 +263,8 @@ font-size: 40%;
 .slide.creamG span span,.slide.creamGG span span,.slide.creamR span span, 
 .slide.creamSea span span, 
 .slide.creamGGGragient span span,
+.slide.conicG span span,
+.slide.conicG2 span span,
 .slide.creamPPPGragient span span,
 .slide.creamP span span, .slide.creamPP span span , .slide.creamPPP span span,slide.creamBlack span span {
 

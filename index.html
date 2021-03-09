@@ -746,7 +746,7 @@
             </div>
           </div>
     </section>  
-    <section class="slide creamPPPGragient">
+    <section class="slide conicG">
         <span class="shout colors" >Piszemy więc projekty<br /> <span>Domain i Core
             👨‍💻
         </span></span>
@@ -827,7 +827,7 @@
             
         </ol>
     </section>
-    <section class="slide creamPPPGragient">
+    <section class="slide conicG1">
         <span class="shout colors" >Poznaj <br /><span>GeekLemon Conference</span>
 
             <br /><br />API Do zgłaszania mów 🗣️ na konfernecje <span>GeekLemon</span>
@@ -1931,13 +1931,13 @@
             </div>
         </div>
     </section>
-    <section class="slide creamPPPGragient">
+    <section class="slide conicG2">
         <span class="shout colors" >Zaraz chcesz mi powiedzieć, że <SPAN>"ID"</SPAN> i <SPAN>"Unique ID"</SPAN> jest klasą
             <br /><br />
             Dlaczego nie "int" czy "Guid"?
         </span>
     </section>
-    <section class="slide creamPPPGragient">
+    <section class="slide conicG2">
         <span class="shout colors" >
              "int" i "Guid" zazwyczaj nie są Value Object ponieważ nie są opisane w domenie.
         </span>
@@ -4462,6 +4462,12 @@
             </div>
         </div>
     </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/proces.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
@@ -6096,10 +6102,18 @@
             </div>
         </div>
     </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/proces.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">TryReject</h2>
+                <h2 class="headerCODE PP PP">TryEvaluate</h2>
             </div>
             <div class="PlaceCodeHere ">
                 <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
@@ -6256,11 +6270,11 @@
             </div>
         </div>
     </section>
-    <section class="slide cream">
+    <section class="slide conicG">
         <span class="shout colors" ><span>Szkończyliśmy projekt Domain<br />
             😁</span></span>
     </section>
-    <section class="slide cream">
+    <section class="slide conicG">
         <span class="shout colors" ><span>Teraz projekt Domain Application<br />
             👨‍💻</span></span>
     </section>
@@ -6341,23 +6355,6 @@
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6793,8 +6790,8 @@
                 <h2 class="headerCODE PP PP">FilterCallForSpeechStyles</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 38px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 38px !important;">
                         public enum FilterCallForSpeechStyles
                         {
                             All = 100,
@@ -6802,7 +6799,6 @@
                             EvaluatedByMachine = 1,
                             PreliminaryAcceptedByJudge = 2,
                             AcceptedByJudge = 3,
-                            AcceptedByJudgeButHasProblems = 4,
                             Rejected = 5,
                         }
                     </code>
@@ -6822,10 +6818,12 @@
                 <h2 class="headerCODE PP PP">FilterCallForSpeechStyles</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IZEsCallForSpeechRepository : ICallForSpeechRepository
+                <pre style="font-size: 38px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 38px !important;">
+                        public interface IZEsCallForSpeechRepository 
+                        : ICallForSpeechRepository
                         {
+
                         }
                     </code>
                 </pre>
@@ -6838,10 +6836,12 @@
                 <h2 class="headerCODE PP PP">FilterCallForSpeechStyles</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IZEsCategoryRepository : ICategoryRepository
+                <pre style="font-size: 38px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 38px !important;">
+                        public interface IZEsCategoryRepository 
+                        : ICategoryRepository
                         {
+
                         }
                     </code>
                 </pre>
@@ -6854,10 +6854,12 @@
                 <h2 class="headerCODE PP PP">FilterCallForSpeechStyles</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IZEsJudgeRepository : IJudgeRepository
+                <pre style="font-size: 28px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 28px !important;">
+                        public interface IZEsJudgeRepository 
+                        : IJudgeRepository
                         {
+
                         }
                     </code>
                 </pre>
@@ -6876,9 +6878,10 @@
                 <h2 class="headerCODE PP PP">SpeakerAgeMusteBeAbove17</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class SpeakerAgeMusteBeAbove17 : IScoringRejectRule
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        public class SpeakerAgeMusteBeAbove17 
+                        : IScoringRejectRule
                         {
                             public bool IsSatisfiedBy(CallForSpeech cfs)
                             {
@@ -6898,9 +6901,10 @@
                 <h2 class="headerCODE PP PP">SpeakerAgeMusteBeAbove17</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class SpeakerAgeMusteBeBelow70 : IScoringRejectRule
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        public class SpeakerAgeMusteBeBelow70 
+                        : IScoringRejectRule
                         {
                             public bool IsSatisfiedBy(CallForSpeech cfs)
                             {
@@ -6921,9 +6925,10 @@
                 <h2 class="headerCODE PP PP">SpeakerAgeMusteBeAbove17</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class SpeakerMustHaveAtLeastOneSocialMedia : IScoringRejectRule
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        public class SpeakerMustHaveAtLeastOneSocialMedia 
+                        : IScoringRejectRule
                         {
                             public bool IsSatisfiedBy(CallForSpeech cfs)
                             {
@@ -6943,8 +6948,8 @@
                 <h2 class="headerCODE PP PP">SpeakerAgeMusteBeAbove17</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
                         public class SpeakerMustHaveBlogOrGitHub : IScoringRejectRule
                         {
                             public bool IsSatisfiedBy(CallForSpeech cfs)
@@ -6966,8 +6971,8 @@
                 <h2 class="headerCODE PP PP">SpeakerAgeMusteBeAbove17</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 39px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 39px !important;">
                         public interface IScoringRulesFactory
                         {
                             public ScoringRules DefaultSet { get; }
@@ -6983,8 +6988,8 @@
                 <h2 class="headerCODE PP PP">ScoringRulesFactory</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
                         public class ScoringRulesFactory : IScoringRulesFactory
                         {
                             public ScoringRulesFactory()
@@ -7012,13 +7017,13 @@
             </div>
         </div>
     </section>
-    <section class="slide cream">
-        <span class="shout colors" ><span>Czy stworzyliśmy na tym etapie testowalny kod?
+    <section class="slide conicG">
+        <span class="shout colors" ><span>Czy stworzyliśmy na tym etapie testowalny kod? 🤨
         </span></span>
     </section>
-    <section class="slide cream">
+    <section class="slide conicG">
         <span class="shout colors" ><span>Teraz napiszmy testy aby te reguły biznesowe sprawdzić<br />
-            🛑</span></span>
+            👨‍💻</span></span>
     </section>
     <section class="slide creamPP fullscreen">
         <div class="grid-container-IconsText">
@@ -7147,7 +7152,7 @@
     </section>
     <section class="slide creamPPPGragient">
         <span class="shout colors" >Chciałby mieć pewność, że moja logika domenowa jest okej<br />
-            <span>zanim będę pisał dalej kod🛑</span></span>
+            <span>zanim będę pisał dalej kod 😇</span></span>
     </section>
     <section class="slide" style="background-color:black">
         <figure>
@@ -7157,7 +7162,7 @@
     </section>
     <section class="slide creamPPPGragient">
         <span class="shout colors" >Wzorzec projektowy Builder<br />
-            <span>🛑</span></span>
+            <span>👷</span></span>
     </section>
     <section class="slide" style="background-color:black">
         <figure>
@@ -7168,7 +7173,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ScoringRulesFactory</h2>
+                <h2 class="headerCODE PP PP">CategoryBuilder</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -7234,11 +7239,23 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ScoringRulesFactory</h2>
+                <h2 class="headerCODE PP PP">JudgeBuilder</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
                         public class JudgeBuilder
                         {
                             private string login = &quot;guest&quot;;
@@ -7286,11 +7303,89 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ScoringRulesFactory</h2>
+                <h2 class="headerCODE PP PP">SpeakerWebsitesBuilder</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
                         public class SpeakerWebsitesBuilder
                         {
                             public static SpeakerWebsitesBuilder GivenSpeakerWebsites()
@@ -7401,11 +7496,57 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ScoringRulesFactory</h2>
+                <h2 class="headerCODE PP PP">SpeakerBuilder</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class SpeakerBuilder
                         {
                             private Name name = new Name(&quot;Jan&quot;, &quot;B&quot;);
@@ -7484,11 +7625,131 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ScoringRulesFactory</h2>
+                <h2 class="headerCODE PP PP">SpeakerBuilder</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class CallForSpeechBuilder
                         {
                             private static Category category = CategoryBuilder.GivenCategory().Build();
@@ -7663,8 +7924,9 @@
                 <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+
                         public class AgeInYearsTests
                         {
                             [Fact]
@@ -7703,15 +7965,108 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Sprawdźmy czy mówca i jego wiek dobrze działają <br />
+           <span> 🙃
+            <br />
+        </span></span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">SpeakerBuilder</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class SpeakerTests
                         {
                             [Fact]
@@ -7831,6 +8186,12 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Sprawdźmy czy nasze zasady oceny maszynowej zgłoszenia działa dobrze<br />
+           <span> 🙃
+            <br />
+        </span></span>
+    </section>
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/application/10.PNG" alt="blog">
@@ -7840,38 +8201,44 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Speaker_Have_Blog_SpeakerMustHaveBlogOrGitHub_Rule_IsSatisfied</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 23px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 23px !important;">
                         private readonly ScoringRulesFactory scoringRulesFactory
                         = new ScoringRulesFactory();
                     
-                    [Fact]
-                    public void Speaker_Have_Blog_SpeakerMustHaveBlogOrGitHub_Rule_IsSatisfied()
-                    {
-                        var cfs = GivenCallForSpeech()
-                        .WithSpeaker(speaker =&gt; speaker.
-                         WithSpeakerWebsites
-                         (web =&gt; web.ClearWebsites()
-                         .WithBlog(&quot;http://cezary.pl&quot;)))
-                        .Build();
-                    
-                        var rule = new SpeakerMustHaveBlogOrGitHub();
-                        var ruleCheckResult = rule.IsSatisfiedBy(cfs);
-                    
-                        ruleCheckResult.Should().BeTrue();
-                    }
+                        [Fact]
+                        public void Speaker_Have_Blog_SpeakerMustHaveBlogOrGitHub_Rule_IsSatisfied()
+                        {
+                            var cfs = GivenCallForSpeech()
+                            .WithSpeaker(speaker =&gt; speaker.
+                            WithSpeakerWebsites
+                            (web =&gt; web.ClearWebsites()
+                            .WithBlog(&quot;http://cezary.pl&quot;)))
+                            .Build();
+                        
+                            var rule = new SpeakerMustHaveBlogOrGitHub();
+                            var ruleCheckResult = rule.IsSatisfiedBy(cfs);
+                        
+                            ruleCheckResult.Should().BeTrue();
+                        }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+
+
+
+
+
+    
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Speaker_Have_GitHub_SpeakerMustHaveBlogOrGitHub_Rule_IsSatisfied</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -7902,7 +8269,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Speaker_Age_Is_17_SpeakerAgeMusteBeAbove17_Rule_IsNotSatisfied</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -7927,7 +8294,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Speaker_Age_Is_70_SpeakerAgeMusteBeBelow70_Rule_IsNotSatisfied</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -7952,7 +8319,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Speaker_Doesnt_Have_Any_SocialMedia_SpeakerMustHaveAtLeastOneSocialMedia_IsNotSatisfied</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -7976,10 +8343,16 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Zobacz przykład testowania dla całej listy parametrów  <br />
+           <span> 👾
+            <br />
+        </span></span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Speaker_Does_Have_JustOne_SocialMedia_SpeakerMustHaveAtLeastOneSocialMedia_IsSatisfied</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8005,7 +8378,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">SpeakerWebsitesTestData</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8031,6 +8404,12 @@
             </div>
         </div>
     </section>
+    <section class="slide conicG2">
+        <span class="shout colors" >Z FluentAssetion możesz stworzyć swoje własne metody rozszerniowe  <br />
+           <span> ustawione po metodzie Should().TwojeSprwadzenie()
+            <br />
+        </span></span>
+    </section>
         <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/application/11.PNG" alt="blog">
@@ -8040,14 +8419,15 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechAssertExtension</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
                         public static class CallForSpeechAssertExtension
                         {
-                            public static CallForSpeechAssert Should(this CallForSpeech cfs)
+                            public static CallForSpeechAssert Should
+                            (this CallForSpeech cfs)
                                 =&gt; new CallForSpeechAssert(cfs);
                         }
                     </code>
@@ -8058,80 +8438,128 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechAssert</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
                         public class CallForSpeechAssert : 
                         ReferenceTypeAssertions&lt;CallForSpeech, CallForSpeechAssert&gt;
-                    {
-                        public CallForSpeechAssert(CallForSpeech cfs)
-                            : base(cfs)
                         {
-                    
+                            public CallForSpeechAssert(CallForSpeech cfs)
+                                : base(cfs)
+                            {
+                        
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; BeInStatus(CallForSpeechStatus expectedStatus)
+                            {
+                                Subject.Status.Should().Be(expectedStatus);
+                                return new AndConstraint&lt;CallForSpeechAssert&gt;(this);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; BeAccepted()
+                            {
+                                return BeInStatus(CallForSpeechStatus.AcceptedByJudge);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; BePreliminaryAcceptedByJudge()
+                            {
+                                return BeInStatus(CallForSpeechStatus.PreliminaryAcceptedByJudge);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; BeRejected()
+                            {
+                                return BeInStatus(CallForSpeechStatus.Rejected);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; BeNew()
+                            {
+                                return BeInStatus(CallForSpeechStatus.New);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; BeEvaluatedByMachine()
+                            {
+                                return BeInStatus(CallForSpeechStatus.EvaluatedByMachine);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; ScoreIsNull()
+                            {
+                                Subject.Score.Should().BeNull();
+                                return new AndConstraint&lt;CallForSpeechAssert&gt;(this);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; ScoreIs(CallForSpeechMachineScore expectedScore)
+                            {
+                                Subject.Score?.Score.Should().Be(expectedScore);
+                                return new AndConstraint&lt;CallForSpeechAssert&gt;(this);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; HaveRedScore()
+                            {
+                                return ScoreIs(CallForSpeechMachineScore.Red);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; HaveGreenScore()
+                            {
+                                return ScoreIs(CallForSpeechMachineScore.Green);
+                            }
+                        
+                            public AndConstraint&lt;CallForSpeechAssert&gt; HaveYellowScore()
+                            {
+                                return ScoreIs(CallForSpeechMachineScore.Yellow);
+                            }
+                        
+                            protected override string Identifier =&gt; &quot;CallForSpeechAssert&quot;;
                         }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; BeInStatus(CallForSpeechStatus expectedStatus)
-                        {
-                            Subject.Status.Should().Be(expectedStatus);
-                            return new AndConstraint&lt;CallForSpeechAssert&gt;(this);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; BeAccepted()
-                        {
-                            return BeInStatus(CallForSpeechStatus.AcceptedByJudge);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; BePreliminaryAcceptedByJudge()
-                        {
-                            return BeInStatus(CallForSpeechStatus.PreliminaryAcceptedByJudge);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; BeRejected()
-                        {
-                            return BeInStatus(CallForSpeechStatus.Rejected);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; BeNew()
-                        {
-                            return BeInStatus(CallForSpeechStatus.New);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; BeEvaluatedByMachine()
-                        {
-                            return BeInStatus(CallForSpeechStatus.EvaluatedByMachine);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; ScoreIsNull()
-                        {
-                            Subject.Score.Should().BeNull();
-                            return new AndConstraint&lt;CallForSpeechAssert&gt;(this);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; ScoreIs(CallForSpeechMachineScore expectedScore)
-                        {
-                            Subject.Score?.Score.Should().Be(expectedScore);
-                            return new AndConstraint&lt;CallForSpeechAssert&gt;(this);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; HaveRedScore()
-                        {
-                            return ScoreIs(CallForSpeechMachineScore.Red);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; HaveGreenScore()
-                        {
-                            return ScoreIs(CallForSpeechMachineScore.Green);
-                        }
-                    
-                        public AndConstraint&lt;CallForSpeechAssert&gt; HaveYellowScore()
-                        {
-                            return ScoreIs(CallForSpeechMachineScore.Yellow);
-                        }
-                    
-                        protected override string Identifier =&gt; &quot;CallForSpeechAssert&quot;;
-                    }
                     </code>
                 </pre>
             </div>
@@ -8149,14 +8577,20 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/proces.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">NewCallForSpeech_IsCreatedIn_NewStatus_AndNullScore</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 21px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 21px !important;">
                         private readonly ScoringRulesFactory scoringRulesFactory = new ScoringRulesFactory();
 
                         [Fact]
@@ -8180,7 +8614,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">ValidCallForSpeech_EvaluationScore_IsGreen</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8216,7 +8650,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">InvalidCallForSpeech_EvaluationScore_IsRed</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8250,7 +8684,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeech_InStatusNew_EvaluatedGreen_PreliminaryAccept_Then_Jugde_CanAccept</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8292,7 +8726,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeech_InStatusNew_EvaluatedGreen_PreliminaryAccepted_Then_JugdeFormDiffrentCategory_CannotAccept</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8330,7 +8764,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeech_InStatusNew_EvaluatedGreen_CanBeRejected</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8368,7 +8802,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeech_InStatusNew_EvaluatedGreen_PreliminaryAccepted_CanBeRejected</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8407,7 +8841,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeech_WithoutScore_NOTEvaluatedByMachine_CanBeRejected</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8440,7 +8874,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeec_Accepted_CannotBeRejected</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8476,7 +8910,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeec_Accepted_CannotBeRejected</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -8615,8 +9049,8 @@
     </section>
     <section class="slide creamPPPGragient">
         <span class="shout colors" >Dlaczego warto robić testy <br />
-           <span> 😎
-            <br />🏗️
+           <span> 
+            <br />🙈🙉🙊
         </span></span>
     </section>
     <section class="slide" style="background-color:black">
@@ -8639,8 +9073,8 @@
     </section>
     <section class="slide creamPPPGragient">
         <span class="shout colors" >Testy są na zielono więc idziemy dalej <br />
-           <span> 😎
-            <br />🏗️
+           <span> 🟢🟢🟢
+            <br />
         </span></span>
     </section>
     <section class="slide" style="background-color:black">
@@ -8649,7 +9083,7 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
-    <section class="slide creamPPPGragient">
+    <section class="slide conicG">
         <span class="shout colors" >Piszemy więc projekty<br /> <span>Core z CQRS
             👨‍💻
         </span></span>
@@ -8660,10 +9094,10 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
-    <section class="slide creamPPP">
-        <span class="shout colors" ><span>Problem z mapowaniem obiektów ?
-            <br />😨
-        </span></span>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Problem z mapowaniem obiektów ?
+            <br />
+            <span>😨</span></span>
     </section>
     <section class="slide" style="background-color:black">
         <figure>
@@ -8679,7 +9113,7 @@
         </figure>
     </section>
 
-    <section class="slide creamPPP">
+    <section class="slide creamPPPGragient">
         <span class="shout colors" ><span>Wzorzec projektowy Mediator
         </span></span>
     </section>
@@ -8712,9 +9146,9 @@
             </div>
           </div>
     </section>  
-    <section class="slide creamPPP">
-        <span class="shout colors" ><span>CQRS<br />😌
-        </span></span>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >CQRS<br />
+            <span>😌</span></span>
     </section>
     <section class="slide creamPP  fullscreen">
         <div class="grid-containerOnlyThree ">
@@ -8744,9 +9178,9 @@
             </div>
           </div>
     </section>  
-    <section class="slide creamPP">
-        <span class="shout colors" ><span>Dlaczego nie stworzyć klasę "Service" ?
-        </span></span>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Dlaczego nie stworzyć klasę
+            <span>"Service"</span> ?</span>
     </section>
     <section class="slide creamPP fullscreen smaller">
         <div class="grid-container-slidepoint">
@@ -8805,10 +9239,10 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
-    <section class="slide creamPPP">
-        <span class="shout colors" ><span>Chcemy walidować każdy command ?
-            <br />😨
-        </span></span>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Chcemy walidować każdy command ?
+            <br />
+            <span>😆</span></span>
     </section>
     <section class="slide creamPP fullscreen smaller">
         <div class="grid-container-slidepoint">
@@ -8832,14 +9266,14 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
-    <section class="slide creamPPP">
-        <span class="shout colors" ><span>Dobry powód do dodania swoich wyjątków <br />
-            ??
-        </span></span>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Dobry powód do dodania swoich wyjątków <br />
+            <span>??</span></span>
     </section>
-    <section class="slide creamPPP">
-        <span class="shout colors" ><span>Nie <br /> Będziemy zwracać błędy walidacyjne w response jako status<br />
-        </span></span>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" ><span>Nie</span><br /> 
+            Będziemy zwracać błędy walidacyjne w response jako status<br />
+        </span>
     </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
@@ -8847,8 +9281,8 @@
                 <h2 class="headerCODE PP PP">Wszystkie paczki nuget</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-xml">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 13px;overflow: hidden;  " class="language-xml">
+                    <code style="line-height: 13px !important;">
                         &lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
 
                         &lt;PropertyGroup&gt;
@@ -8908,11 +9342,11 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechInListViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
                         public class CallForSpeechInListViewModel
                         {
                             public int Id { get; set; }
@@ -8929,14 +9363,20 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy pobieranie listy CallForSpeech<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechInListViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
                         public class CallForSpeechInListViewModel
                         {
                             public int Id { get; set; }
@@ -8947,7 +9387,6 @@
                     
                             public Guid UniqueId { get; set; }
                         }
-                    }
                     </code>
                 </pre>
             </div>
@@ -8956,11 +9395,11 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetAllCallForSpeechesQuery</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
                         public class GetAllCallForSpeechesQuery : IRequest&lt;
                         GetAllCallForSpeechesQueryHandlerResponse&gt;
                         {
@@ -8976,48 +9415,65 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetAllCallForSpeechesQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class GetAllCallForSpeechesQueryHandler :
                         IRequestHandler&lt;GetAllCallForSpeechesQuery, GetAllCallForSpeechesQueryHandlerResponse&gt;
-               {
-                   private readonly ICallForSpeechRepository _callRepository;
-                   private readonly IZEsCallForSpeechRepository _zEscallRepository;
-               
-                   private readonly IMapper _mapper;
-               
-                   public GetAllCallForSpeechesQueryHandler(ICallForSpeechRepository callRepository,
-                       IZEsCallForSpeechRepository ZEscallRepository,
-               
-                       IMapper mapper)
-                   {
-                       _mapper = mapper;
-                       _zEscallRepository = ZEscallRepository;
-                       _callRepository = callRepository;
-                   }
-               
-                   public async Task&lt;GetAllCallForSpeechesQueryHandlerResponse&gt; Handle(GetAllCallForSpeechesQuery request, CancellationToken cancellationToken)
-                   {
-                       ExecutionStatus&lt;IReadOnlyList&lt;CallForSpeech&gt;&gt; databaseresult = null;
-               
-                       if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                           databaseresult = await _zEscallRepository.GetCollectionAsync(request.Filter);
-                       else
-                           databaseresult = await _callRepository.GetCollectionAsync(request.Filter);
-               
-                       if (databaseresult.Success)
-                       {
-                           var allordered = databaseresult.Value.OrderBy(x =&gt; x.Id);
-                           var allmaped = _mapper.Map&lt;List&lt;CallForSpeechInListViewModel&gt;&gt;(databaseresult.Value);
-                           return new GetAllCallForSpeechesQueryHandlerResponse(allmaped);
-                       }
-               
-                       return new GetAllCallForSpeechesQueryHandlerResponse(databaseresult.RemoveGeneric());
-                   }
-               }
+                        {
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IZEsCallForSpeechRepository _zEscallRepository;
+                        
+                            private readonly IMapper _mapper;
+                        
+                            public GetAllCallForSpeechesQueryHandler(ICallForSpeechRepository callRepository,
+                                IZEsCallForSpeechRepository ZEscallRepository,
+                        
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _zEscallRepository = ZEscallRepository;
+                                _callRepository = callRepository;
+                            }
+                        
+                            public async Task&lt;GetAllCallForSpeechesQueryHandlerResponse&gt; 
+                            Handle(GetAllCallForSpeechesQuery request, CancellationToken cancellationToken)
+                            {
+                                ExecutionStatus&lt;IReadOnlyList&lt;CallForSpeech&gt;&gt; databaseresult = null;
+                        
+                                if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                    databaseresult = await _zEscallRepository.GetCollectionAsync(request.Filter);
+                                else
+                                    databaseresult = await _callRepository.GetCollectionAsync(request.Filter);
+                        
+                                if (databaseresult.Success)
+                                {
+                                    var allordered = databaseresult.Value.OrderBy(x =&gt; x.Id);
+                                    var allmaped = _mapper.Map&lt;List&lt;CallForSpeechInListViewModel&gt;&gt;
+                                    (databaseresult.Value);
+                                    return new GetAllCallForSpeechesQueryHandlerResponse(allmaped);
+                                }
+                        
+                                return new GetAllCallForSpeechesQueryHandlerResponse(databaseresult.RemoveGeneric());
+                            }
+                        }
                     </code>
                 </pre>
             </div>
@@ -9026,11 +9482,24 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetAllCallForSpeechesQueryHandlerResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+                        
+
+
+
                         public class GetAllCallForSpeechesQueryHandlerResponse : BaseResponse
                         {
                             public List&lt;CallForSpeechInListViewModel&gt; List { get; }
@@ -9074,6 +9543,12 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy pobieranie konkretnego CallForSpeech<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/application/16.PNG" alt="blog">
@@ -9083,7 +9558,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -9111,7 +9586,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCallForSpeechQuery</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -9131,68 +9606,89 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCallForSpeechQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class GetCallForSpeechQueryHandler :
                         IRequestHandler&lt;GetCallForSpeechQuery, GetCallForSpeechQueryHandlerResponse&gt;
-            {
-            
-                private readonly ICallForSpeechRepository _callRepository;
-                private readonly IMapper _mapper;
-                private readonly IZEsCallForSpeechRepository _zEscallRepository;
-            
-                public GetCallForSpeechQueryHandler(ICallForSpeechRepository callRepository,
-                     IZEsCallForSpeechRepository zEscallRepository,
-                    IMapper mapper)
-                {
-                    _mapper = mapper;
-                    _zEscallRepository = zEscallRepository;
-                    _callRepository = callRepository;
-                }
-            
-                public async Task&lt;GetCallForSpeechQueryHandlerResponse&gt; Handle(GetCallForSpeechQuery request, CancellationToken cancellationToken)
-                {
-                    ExecutionStatus&lt;CallForSpeech&gt; databaseOperationCfs = null;
-            
-            
-                    if (request.CallForSpeechUniqueId != null)
-                        if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                            databaseOperationCfs = await _zEscallRepository.GetByIdAsync(request.CallForSpeechUniqueId);
-                        else
-                            databaseOperationCfs = await _callRepository.GetByIdAsync(request.CallForSpeechUniqueId);
-                    else
-                        if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                        databaseOperationCfs = await _zEscallRepository.GetByIdAsync(request.CallForSpeechId);
-                    else
-                        databaseOperationCfs = await _callRepository.GetByIdAsync(request.CallForSpeechId);
-            
-            
-            
-                    if (!databaseOperationCfs.Success)
-                        return new GetCallForSpeechQueryHandlerResponse(databaseOperationCfs
-                            .RemoveGeneric());
-            
-                    var cfsMaped = _mapper.Map&lt;CallForSpeechViewModel&gt;(databaseOperationCfs.Value);
-            
-                    return new GetCallForSpeechQueryHandlerResponse(cfsMaped);
-                }
-            }
+                        {
+                        
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IMapper _mapper;
+                            private readonly IZEsCallForSpeechRepository _zEscallRepository;
+                        
+                            public GetCallForSpeechQueryHandler(ICallForSpeechRepository callRepository,
+                                IZEsCallForSpeechRepository zEscallRepository,
+                                IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _zEscallRepository = zEscallRepository;
+                                _callRepository = callRepository;
+                            }
+                        
+                            public async Task&lt;GetCallForSpeechQueryHandlerResponse&gt; 
+                            Handle(GetCallForSpeechQuery request, CancellationToken cancellationToken)
+                            {
+                                ExecutionStatus&lt;CallForSpeech&gt; databaseOperationCfs = null;
+                        
+                        
+                                if (request.CallForSpeechUniqueId != null)
+                                    if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                        databaseOperationCfs = await _zEscallRepository.GetByIdAsync(request.CallForSpeechUniqueId);
+                                    else
+                                        databaseOperationCfs = await _callRepository.GetByIdAsync(request.CallForSpeechUniqueId);
+                                else
+                                    if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                    databaseOperationCfs = await _zEscallRepository.GetByIdAsync(request.CallForSpeechId);
+                                else
+                                    databaseOperationCfs = await _callRepository.GetByIdAsync(request.CallForSpeechId);
+                        
+                        
+                        
+                                if (!databaseOperationCfs.Success)
+                                    return new GetCallForSpeechQueryHandlerResponse(databaseOperationCfs
+                                        .RemoveGeneric());
+                        
+                                var cfsMaped = _mapper.Map&lt;CallForSpeechViewModel&gt;(databaseOperationCfs.Value);
+                        
+                                return new GetCallForSpeechQueryHandlerResponse(cfsMaped);
+                            }
+                        }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCallForSpeechQueryHandlerResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+
+
+
+
+
                         public class GetCallForSpeechQueryHandlerResponse : BaseResponse
                         {
                             public CallForSpeechViewModel CallForSpeech { get; }
@@ -9213,7 +9709,7 @@
                             }
                     
                             public GetCallForSpeechQueryHandlerResponse(ExecutionStatus status, string message)
-                        : base(status, message)
+                            : base(status, message)
                             {
                     
                             }
@@ -9242,14 +9738,20 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy pobieranie listy wszystkich kategorii<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CategoryInListViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
                         public class CategoryInListViewModel
                         {
                             public int Id { get; set; }
@@ -9269,11 +9771,11 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCategoriesListQuery</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
                         public class GetCategoriesListQuery
                         : IRequest&lt;GetCategoriesListQueryResponse&gt;
                        {
@@ -9287,46 +9789,52 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCategoriesListQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
                         public class GetCategoriesListQueryHandler :
                         IRequestHandler&lt;GetCategoriesListQuery, GetCategoriesListQueryResponse&gt;
-                    {
-                        private readonly ICategoryRepository _categoryRepository;
-                        private readonly IZEsCategoryRepository _zEscategoryRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public GetCategoriesListQueryHandler(IMapper mapper,
-                            ICategoryRepository categoryRepository,
-                            IZEsCategoryRepository zEscategoryRepository)
                         {
-                            _mapper = mapper;
-                            _categoryRepository = categoryRepository;
-                            _zEscategoryRepository = zEscategoryRepository;
+                            private readonly ICategoryRepository _categoryRepository;
+                            private readonly IZEsCategoryRepository _zEscategoryRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public GetCategoriesListQueryHandler(IMapper mapper,
+                                ICategoryRepository categoryRepository,
+                                IZEsCategoryRepository zEscategoryRepository)
+                            {
+                                _mapper = mapper;
+                                _categoryRepository = categoryRepository;
+                                _zEscategoryRepository = zEscategoryRepository;
+                            }
+                        
+                        
+                            public async Task&lt;GetCategoriesListQueryResponse&gt; Handle
+                                (GetCategoriesListQuery request, CancellationToken cancellationToken)
+                            {
+                                ExecutionStatus&lt;IReadOnlyList&lt;Category&gt;&gt; databaseOperation = null;
+                        
+                                if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                    databaseOperation = await _zEscategoryRepository.GetAllAsync();
+                                else
+                                    databaseOperation = await _categoryRepository.GetAllAsync();
+                        
+                                if (!databaseOperation.Success)
+                                    return new GetCategoriesListQueryResponse(databaseOperation.RemoveGeneric());
+                        
+                                var ordered = databaseOperation.Value.OrderBy(a =&gt; a.Name);
+                                var mpaed = _mapper.Map&lt;List&lt;CategoryInListViewModel&gt;&gt;(ordered);
+                                return new GetCategoriesListQueryResponse(mpaed);
+                            }
                         }
-                    
-                    
-                        public async Task&lt;GetCategoriesListQueryResponse&gt; Handle
-                            (GetCategoriesListQuery request, CancellationToken cancellationToken)
-                        {
-                            ExecutionStatus&lt;IReadOnlyList&lt;Category&gt;&gt; databaseOperation = null;
-                    
-                            if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                                databaseOperation = await _zEscategoryRepository.GetAllAsync();
-                            else
-                                databaseOperation = await _categoryRepository.GetAllAsync();
-                    
-                            if (!databaseOperation.Success)
-                                return new GetCategoriesListQueryResponse(databaseOperation.RemoveGeneric());
-                    
-                            var ordered = databaseOperation.Value.OrderBy(a =&gt; a.Name);
-                            var mpaed = _mapper.Map&lt;List&lt;CategoryInListViewModel&gt;&gt;(ordered);
-                            return new GetCategoriesListQueryResponse(mpaed);
-                        }
-                    }
                     </code>
                 </pre>
             </div>
@@ -9335,11 +9843,16 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCategoriesListQueryResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+
+
+
+
+
                         public class GetCategoriesListQueryResponse : BaseResponse
                         {
                             public List&lt;CategoryInListViewModel&gt; List { get; }
@@ -9382,16 +9895,22 @@
             </div>
         </div>
     </section>
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy pobieranie konkretnej kategorii<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCategoryQuery</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class GetCategoryQuery : IRequest&lt;GetCategoryQueryResponse&gt;
+                <pre style="font-size: 23px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 23px !important;">
+                        public class GetCategoryQuery 
+                        : IRequest&lt;GetCategoryQueryResponse&gt;
                         {
                             public QueryWitchDataBase queryWitchDataBase { get; set; }
                         
@@ -9407,11 +9926,23 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCategoryQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 15px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
                         public class GetCategoryQueryHandler : IRequestHandler&lt;GetCategoryQuery, GetCategoryQueryResponse&gt;
                         {
                             private readonly ICategoryRepository _categoryRepository;
@@ -9440,10 +9971,11 @@
                                         databaseOperation = await _categoryRepository.GetByIdAsync(request.CategoryUniqueId);
                                 else
                                     if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                                    databaseOperation = await _zEscategoryRepository.GetByIdAsync(request.CategoryId);
-                                else
-                                    databaseOperation = await _categoryRepository.GetByIdAsync(request.CategoryId);
+                                        databaseOperation = await _zEscategoryRepository.GetByIdAsync(request.CategoryId);
+                                    else
+                                        databaseOperation = await _categoryRepository.GetByIdAsync(request.CategoryId);
                         
+
                                 if (!databaseOperation.Success)
                                     return new GetCategoryQueryResponse(databaseOperation.RemoveGeneric());
                         
@@ -9460,11 +9992,19 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetCategoryQueryResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+
+
+
+
+
+
+
+
                         public class GetCategoryQueryResponse : BaseResponse
                         {
                             public CategoryDto Category { get; }
@@ -9517,101 +10057,98 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy pobieranie listy wszystkich sędziów kategorii<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetJudgesInListQuery</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
                         public class GetJudgesInListQuery
                         : IRequest&lt;GetJudgesInListQueryResponse&gt;
-                   {
-                       public QueryWitchDataBase queryWitchDataBase { get; set; }
-                   }
+                        {
+                            public QueryWitchDataBase queryWitchDataBase 
+                            { get; set; }
+                        }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetJudgesInListQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class GetCategoriesListQuery
-                        : IRequest&lt;GetCategoriesListQueryResponse&gt;
-                       {
-                            public QueryWitchDataBase queryWitchDataBase { get; set; }
-                       }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 15px !important;">
+
+
+
+
+
+
                         public class GetJudgesInListQueryHandler :
                         IRequestHandler&lt;GetJudgesInListQuery, GetJudgesInListQueryResponse&gt;
-                    {
-                        private readonly IJudgeRepository _judgeRepository;
-                        private readonly IZEsJudgeRepository _zEsjudgeRepository;
-                        private readonly IMapper _mapper;
-                    
-                        public GetJudgesInListQueryHandler(IMapper mapper,
-                            IJudgeRepository judgeRepository,
-                            IZEsJudgeRepository zEsjudgeRepository)
                         {
-                            _mapper = mapper;
-                            _judgeRepository = judgeRepository;
-                            _zEsjudgeRepository = zEsjudgeRepository;
+                            private readonly IJudgeRepository _judgeRepository;
+                            private readonly IZEsJudgeRepository _zEsjudgeRepository;
+                            private readonly IMapper _mapper;
+                        
+                            public GetJudgesInListQueryHandler(IMapper mapper,
+                                IJudgeRepository judgeRepository,
+                                IZEsJudgeRepository zEsjudgeRepository)
+                            {
+                                _mapper = mapper;
+                                _judgeRepository = judgeRepository;
+                                _zEsjudgeRepository = zEsjudgeRepository;
+                            }
+                        
+                        
+                            public async Task&lt;GetJudgesInListQueryResponse&gt; Handle
+                                (GetJudgesInListQuery request, CancellationToken cancellationToken)
+                            {
+                                ExecutionStatus&lt;IReadOnlyList&lt;Judge&gt;&gt; databaseoperation =
+                                    null;
+                        
+                                if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
+                                    databaseoperation = await _zEsjudgeRepository.GetAllAsync();
+                                else
+                                    databaseoperation = await _judgeRepository.GetAllAsync();
+                        
+                                if (!databaseoperation.Success)
+                                    return new GetJudgesInListQueryResponse
+                                        (databaseoperation.RemoveGeneric());
+                        
+                                var ordered = databaseoperation.Value.OrderBy(a =&gt; a.Name.Last);
+                                var maped = _mapper.Map&lt;List&lt;JudgesInListViewModel&gt;&gt;(ordered);
+                        
+                                return new GetJudgesInListQueryResponse(maped);
+                            }
                         }
-                    
-                    
-                        public async Task&lt;GetJudgesInListQueryResponse&gt; Handle
-                            (GetJudgesInListQuery request, CancellationToken cancellationToken)
-                        {
-                            ExecutionStatus&lt;IReadOnlyList&lt;Judge&gt;&gt; databaseoperation =
-                                null;
-                    
-                            if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                                databaseoperation = await _zEsjudgeRepository.GetAllAsync();
-                            else
-                                databaseoperation = await _judgeRepository.GetAllAsync();
-                    
-                            if (!databaseoperation.Success)
-                                return new GetJudgesInListQueryResponse
-                                    (databaseoperation.RemoveGeneric());
-                    
-                            var ordered = databaseoperation.Value.OrderBy(a =&gt; a.Name.Last);
-                            var maped = _mapper.Map&lt;List&lt;JudgesInListViewModel&gt;&gt;(ordered);
-                    
-                            return new GetJudgesInListQueryResponse(maped);
-                        }
-                    }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">JudgesInListViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
                         public class JudgesInListViewModel
                         {
                             public int Id { get; set; }
@@ -9634,11 +10171,17 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetJudgesInListQueryResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+
+
+
+
+
+
                         public class GetJudgesInListQueryResponse : BaseResponse
                         {
                             public List&lt;JudgesInListViewModel&gt; List { get; }
@@ -9682,15 +10225,23 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Zobaczmy pobieranie  konkretnego sędziego <br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetJudgeQuery</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class GetJudgeQuery : IRequest&lt;GetJudgeQueryResponse&gt;
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+
+                        public class GetJudgeQuery : 
+                        IRequest&lt;GetJudgeQueryResponse&gt;
                         {
                             public JudgeId JudeId { get; set; }
                         
@@ -9706,11 +10257,14 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">JudgeViewModel</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+
+
+
                         public class JudgeViewModel
                         {
                             public int Id { get; set; }
@@ -9722,13 +10276,9 @@
                         
                             public CategoryDto Category { get; set; }
                         
-                            public List&lt;EmailDto&gt; Emails { get; set; }
                             public DateTime Birthdate { get; set; }
-                            public List&lt;PhoneDto&gt; Phones { get; set; }
                         
                             public int Version { get; set; }
-                        
-                        
                         }
                     </code>
                 </pre>
@@ -9738,11 +10288,11 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetJudgeQueryHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 15px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 15px !important;">
                         public class GetJudgeQueryHandler :
                         IRequestHandler&lt;GetJudgeQuery, GetJudgeQueryResponse&gt;
                     {
@@ -9771,7 +10321,7 @@
                                     databaseoperation = await _judgeRepository.GetByIdAsync(request.JudgeUniqueId);
                             else
                                 if (request.queryWitchDataBase == QueryWitchDataBase.WithEventSourcing)
-                                databaseoperation = await _zEsjudgeRepository.GetByIdAsync(request.JudeId);
+                                    databaseoperation = await _zEsjudgeRepository.GetByIdAsync(request.JudeId);
                             else
                                 databaseoperation = await _judgeRepository.GetByIdAsync(request.JudeId);
                     
@@ -9791,11 +10341,14 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GetJudgeQueryResponse</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+
+
+
                         public class GetJudgeQueryResponse : BaseResponse
                         {
                             public JudgeViewModel Judge { get; }
@@ -11013,7 +11566,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">EvaluateCallForSpeechCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -11021,127 +11574,62 @@
                         public class EvaluateCallForSpeechCommandHandler :
                         IRequestHandler&lt;EvaluateCallForSpeechCommand,
                             EvaluateCallForSpeechCommandResponse&gt;
-                 {
-                     private readonly ICallForSpeechRepository _callRepository;
-                     private readonly IScoringRulesFactory _scoringRulesFactory;
-                     private readonly IMapper _mapper;
-                 
-                     public EvaluateCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
-                          IScoringRulesFactory scoringRulesFactory, IMapper mapper)
-                     {
-                         _scoringRulesFactory = scoringRulesFactory;
-                         _callRepository = callRepository;
-                         _mapper = mapper;
-                     }
-                 
-                     public async Task&lt;EvaluateCallForSpeechCommandResponse&gt; Handle(EvaluateCallForSpeechCommand request,
-                         CancellationToken cancellationToken)
-                     {
-                         var idc = new CallForSpeechUniqueId(request.CallForSpeechUniqueId);
-                         var databaseOperation = await _callRepository.GetByIdAsync(idc);
-                 
-                         if (databaseOperation.Success == false)
-                         {
-                             if (databaseOperation.Reason == Reason.ReturnedNull)
-                                 return new EvaluateCallForSpeechCommandResponse(ResponseStatus.BadQuery);
-                             if (databaseOperation.Reason == Reason.Error)
-                                 return new EvaluateCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
-                         }
-                 
-                         //try
-                         //{
-                         //    cfs.Evaluate(_scoringRulesFactory.DefaultSet);
-                         //}
-                         //catch (Exception ex)
-                         //{
-                         //    return new EvaluateCallForSpeechCommandResponse();
-                         //}
-                         var cfs = databaseOperation.Value;
-                         var result = cfs.TryEvaluate(_scoringRulesFactory.DefaultSet);
-                         if (!result.Success)
-                             return new EvaluateCallForSpeechCommandResponse(result);
-                 
-                         var saveop = await _callRepository.SaveEvaluatationAsync(idc, cfs.Score, cfs.Status);
-                 
-                         if (!saveop.Success)
-                             return new EvaluateCallForSpeechCommandResponse(saveop);
-                 
-                         var scoredto = _mapper.Map&lt;ScoreDto&gt;(cfs.Score);
-                         return new EvaluateCallForSpeechCommandResponse(scoredto);
-                     }
-                 
-                 }
+                        {
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IScoringRulesFactory _scoringRulesFactory;
+                            private readonly IMapper _mapper;
+                        
+                            public EvaluateCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
+                                IScoringRulesFactory scoringRulesFactory, IMapper mapper)
+                            {
+                                _scoringRulesFactory = scoringRulesFactory;
+                                _callRepository = callRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public async Task&lt;EvaluateCallForSpeechCommandResponse&gt; Handle(EvaluateCallForSpeechCommand request,
+                                CancellationToken cancellationToken)
+                            {
+                                var idc = new CallForSpeechUniqueId(request.CallForSpeechUniqueId);
+                                var databaseOperation = await _callRepository.GetByIdAsync(idc);
+                        
+                                if (databaseOperation.Success == false)
+                                {
+                                    if (databaseOperation.Reason == Reason.ReturnedNull)
+                                        return new EvaluateCallForSpeechCommandResponse(ResponseStatus.BadQuery);
+                                    if (databaseOperation.Reason == Reason.Error)
+                                        return new EvaluateCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                //try
+                                //{
+                                //    cfs.Evaluate(_scoringRulesFactory.DefaultSet);
+                                //}
+                                //catch (Exception ex)
+                                //{
+                                //    return new EvaluateCallForSpeechCommandResponse();
+                                //}
+                                var cfs = databaseOperation.Value;
+                                var result = cfs.TryEvaluate(_scoringRulesFactory.DefaultSet);
+                                if (!result.Success)
+                                    return new EvaluateCallForSpeechCommandResponse(result);
+                        
+                                var saveop = await _callRepository.SaveEvaluatationAsync(idc, cfs.Score, cfs.Status);
+                        
+                                if (!saveop.Success)
+                                    return new EvaluateCallForSpeechCommandResponse(saveop);
+                        
+                                var scoredto = _mapper.Map&lt;ScoreDto&gt;(cfs.Score);
+                                return new EvaluateCallForSpeechCommandResponse(scoredto);
+                            }
+                        
+                        }
                     </code>
                 </pre>
             </div>
         </div>
     </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class EvaluateCallForSpeechCommandHandler :
-                        IRequestHandler&lt;EvaluateCallForSpeechCommand,
-                            EvaluateCallForSpeechCommandResponse&gt;
-                 {
-                     private readonly ICallForSpeechRepository _callRepository;
-                     private readonly IScoringRulesFactory _scoringRulesFactory;
-                     private readonly IMapper _mapper;
-                 
-                     public EvaluateCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
-                          IScoringRulesFactory scoringRulesFactory, IMapper mapper)
-                     {
-                         _scoringRulesFactory = scoringRulesFactory;
-                         _callRepository = callRepository;
-                         _mapper = mapper;
-                     }
-                 
-                     public async Task&lt;EvaluateCallForSpeechCommandResponse&gt; Handle(EvaluateCallForSpeechCommand request,
-                         CancellationToken cancellationToken)
-                     {
-                         var idc = new CallForSpeechUniqueId(request.CallForSpeechUniqueId);
-                         var databaseOperation = await _callRepository.GetByIdAsync(idc);
-                 
-                         if (databaseOperation.Success == false)
-                         {
-                             if (databaseOperation.Reason == Reason.ReturnedNull)
-                                 return new EvaluateCallForSpeechCommandResponse(ResponseStatus.BadQuery);
-                             if (databaseOperation.Reason == Reason.Error)
-                                 return new EvaluateCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
-                         }
-                 
-                         //try
-                         //{
-                         //    cfs.Evaluate(_scoringRulesFactory.DefaultSet);
-                         //}
-                         //catch (Exception ex)
-                         //{
-                         //    return new EvaluateCallForSpeechCommandResponse();
-                         //}
-                         var cfs = databaseOperation.Value;
-                         var result = cfs.TryEvaluate(_scoringRulesFactory.DefaultSet);
-                         if (!result.Success)
-                             return new EvaluateCallForSpeechCommandResponse(result);
-                 
-                         var saveop = await _callRepository.SaveEvaluatationAsync(idc, cfs.Score, cfs.Status);
-                 
-                         if (!saveop.Success)
-                             return new EvaluateCallForSpeechCommandResponse(saveop);
-                 
-                         var scoredto = _mapper.Map&lt;ScoreDto&gt;(cfs.Score);
-                         return new EvaluateCallForSpeechCommandResponse(scoredto);
-                     }
-                 
-                 }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
+
 
     <section class="slide" style="background-color:black">
         <figure>
@@ -11488,7 +11976,7 @@
 
 
 
-    <section class="slide creamPPPGragient">
+    <section class="slide conicG">
         <span class="shout colors" >Piszemy więc projekty<br /> <span>Infrastruture
             👨‍💻
         </span></span>
