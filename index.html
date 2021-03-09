@@ -313,7 +313,7 @@
     </section>
     <section class="slide creamGG">
         <span class="shout colors" ><span>Czy baza danych event store musi być MongoDb?
-            <br /
+            <br />
             Czy muszę mieć dwie bazy ?
         </span></span>
     </section>
@@ -2130,6 +2130,7 @@
                             }
                         
                             //tylko do testów
+                            //dobrze by było zaracać nową klasę
                             public void InjectUniqueId(CategoryUniqueId uniqueId)
                             {
                                 this.UniqueId = uniqueId;
@@ -2270,10 +2271,11 @@
                         
                             public Category Category { get; init; }
                         
+                            //Stworzenie listy właściwości był debilnym pomysłem
+                            //public List&lt;Email&gt; Emails { get; set; }
                             public DateTime Birthdate { get; set; }
                         
-                            public Judge(Login login, Password password, Name name,
-                             Category category)
+                            public Judge(Login login, Password password, Name name, Category category)
                             {
                                 Id = new JudgeId(0);
                                 Login = login;
@@ -2281,11 +2283,10 @@
                                 Name = name;
                                 Category = category;
                                 UniqueId = JudgeUniqueId.NewUniqueId();
-                                Version = 1;
+                                Version = 0;
                             }
                         
-                            public Judge(int id, Login login, Password password, Name name,
-                             Category category)
+                            public Judge(int id, Login login, Password password, Name name, Category category)
                             {
                                 Id = new JudgeId(id);
                                 Login = login;
@@ -2293,14 +2294,14 @@
                                 Name = name;
                                 Category = category;
                                 UniqueId = JudgeUniqueId.NewUniqueId();
-                                Version = 1;
+                                Version = 0;
                             }
                         
-                            //For serialization if used
+                            //To satisfy EF Core
                             public Judge()
                             {
                                 UniqueId = JudgeUniqueId.NewUniqueId();
-                                Version = 1;
+                                Version = 0;
                             }
                         
                             public bool CanAccept(CategoryId categoryId)
@@ -2893,7 +2894,7 @@
                                 PreliminaryDecision = preliminaryDecision;
                                 FinalDecision = finalDecision;
                                 Category = category;
-                                Version = 1;
+                                Version = 0;
                                 UniqueId = CallForSpeechUniqueId.NewUniqueId();
                             }
 
@@ -2901,7 +2902,7 @@
                             protected CallForSpeech()
                             {
                                 UniqueId = CallForSpeechUniqueId.NewUniqueId();
-                                Version = 1;
+                                Version = 0;
                             }
 
                             public void Evaluate(ScoringRules rules)
@@ -3058,6 +3059,12 @@
             <br /><span>🗣️🎙️
         </span></span>
     </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/problemy-desrializacja.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
@@ -3100,32 +3107,32 @@
                             public Name Name { get; init; }
                             public Address Address { get; init; }
                             public SpeakerWebsites SpeakerWebsites { get; init; }
-                        
+                    
                             public string Biography { get; init; }
                             public Contact Contact { get; init; }
-                        
+                    
                             public Speaker(Name name, DateTime birthdate,
-                                Address address, SpeakerWebsites socialMedia, string Bio,
+                                Address address, SpeakerWebsites speakerWebsites, string biography,
                                 Contact contact)
                             {
                                 if (contact == null)
-                                    throw new ArgumentException(&quot;Contact cannot be null&quot;);
-                                if (Bio == null)
-                                    throw new ArgumentException(&quot;Biography cannot be null&quot;);
+                                    throw new ArgumentException("Contact cannot be null");
+                                if (biography == null)
+                                    throw new ArgumentException("biography cannot be null");
                                 if (name == null)
-                                    throw new ArgumentException(&quot;Name cannot be null&quot;);
+                                    throw new ArgumentException("Name cannot be null");
                                 if (address == null)
-                                    throw new ArgumentException(&quot;Address cannot be null&quot;);
+                                    throw new ArgumentException("Address cannot be null");
                                 if (birthdate == default)
-                                    throw new ArgumentException(&quot;Birthdate cannot be empty&quot;);
-                                if (socialMedia == default)
-                                    throw new ArgumentException(&quot;SpeakerWebsites cannot be empty&quot;);
-                        
+                                    throw new ArgumentException("Birthdate cannot be empty");
+                                if (speakerWebsites == default)
+                                    throw new ArgumentException("SpeakerWebsites cannot be empty");
+                    
                                 Name = name;
                                 Birthdate = birthdate;
                                 Address = address;
-                                SpeakerWebsites = socialMedia;
-                                Biography = Bio;
+                                SpeakerWebsites = speakerWebsites;
+                                Biography = biography;
                                 Contact = contact;
                             }
                         
@@ -3167,6 +3174,7 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
@@ -4088,7 +4096,7 @@
                                 PreliminaryDecision = preliminaryDecision;
                                 FinalDecision = finalDecision;
                                 Category = category;
-                                Version = 1;
+                                Version = 0;
                                 UniqueId = CallForSpeechUniqueId.NewUniqueId();
                             }
 
@@ -4096,7 +4104,7 @@
                             protected CallForSpeech()
                             {
                                 UniqueId = CallForSpeechUniqueId.NewUniqueId();
-                                Version = 1;
+                                Version = 0;
                             }
 
                             public void Evaluate(ScoringRules rules)
@@ -5908,8 +5916,6 @@
 
 
 
-
-
                         public abstract class BaseResponse
                         {
                             public ResponseStatus Status { get; set; }
@@ -5976,9 +5982,7 @@
                                     if (status.Reason == Reason.ConcurrencyOlderVersionSendedWhenNewerIsInEventStore)
                                         Status = ResponseStatus.ConcurrencyOlderVersionSendedWhenNewerIsInEventStore;
                         
-                                    //Message = status.MessageForClient;
-                                    //if (ResponseMessagesOption.ShowDeveloperMessages)
-                                    //    Message += status.MessageForDeveloper;
+                                    Message = status.Message;
                                 }
                                 else
                                 {
@@ -6011,9 +6015,7 @@
                                         Status = ResponseStatus.ConcurrencyOlderVersionSendedWhenNewerIsInEventStore;
                         
                                     Message = message;
-                                    Message += status.MessageForClient;
-                                    //if (ResponseMessagesOption.ShowDeveloperMessages)
-                                    //    Message += status.MessageForDeveloper;
+                                    Message += status.Message;
                                 }
                                 else
                                 {
@@ -6058,7 +6060,9 @@
                                 else
                                     Status = ResponseStatus.Success;
                             }
-                        }                     
+                        }
+
+                        
                     </code>
                 </pre>
             </div>
@@ -8295,6 +8299,7 @@
             </div>
         </div>
     </section>
+    
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/application/13.PNG" alt="blog">
@@ -10606,7 +10611,7 @@
                             public NameDto Name { get; set; }
                         
                             public CategoryDto Category { get; set; }
-                        
+                            public int Version { get; set; }
                         
                             public DateTime Birthdate { get; }
                         
@@ -14456,6 +14461,12 @@
             <br />🏗️
         </span></span>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Jakie kod HTTP będzie zwracać i kiedy ? <br />
+           <span> 😎
+            <br />🏗️
+        </span></span>
+    </section>
     <section class="slide" style="background-color:black">
         <figure>
             <img class="cover" src="pictures/API/06.PNG" alt="blog">
@@ -15520,11 +15531,89 @@
                     <li class="next bold">Problemy i wady Event Sourcing CDN</li>
                     <ol class="nonumbers">
                         <li class="next">Audyt? A co na to RODO ?</li>
-                        <li class="next">Jak kasować tą historię ?</li>
+                        <li class="next">Jak kasować tę historię ?</li>
                     </ol>
                 </ol>
             </div>
           </div>
+    </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">Zaleta : Snapshoot</li>
+                    <ol class="nonumbers">
+                        <li class="next">Mając historię zdarzeń byłoby możliwe cofnać system w historii</li>
+                        <li class="next">Temat jednak jeszcze bardziej zaawansowany i go wam dziś nie pokaże</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
+    <section class="slide creamPP smaller   compact ">
+        <h2>Podsumowanie EventSourcing</h2>
+        <ol class="nonumbers">
+            <li class="next">Zdolność skalowania odczytu i zapisu niezależnie od siebie</li>
+            <li class="next">Wolność w tworzeniu dwolnie dopasowanych modelu</li>
+            <li class="next">Dato centryczne podejście do modelowanie systemu</li>
+            <li class="next">Luźno powiązana logika biznesowa</li>
+            <li class="next">Audit Driven Application</li>
+        </ol>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Co zmienia event sourcing w naszym systemie ?
+        </span></span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-normal2.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-02.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-03.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/proces.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-04.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-05.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/ADOBE/workflow-06.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
     </section>
 
     <section class="slide creamPPPGragient">
@@ -16110,19 +16199,18 @@
                                 }
                             }
                         
-                            public ExecutionStatus LoadFromHistory(IEnumerable&lt;DomainEvent&gt; history)
+                            public void LoadFromHistory(IEnumerable&lt;DomainEvent&gt; history)
                             {
                                 foreach (var e in history)
                                 {
-                                    if (e.Version != Version + 1)
-                                        //return ExecutionStatus.EventStoreEventsOutOfOrderError
-                                        //    ($&quot;Eventstore gave event for aggregate {e.Key} out of order&quot;);
-                                        throw new EventsOutOfOrderException(e.Key);
+                                    //if (e.Version != Version + 1)
+                                    //    throw new EventsOutOfOrderException(e.Key);
+
                                     ApplyChange(e, false);
                                 }
                         
-                                return ExecutionStatus.EventStoreOk();
-                            }
+                                //return ExecutionStatus.EventStoreOk();
+                            }F
                         
                             protected void ApplyChange(DomainEvent @event)
                             {
@@ -16142,7 +16230,7 @@
                                     else
                                     {
                                         Key = @event.Key;
-                                        Version++;
+                                        //Version++;
                                     }
                                 }
                             }
@@ -17467,6 +17555,22 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPP fullscreen " >
+        <div class="grid-container-slidepoint">
+            <div class="SlidePointImage">
+                <img  src="pictures/old/circular/circular desing-01-t.png" />
+            </div>
+            <div class="SlidePointText">
+                <ol class="nonumbers">
+                    <li class="next bold">BSON</li>
+                    <ol class="nonumbers">
+                        <li class="next">Innaczej Binnarny JSON</li>
+                        <li class="next">BSON ma swoje został stworzony w 2009 roku dla MongoDB</li>
+                    </ol>
+                </ol>
+            </div>
+          </div>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
@@ -18142,38 +18246,38 @@
                     <code style="line-height: 29px !important;">
                         public class ESCreateCategoryCommandHandler
                         : IRequestHandler&lt;ESCreateCategoryCommand, ESCreateCategoryCommandResponse&gt;
-                   {
-                       private readonly ISessionForEventSourcing _sessionForEventSourcing;
-                       private readonly IMapper _mapper;
-                   
-                       public ESCreateCategoryCommandHandler(
-                           ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
-                       {
-                           _mapper = mapper;
-                           _sessionForEventSourcing = sessionForEventSourcing;
-                       }
-                   
-                       public async Task&lt;ESCreateCategoryCommandResponse&gt; Handle
-                           (ESCreateCategoryCommand request, CancellationToken cancellationToken)
-                       {
-                           var validator = new ESCreateCategoryCommandValidator();
-                           var validatorResult = await validator.ValidateAsync(request);
-                   
-                           if (!validatorResult.IsValid)
-                               return new ESCreateCategoryCommandResponse(validatorResult);
-                   
-                           var category = _mapper.Map&lt;Category&gt;(request);
-                   
-                           var item = new CategoryAggregate(category);
-                   
-                           _sessionForEventSourcing.Add&lt;CategoryAggregate&gt;(item);
-                           _sessionForEventSourcing.Commit();
-                   
-                           var ids = _mapper.Map&lt;IdsDto&gt;(category.Ids());
-                           return new ESCreateCategoryCommandResponse(ids);
-                       }
-                   
-                   }
+                        {
+                            private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                            private readonly IMapper _mapper;
+                        
+                            public ESCreateCategoryCommandHandler(
+                                ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _sessionForEventSourcing = sessionForEventSourcing;
+                            }
+                        
+                            public async Task&lt;ESCreateCategoryCommandResponse&gt; Handle
+                                (ESCreateCategoryCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new ESCreateCategoryCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new ESCreateCategoryCommandResponse(validatorResult);
+                        
+                                var category = _mapper.Map&lt;Category&gt;(request);
+                        
+                                var item = new CategoryAggregate(category);
+                        
+                                _sessionForEventSourcing.Add&lt;CategoryAggregate&gt;(item);
+                                _sessionForEventSourcing.Commit();
+                        
+                                var ids = _mapper.Map&lt;IdsDto&gt;(category.Ids());
+                                return new ESCreateCategoryCommandResponse(ids);
+                            }
+                        
+                        }
                     </code>
                 </pre>
             </div>
@@ -18435,13 +18539,1325 @@
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
+    <section class="slide creamG">
+        <span class="shout colors" ><span>Przykład z sędziami
+        </span></span>
+    </section>
     <section class="slide" style="background-color:black">
         <figure>
-            <img class="cover" src="pictures/eventstore/06.PNG" alt="blog">
+            <img class="cover" src="pictures/eventstore/07.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsCreateJudgeCommand : IRequest&lt;EsCreateJudgeCommandResponse&gt;
+                        {
+                            public string Login { get; set; }
+                            public string Password { get; set; }
+                            public NameDto Name { get; set; }
+                            public DateTime Birthdate { get; set; }
+                        
+                            public int CategoryId { get; set; }
+                            public CategoryDto Category
+                            {
+                                get
+                                {
+                                    return new CategoryDto() { Id = CategoryId };
+                                }
+                            }
+                            internal JudgeUniqueId UniqueId { get; }
+                        
+                            public EsCreateJudgeCommand()
+                            {
+                                UniqueId = JudgeUniqueId.New();
+                                Version = 0;
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsCreateJudgeCommandHandler
+                        : IRequestHandler&lt;EsCreateJudgeCommand, EsCreateJudgeCommandResponse&gt;
+                        {
+                            private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                            private readonly IMapper _mapper;
+                        
+                            public EsCreateJudgeCommandHandler(
+                                ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _sessionForEventSourcing = sessionForEventSourcing;
+                            }
+                        
+                            public async Task&lt;EsCreateJudgeCommandResponse&gt; Handle
+                                (EsCreateJudgeCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new EsCreateJudgeCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new EsCreateJudgeCommandResponse(validatorResult);
+                        
+                                var judge = _mapper.Map&lt;Judge&gt;(request);
+                        
+                                var item = new JudgeAggregate(judge);
+                        
+                                _sessionForEventSourcing.Add&lt;JudgeAggregate&gt;(item);
+                                _sessionForEventSourcing.Commit();
+                        
+                                var ids = _mapper.Map&lt;IdsDto&gt;(judge.Ids());
+                                return new EsCreateJudgeCommandResponse(ids);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/create-judge.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsUpdateJudgeCommand : IRequest&lt;EsUpdateJudgeCommandResponse&gt;
+                        {
+                            public Guid UniqueId { get; set; }
+                        
+                            public string Login { get; set; }
+                            public string Password { get; set; }
+                            public NameDto Name { get; set; }
+                            public int CategoryId { get; set; }
+                        
+                            public int Version { get; set; }
+                        
+                            public CategoryDto Category
+                            {
+                                get
+                                {
+                                    return new CategoryDto() { Id = CategoryId };
+                                }
+                            }
+                        
+                            public DateTime Birthdate { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsUpdateJudgeCommandHandler :
+                        IRequestHandler&lt;EsUpdateJudgeCommand, EsUpdateJudgeCommandResponse&gt;
+                        {
+                            private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                            private readonly IMapper _mapper;
+                        
+                            public EsUpdateJudgeCommandHandler(
+                                ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
+                            {
+                                _mapper = mapper;
+                                _sessionForEventSourcing = sessionForEventSourcing;
+                            }
+                        
+                            public async Task&lt;EsUpdateJudgeCommandResponse&gt; Handle(EsUpdateJudgeCommand request, CancellationToken cancellationToken)
+                            {
+                                var validator = new EsUpdateJudgeCommandValidator();
+                                var validatorResult = await validator.ValidateAsync(request);
+                        
+                                if (!validatorResult.IsValid)
+                                    return new EsUpdateJudgeCommandResponse(validatorResult);
+                        
+                                var judgedto = _mapper.Map&lt;JudgeDto&gt;(request);
+                                var judge = _mapper.Map&lt;Judge&gt;(judgedto);
+                        
+                                var eventstoreResult = Get&lt;JudgeAggregate&gt;(judge.UniqueId.GetAggregateKey());
+                        
+                                if (!eventstoreResult.Success)
+                                    return await Task.FromResult(new
+                                        EsUpdateJudgeCommandResponse(eventstoreResult.RemoveGeneric()));
+                        
+                                if ((eventstoreResult.Value.Version - 1) &gt; judge.Version)
+                                    return new EsUpdateJudgeCommandResponse
+                                        (ExecutionStatus.EventStoreConcurrencyError
+                                        (@$&quot;You sended old version. Your version {judge.Version}. Should be :{eventstoreResult.Value.Version - 1}&quot;));
+                        
+                                eventstoreResult.Value.Update(judge);
+                                _sessionForEventSourcing.Commit();
+                        
+                                return new EsUpdateJudgeCommandResponse();
+                            }
+                        
+                        
+                        
+                            private ExecutionStatus&lt;T&gt; Get&lt;T&gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot
+                            {
+                                return _sessionForEventSourcing.Get&lt;T&gt;(id, expectedVersion);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/update judge.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-03.PNG" alt="blog">
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
     </section>
 
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/08.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+ 
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsSubmitCallForSpeechCommand : IRequest&lt;EsSubmitCallForSpeechCommandResponse&gt;
+                        {
+                            public int CategoryId { get; set; }
+                        
+                            public CategoryDto Category
+                            {
+                                get
+                                {
+                                    return new CategoryDto() { Id = CategoryId };
+                                }
+                            }
+                        
+                            public int Version { get; }
+                        
+                            public CallForSpeechUniqueId UniqueId { get; }
+                        
+                            public EsSubmitCallForSpeechCommand()
+                            {
+                                UniqueId = CallForSpeechUniqueId.NewUniqueId();
+                                Version = 0;
+                            }
+                        
+                            public SpeakerDto Speaker { get; set; }
+                        
+                            public SpeechDto Speech { get; set; }
+                            public string Number { get; set; }
+                            public RegistrationDto Registration
+                            {
+                                get
+                                {
+                                    return new RegistrationDto()
+                                    {
+                                        RegistrationDate = AppTime.Now()
+                                    };
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsSubmitCallForSpeechCommandHandler
+                        : IRequestHandler&lt;EsSubmitCallForSpeechCommand, EsSubmitCallForSpeechCommandResponse&gt;
+                      {
+                          private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                          private readonly IMapper _mapper;
+                      
+                      
+                          public EsSubmitCallForSpeechCommandHandler(
+                              ISessionForEventSourcing sessionForEventSourcing, IMapper mapper)
+                          {
+                              _mapper = mapper;
+                              _sessionForEventSourcing = sessionForEventSourcing;
+                          }
+                      
+                      
+                          public async Task&lt;EsSubmitCallForSpeechCommandResponse&gt; Handle
+                              (EsSubmitCallForSpeechCommand request, CancellationToken cancellationToken)
+                          {
+                              var validator = new EsSubmitCallForSpeechCommandValidation();
+                              var validatorResult = await validator.ValidateAsync(request);
+                      
+                              if (!validatorResult.IsValid)
+                                  return new EsSubmitCallForSpeechCommandResponse(validatorResult);
+                      
+                              var csf = _mapper.Map&lt;CallForSpeech&gt;(request);
+                      
+                              var item = new CallForSpeechAggregate(csf);
+                      
+                              _sessionForEventSourcing.Add&lt;CallForSpeechAggregate&gt;(item);
+                              _sessionForEventSourcing.Commit();
+                      
+                              var ids = _mapper.Map&lt;IdsDto&gt;(csf.Ids());
+                              return new EsSubmitCallForSpeechCommandResponse(ids);
+                          }
+                      }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/submit call for speech.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsEvaluateCallForSpeechCommand
+                        : IRequest&lt;EsEvaluateCallForSpeechCommandResponse&gt;
+                        {
+                            public Guid CallForSpeechIdUnique { get; set; }
+                            public int Version { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsEvaluateCallForSpeechCommandHandler
+                        : IRequestHandler&lt;EsEvaluateCallForSpeechCommand, EsEvaluateCallForSpeechCommandResponse&gt;
+                        {
+                            private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                            private readonly IMapper _mapper;
+                            private readonly IScoringRulesFactory _scoringRulesFactory;
+                        
+                            public EsEvaluateCallForSpeechCommandHandler(
+                                ISessionForEventSourcing sessionForEventSourcing, IMapper mapper,
+                                IScoringRulesFactory scoringRulesFactory)
+                            {
+                                _mapper = mapper;
+                                _sessionForEventSourcing = sessionForEventSourcing;
+                                _scoringRulesFactory = scoringRulesFactory;
+                            }
+                        
+                        
+                            public async Task&lt;EsEvaluateCallForSpeechCommandResponse&gt; Handle(EsEvaluateCallForSpeechCommand request, CancellationToken cancellationToken)
+                            {
+                                var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;
+                                    (request.CallForSpeechIdUnique);
+                        
+                                var eventstoreResult = Get&lt;CallForSpeechAggregate&gt;
+                                    (cfsuniqueId.GetAggregateKey());
+                        
+                                if (!eventstoreResult.Success)
+                                    return await Task.FromResult(new EsEvaluateCallForSpeechCommandResponse());
+                        
+                                var aggregateCallForSpeaker = eventstoreResult.Value;
+                        
+                                if (aggregateCallForSpeaker.Version &gt; request.Version)
+                                    return new EsEvaluateCallForSpeechCommandResponse
+                                        (ExecutionStatus.EventStoreConcurrencyError(@$&quot;You sended old version.
+                                        Yours {request.Version}. In Event database :{aggregateCallForSpeaker.Version}&quot;));
+                        
+                        
+                                var csf = _mapper.Map&lt;CallForSpeech&gt;(aggregateCallForSpeaker);
+                        
+                                var domainLogicResult = csf.TryEvaluate(_scoringRulesFactory.DefaultSet);
+                                if (!domainLogicResult.Success)
+                                    return new EsEvaluateCallForSpeechCommandResponse(domainLogicResult);
+                        
+                                aggregateCallForSpeaker.Evaulated(csf);
+                                _sessionForEventSourcing.Commit();
+                        
+                                var scoredto = _mapper.Map&lt;ScoreDto&gt;(csf.ScoreResult);
+                                return new EsEvaluateCallForSpeechCommandResponse(scoredto);
+                            }
+                        
+                            private ExecutionStatus&lt;T&gt; Get&lt;T&gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot
+                            {
+                                var a = _sessionForEventSourcing.Get&lt;T&gt;(id, expectedVersion);
+                                return a;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/evaluate-call-for-speech.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsPreliminaryAcceptCallForSpeechCommand
+                        :
+                            IRequest&lt;EsPreliminaryAcceptCallForSpeechCommandResponse&gt;
+                        {
+                            public Guid CallForSpeechUniqueId { get; set; }
+                            public int JudgeId { get; set; }
+                            public int Version { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EsPreliminaryAcceptCallForSpeechCommandHandler
+                        : IRequestHandler&lt;EsPreliminaryAcceptCallForSpeechCommand, EsPreliminaryAcceptCallForSpeechCommandResponse&gt;
+                        {
+                            private readonly ISessionForEventSourcing _sessionForEventSourcing;
+                            private readonly IMapper _mapper;
+                            private readonly IZEsJudgeRepository _zEsJudgeRepository;
+                        
+                            public EsPreliminaryAcceptCallForSpeechCommandHandler(
+                                ISessionForEventSourcing sessionForEventSourcing, IMapper mapper,
+                                IZEsJudgeRepository zEsJudgeRepository)
+                            {
+                                _mapper = mapper;
+                                _sessionForEventSourcing = sessionForEventSourcing;
+                                _zEsJudgeRepository = zEsJudgeRepository;
+                            }
+                        
+                        
+                            public async Task&lt;EsPreliminaryAcceptCallForSpeechCommandResponse&gt; Handle(EsPreliminaryAcceptCallForSpeechCommand request, CancellationToken cancellationToken)
+                            {
+                                var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
+                                var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
+                        
+                                var databaseOperationJudge = await _zEsJudgeRepository.GetByIdAsync(judgeId);
+                        
+                                if (!databaseOperationJudge.Success)
+                                {
+                                    if (databaseOperationJudge.Reason == Reason.ReturnedNull)
+                                        return new EsPreliminaryAcceptCallForSpeechCommandResponse(ResponseStatus.NotFoundInDataBase);
+                                    if (databaseOperationJudge.Reason == Reason.Error)
+                                        return new EsPreliminaryAcceptCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                var judge = databaseOperationJudge.Value;
+                        
+                                var eventstoreResult = Get&lt;CallForSpeechAggregate&gt;
+                                    (cfsuniqueId.GetAggregateKey());
+                        
+                                if (!eventstoreResult.Success)
+                                    return new EsPreliminaryAcceptCallForSpeechCommandResponse
+                                        (eventstoreResult.RemoveGeneric());
+                        
+                                var aggregateCallForSpeaker = eventstoreResult.Value;
+                        
+                                if (aggregateCallForSpeaker.Version &gt; request.Version)
+                                    return new EsPreliminaryAcceptCallForSpeechCommandResponse
+                                        (ExecutionStatus.EventStoreConcurrencyError(@$&quot;You sended old version.
+                                        Yours {request.Version}. In Event database :{aggregateCallForSpeaker.Version}&quot;));
+                        
+                        
+                                var csf = _mapper.Map&lt;CallForSpeech&gt;(aggregateCallForSpeaker);
+                        
+                                var domainLogicResult = csf.TryPreliminaryAccept(judge);
+                                if (!domainLogicResult.Success)
+                                    return new EsPreliminaryAcceptCallForSpeechCommandResponse(domainLogicResult);
+                        
+                                aggregateCallForSpeaker.PreliminaryAccepted(csf);
+                                _sessionForEventSourcing.Commit();
+                        
+                                return new EsPreliminaryAcceptCallForSpeechCommandResponse();
+                            }
+                        
+                            private ExecutionStatus&lt;T&gt; Get&lt;T&gt;(AggregateKey id, int? expectedVersion = null) where T : AggregateRoot
+                            {
+                                var a = _sessionForEventSourcing.Get&lt;T&gt;(id, expectedVersion);
+                                return a;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/callforspeechevething else.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-05.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/kolejka-06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Pora na subskrypcję strumienia zdarzeń z kolejki  <br />
+            <span>RabbitMQ</span>
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/background service/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class Constants
+                        {
+                            public const string QUEUE_JUDGE_CREATED = &quot;judge_created&quot;;
+                            public const string QUEUE_JUDGE_UPDATED = &quot;judge_updated&quot;;
+                            public const string QUEUE_JUDGE_DELETED = &quot;judge_deleted&quot;;
+                        
+                            public const string QUEUE_CATEGORY_CREATED = &quot;category_created&quot;;
+                            public const string QUEUE_CATEGORY_UPDATED = &quot;category_updated&quot;;
+                        
+                            public const string QUEUE_CALLFORSPEECH_SUBMITC = &quot;callforspeech_submit&quot;;
+                            public const string QUEUE_CALLFORSPEECH_REJECTC = &quot;callforspeech_reject&quot;;
+                            public const string QUEUE_CALLFORSPEECH_PRELIMINARY_ACCEPT = &quot;callforspeech_preminal_accept&quot;;
+                            public const string QUEUE_CALLFORSPEECH_EVALUATE = &quot;callforspeech_evaluate&quot;;
+                            public const string QUEUE_CALLFORSPEECH_ACCEPT = &quot;callforspeech_accept&quot;;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface ISettings
+                        {
+                            TimeSpan Frequency { get; set; }
+                            TimeSpan Timeout { get; set; }
+                        }
+                        
+                        public class Settings : ISettings
+                        {
+                            public TimeSpan Frequency { get; set; }
+                            public TimeSpan Timeout { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-json">
+                    <code style="line-height: 29px !important;">
+                        {
+                            "ConnectionStrings": {
+                              "GeekLemonConferenceConnectionString": "NotUsed",
+                              "ZEsGeekLemonConferenceConnectionString": "DataSource=C:/Users/PanNiebieski/source/repos/GeekLemonConference/GeekLemonConference.Api/DataBase/ZEsGeekLemonDB.db"
+                            },
+                            "RabbitMqSetting": {
+                              "username": "guest",
+                              "password": "guest",
+                              "hostname": "localhost",
+                              "uri": "amqp://localhost:5672/",
+                              "virtualhost": "/"
+                            },
+                            "Logging": {
+                              "LogLevel": {
+                                "Default": "Information",
+                                "Microsoft": "Warning",
+                                "Microsoft.Hosting.Lifetime": "Information"
+                              }
+                            },
+                            "AllowedHosts": "*"
+                          }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class MappingProfile : Profile
+                        {
+                            public MappingProfile()
+                            {
+                                CreateMap&lt;CategoryCreateEvent, Category&gt;();
+                                CreateMap&lt;CategoryUpdateEvent, Category&gt;();
+                        
+                                CreateMap&lt;JudgeCreatedEvent, Judge&gt;();
+                                CreateMap&lt;JudgeUpdatedEvent, Judge&gt;();
+                                CreateMap&lt;JudgeDeletedEvent, Judge&gt;();
+                        
+                                CreateMap&lt;CallForSpeechAcceptedEvent, CallForSpeech&gt;();
+                                CreateMap&lt;CallForSpeechEvaulatedEvent, CallForSpeech&gt;();
+                                CreateMap&lt;CallForSpeechPreliminaryAcceptEvent, CallForSpeech&gt;();
+                                CreateMap&lt;CallForSpeechRejectedEvent, CallForSpeech&gt;();
+                                CreateMap&lt;CallForSpeechSubmitEvent, CallForSpeech&gt;();
+                        
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class BackgroundEventHandlersServerService : BackgroundService
+                        {
+                            private readonly ILogger Logger;
+                            private readonly ISettings Settings;
+                        
+                            private readonly ISubscribeBase[] _subscribes;
+                        
+                            private string _ContentRootPath;
+                        
+                            public BackgroundEventHandlersServerService(ILogger logger, ISettings settings,
+                                IHostingEnvironment env,
+                                ISubscribeBase[] subscribes)
+                            {
+                                Settings = settings;
+                                Logger = logger;
+                                _subscribes = subscribes;
+                        
+                                _ContentRootPath = env.ContentRootPath;
+                            }
+                        
+                        
+                            protected async override Task ExecuteAsync(CancellationToken stoppingToken)
+                            {
+                                ConnectionFactory connectionFactory = new ConnectionFactory();
+                                var builder = new ConfigurationBuilder()
+                                    .SetBasePath(_ContentRootPath)
+                                    .AddJsonFile(&quot;appsettings.json&quot;, optional: false, reloadOnChange: false)
+                                    .AddEnvironmentVariables();
+                        
+                                builder.Build().GetSection(&quot;RabbitMqSetting&quot;).Bind(connectionFactory);
+                        
+                                using IConnection conn = connectionFactory.CreateConnection();
+                                using IModel channel = conn.CreateModel();
+                        
+                                Console.WriteLine(&quot;CreateConnection CreateModel&quot;);
+                        
+                                try
+                                {
+                                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                    foreach (var item in _subscribes)
+                                    {
+                                        channel.QueueDeclare(
+                                            queue: item.QUEUE_Name,
+                                            durable: false,
+                                            exclusive: false,
+                                            autoDelete: false,
+                        
+                                            arguments: null
+                                        );
+                        
+                                        Console.WriteLine($&quot;QueueDeclare {item.QUEUE_Name}&quot;);
+                                    }
+                        
+                                    foreach (var item in _subscribes)
+                                    {
+                                        item.StartSubing(channel);
+                                        Console.WriteLine($&quot;StartSubing {item.QUEUE_Name}&quot;);
+                                    }
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($&quot;Exception {ex}&quot;);
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                    LogError(ex.Message);
+                                }
+                        
+                                int i = 0;
+                                while (!stoppingToken.IsCancellationRequested)
+                                {
+                                    i++;
+                                    Console.ForegroundColor = (ConsoleColor)i;
+                                    Console.WriteLine($&quot;Still Working and Still Waiting&quot;);
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                        
+                                    if (i == 15)
+                                    {
+                                        Console.Clear();
+                                        i = 0;
+                                    }
+                        
+                        
+                                    await Task.Delay(Settings.Frequency, stoppingToken);
+                                }
+                            }
+                        
+                            public async override Task StopAsync(CancellationToken cancellationToken)
+                            {
+                                foreach (var item in _subscribes)
+                                {
+                                    try
+                                    {
+                                        item.Dispose();
+                                    }
+                                    catch (Exception)
+                                    {
+                        
+                                    }
+                        
+                                }
+                        
+                                await base.StopAsync(cancellationToken);
+                            }
+                        
+                            private void LogError(string error)
+                            {
+                                Logger.Error(error);
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/background service/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/background service/diagram.png" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public interface ISubscribeBase
+                        {
+                            string QUEUE_Name { get; }
+                            DomainEvent DeserializeObject(string json);
+                        
+                            Task HandleBasicDeliver(string consumerTag,
+                                ulong deliveryTag, bool redelivered, string exchange,
+                                string routingKey,
+                                IBasicProperties properties, ReadOnlyMemory&lt;byte&gt; body);
+                        
+                            void StartSubing(IModel channel);
+                        
+                            void Dispose();
+                        
+                            Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event);
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public abstract class SubscribeBase : ISubscribeBase
+                        {
+                            private MessageReceiverBase Consumer { get; set; }
+                            private IModel _channel;
+                        
+                            public abstract string QUEUE_Name { get; }
+                            public abstract DomainEvent DeserializeObject(string json);
+                            public abstract Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event);
+                        
+                            public void StartSubing(IModel channel)
+                            {
+                                _channel = channel;
+                                Consumer = new MessageReceiverBase(channel, this);
+                                channel.BasicConsume(this.QUEUE_Name,
+                                                   false, Consumer);
+                            }
+                        
+                            public async Task HandleBasicDeliver(string consumerTag, ulong deliveryTag,
+                                bool redelivered, string exchange, string routingKey, IBasicProperties
+                                properties, ReadOnlyMemory&lt;byte&gt; body)
+                            {
+                                var json = Encoding.UTF8.GetString(body.Span);
+                                var obj = DeserializeObject(json);
+                                var status = await HandleEvent(obj);
+                        
+                                if (status.Success)
+                                {
+                                    try
+                                    {
+                                        _channel.BasicAck(deliveryTag, false);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                        
+                                        throw;
+                                    }
+                                }
+                        
+                            }
+                        
+                            public void Dispose()
+                            {
+                                Consumer.Dispose();
+                            }
+                        
+                            
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class MessageReceiverBase : DefaultBasicConsumer
+                        {
+                            private readonly IModel _channel;
+                    
+                            private ISubscribeBase _messageReceiverBasez;
+                    
+                            public MessageReceiverBase(IModel channel, ISubscribeBase messageReceiverBasez)
+                            {
+                                _messageReceiverBasez = messageReceiverBasez;
+                                _channel = channel;
+                            }
+                    
+                            public override void HandleBasicDeliver(string consumerTag,
+                                ulong deliveryTag, bool redelivered, string exchange,
+                                string routingKey,
+                                IBasicProperties properties,  ReadOnlyMemory&lt;byte&gt; body)
+                            {
+                    
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine($"Consuming Message");
+                                Console.WriteLine(string.Concat("Message received from the exchange ", exchange));
+                                Console.WriteLine(string.Concat("Consumer tag: ", consumerTag));
+                                Console.WriteLine(string.Concat("Delivery tag: ", deliveryTag));
+                                Console.WriteLine(string.Concat("Routing tag: ", routingKey));
+                    
+                                var json = Encoding.UTF8.GetString(body.Span);
+                                Console.WriteLine(string.Concat("Message: ", json));
+                                Console.ForegroundColor = ConsoleColor.Gray;
+
+                                _messageReceiverBasez.HandleBasicDeliver
+                                    (consumerTag, deliveryTag, redelivered, exchange, routingKey, properties, body);
+                    
+                            }
+
+                            public void Dispose()
+                            {_channel.Dispose();}
+                                     
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SubscribeCreatedCategory : SubscribeBase
+                        {
+                            private IZEsCategoryRepository _zEsCategoryRepository;
+                            private IMapper _mapper;
+                        
+                            public SubscribeCreatedCategory(IZEsCategoryRepository ZEsCategoryRepository,
+                                IMapper mapper)
+                            {
+                                _zEsCategoryRepository = ZEsCategoryRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public override string QUEUE_Name =&gt; Constants.QUEUE_CATEGORY_CREATED;
+                        
+                            public override DomainEvent DeserializeObject(string json)
+                            {
+                                return JsonConvert.DeserializeObject&lt;CategoryCreateEvent&gt;(json);
+                            }
+                        
+                            public async override Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event)
+                            {
+                                CategoryCreateEvent categoryCreateEvent = @event as CategoryCreateEvent;
+                        
+                                var category = _mapper.Map&lt;Category&gt;(categoryCreateEvent);
+                        
+                                var execution = await _zEsCategoryRepository.AddAsync(category);
+                        
+                                return execution.RemoveGeneric();
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SubscribeUpdateCategory : SubscribeBase
+                        {
+                            private IZEsCategoryRepository _zEsCategoryRepository;
+                            private IMapper _mapper;
+                        
+                            public SubscribeUpdateCategory(IZEsCategoryRepository ZEsCategoryRepository,
+                                IMapper mapper)
+                            {
+                                _zEsCategoryRepository = ZEsCategoryRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public override string QUEUE_Name =&gt; Constants.QUEUE_CATEGORY_UPDATED;
+                        
+                            public override DomainEvent DeserializeObject(string json)
+                            {
+                                return JsonConvert.DeserializeObject&lt;CategoryUpdateEvent&gt;(json);
+                            }
+                        
+                            public override async Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event)
+                            {
+                                CategoryUpdateEvent categoryCreateEvent = @event as CategoryUpdateEvent;
+                        
+                                var category = _mapper.Map&lt;Category&gt;(categoryCreateEvent);
+                        
+                                var execution = await
+                                    _zEsCategoryRepository.UpdateByUniqueIdAsync(category);
+                        
+                                return execution;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SubscribeDeleteJudge : SubscribeBase
+                        {
+                            private IZEsJudgeRepository _zEsJudgeRepository;
+                            private IMapper _mapper;
+                        
+                            public SubscribeDeleteJudge(IZEsJudgeRepository zEsJudgeRepository,
+                                IMapper mapper) :
+                                base()
+                            {
+                                _zEsJudgeRepository = zEsJudgeRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public override string QUEUE_Name =&gt; Constants.QUEUE_JUDGE_DELETED;
+                        
+                            public override DomainEvent DeserializeObject(string json)
+                            {
+                                return JsonConvert.DeserializeObject&lt;JudgeDeletedEvent&gt;(json);
+                            }
+                        
+                            public override async Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event)
+                            {
+                                JudgeDeletedEvent judgeDeletedEvent = @event as JudgeDeletedEvent;
+                        
+                                var execution = await
+                                    _zEsJudgeRepository.DeleteAsync(judgeDeletedEvent.UniqueId);
+                        
+                                return execution;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SubscribeSubmitCallForSpeech : SubscribeBase
+                        {
+                            private IZEsCallForSpeechRepository _ZEsCallForSpeechRepository;
+                            private IMapper _mapper;
+                    
+                            public SubscribeSubmitCallForSpeech(IZEsCallForSpeechRepository zEsCallForSpeechRepository,
+                                IMapper mapper) :
+                                base()
+                            {
+                                _ZEsCallForSpeechRepository = zEsCallForSpeechRepository;
+                                _mapper = mapper;
+                            }
+                    
+                    
+                            public override string QUEUE_Name =&gt; Constants.QUEUE_CALLFORSPEECH_SUBMITC;
+                    
+                            public override DomainEvent DeserializeObject(string json)
+                            {
+                                return JsonConvert.DeserializeObject&lt;CallForSpeechSubmitEvent&gt;(json);
+                            }
+                    
+                            public async override Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event)
+                            {
+                                CallForSpeechSubmitEvent callForSpeechSubmitEvent = @event as CallForSpeechSubmitEvent;
+                    
+                                var cfs = _mapper.Map&lt;CallForSpeech&gt;(callForSpeechSubmitEvent);
+                    
+                                var execution = await
+                                    _ZEsCallForSpeechRepository.SubmitAsync(cfs);
+                    
+                                return execution.RemoveGeneric();
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class SubscribeEvaluateCallForSpeech : SubscribeBase
+                        {
+                            private IZEsCallForSpeechRepository _ZEsCallForSpeechRepository;
+                            private IMapper _mapper;
+                        
+                            public SubscribeEvaluateCallForSpeech(
+                                IZEsCallForSpeechRepository zEsCallForSpeechRepository,
+                                IMapper mapper) :
+                                base()
+                            {
+                                _ZEsCallForSpeechRepository = zEsCallForSpeechRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public override string QUEUE_Name =&gt; Constants.QUEUE_CALLFORSPEECH_EVALUATE;
+                        
+                            public override DomainEvent DeserializeObject(string json)
+                            {
+                                return JsonConvert.DeserializeObject&lt;CallForSpeechEvaulatedEvent&gt;(json);
+                            }
+                        
+                            public async override Task&lt;ExecutionStatus&gt; HandleEvent(DomainEvent @event)
+                            {
+                                CallForSpeechEvaulatedEvent callForSpeechRejectedEvent =
+                                    @event as CallForSpeechEvaulatedEvent;
+                        
+                                var cfs = _mapper.Map&lt;CallForSpeech&gt;(callForSpeechRejectedEvent);
+                        
+                                var execution = await
+                                    _ZEsCallForSpeechRepository
+                                    .SaveEvaluatationAsync
+                                    (cfs.Id, cfs.ScoreResult, cfs.Status);
+                        
+                                return execution;
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public abstract class SubscribeBase : ISubscribeBase
+                        {
+                        ................................
+                        public async Task HandleBasicDeliver(string consumerTag, ulong deliveryTag,
+                            bool redelivered, string exchange, string routingKey, IBasicProperties
+                            properties, ReadOnlyMemory&lt;byte&gt; body)
+                        {
+                            var json = Encoding.UTF8.GetString(body.Span);
+                            var obj = DeserializeObject(json);
+                            var status = await HandleEvent(obj);
+                        
+                            if (status.Success)
+                            {
+                                try
+                                {
+                                    _channel.BasicAck(deliveryTag, false);
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw;
+                                }
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class Startup
+                        {
+                            public IConfiguration Configuration { get; }
+                        
+                            public Startup(IConfiguration configuration)
+                            {
+                                Configuration = configuration;
+                            }
+                        
+                            public void ConfigureServices(IServiceCollection services)
+                            {
+                                services.AddAutoMapper(Assembly.GetExecutingAssembly());
+                                services.AddGeekLemonPersistenceDapperSQLiteServices(Configuration);
+                        
+                                var seriFileLogger = new LoggerConfiguration().WriteTo.File(@&quot;D:\Temp\&quot;).CreateLogger();
+                                services.AddSingleton&lt;Serilog.ILogger&gt;(seriFileLogger);
+                        
+                                services.AddSingleton&lt;ISettings&gt;(new Settings()
+                                {
+                                    Timeout = TimeSpan.FromSeconds(5),
+                                    Frequency = TimeSpan.FromSeconds(5),
+                                });
+                        
+                                services.AddTransient&lt;ISubscribeBase, SubscribeCreateJudge&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeUpdateJudge&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeDeleteJudge&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeCreatedCategory&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeUpdateCategory&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeSubmitCallForSpeech&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeRejectCallForSpeech&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribePreminalAcceptCallForSpeech&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeEvaluateCallForSpeech&gt;();
+                                services.AddTransient&lt;ISubscribeBase, SubscribeAcceptCallForSpeech&gt;();
+                        
+                                services.AddTransient&lt;ISubscribeBase[]&gt;
+                                    (p =&gt; p.GetServices&lt;ISubscribeBase&gt;().ToArray());
+                        
+                                services.AddHostedService&lt;BackgroundEventHandlersServerService&gt;();
+                            }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">AppTime, aby czas można było testować</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+                        {
+                            if (env.IsDevelopment())
+                            {
+                                app.UseDeveloperExceptionPage();
+                            }
+                
+                            app.UseRouting();
+                
+                            app.UseEndpoints(endpoints =>
+                            {
+                                endpoints.MapGet("/", async context =>
+                                {
+                                    await context.
+                                    Response.WriteAsync
+                                    ("GeekLemonConference.Infrastructure.BackgroundEventHandlersServer Working");
+                                });
+                            });
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/background service/04.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/background service/05.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/background service/06.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/eventstore/howthisworks.gif" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Fakty i mity EventSourcing <br />
+           <span> 😎
+            <br />🏗️
+        </span></span>
+    </section>
     <section class="slide creamG">
         <span class="shout colors" ><span>Podsumowanie
         </span></span>
