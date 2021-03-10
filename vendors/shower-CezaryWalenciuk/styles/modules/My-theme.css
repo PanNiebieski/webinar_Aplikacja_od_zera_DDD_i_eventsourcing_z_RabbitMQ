@@ -171,7 +171,7 @@ border-color: transparent transparent #FF6525;
 
 .slide.conicG {
 
-    background: conic-gradient(at 125% 50%, #b78cf7, #ff7c94, #ffcf0d, #ff7c94, #b78cf7);
+    background: conic-gradient(at 125% 50%, #715799, #aa5262, #b18f09, #a1505f, #755a9e);
     color: white;
 }
 
@@ -570,6 +570,12 @@ code[class*="language-"], pre[class*="language-"] {
       line-height: 0.8px;
       color: white;
   }
+
+  .smallerfont3 {
+    font-size: 80%;;
+    line-height: 120%;
+    color: white;
+}
 
   .smallerfont2 {
     font-size: 140% !important;;

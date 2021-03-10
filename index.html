@@ -817,7 +817,7 @@
         </figure>
     </section>
     <section class="slide creamGrey smaller  compact ">
-        <h2>Problemy z EventStroming</h2>
+        <h2>Problemy z EventStorming</h2>
         <ol class="nonumbers">
             <li class="next">Fajnie się to mapuje gdy budujesz system w którym będzie</li>
             <li class="next">CQRS</li>
@@ -1398,6 +1398,7 @@
             <li class="next"><span class="blue">using var</span> sqlconnection</li>
             <li class="next"><span class="blue">nameof</span> w Dapper bardzo się przyda</li>
             <li class="next">{get; <span class="blue">init;</span>}</li>
+            <li class="next"><span class="blue">Pattern Matching</span> raz został użyty</li>
             <li class="next">Może powinnien użyć <span class="blue">record</span> jako ValueObject</li>
             <li class="next">Natomiast mam klasę bazą <span class="yellow">ValueObject</span></li>
         </ol>
@@ -1542,7 +1543,7 @@
         <ol class="nonumbers">
             <li class=""><span class="yellow">ValueObject</span></li>
             <li class="next"><span class="green">Entity</span></li>
-            <li class="next"><span class="purple">Aggregate</span></li>
+            <li class="next"><span class="blue">Aggregate</span></li>
         </ol>
     </section>
     <section class="slide" style="background-color:black">
@@ -11034,7 +11035,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">DeleteJudgeCommandHandler</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
@@ -11405,6 +11406,130 @@
     </section>
     <section class="slide creamPPPGragient">
         <span class="shout colors" >
+            Command dla maszynowej oceny zgłoszenia na mowę<br />
+            <span>🔎</span>
+        </span>
+    </section>
+
+
+
+
+
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">EvaluateCallForSpeechCommand</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 29px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 29px !important;">
+                        public class EvaluateCallForSpeechCommand
+                        : IRequest&lt;EvaluateCallForSpeechCommandResponse&gt;
+                        {
+                            public Guid CallForSpeechUniqueId { get; set; }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">EvaluateCallForSpeechCommandHandler</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 17px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 17px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        public class EvaluateCallForSpeechCommandHandler :
+                        IRequestHandler&lt;EvaluateCallForSpeechCommand,
+                            EvaluateCallForSpeechCommandResponse&gt;
+                        {
+                            private readonly ICallForSpeechRepository _callRepository;
+                            private readonly IScoringRulesFactory _scoringRulesFactory;
+                            private readonly IMapper _mapper;
+                        
+                            public EvaluateCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
+                                IScoringRulesFactory scoringRulesFactory, IMapper mapper)
+                            {
+                                _scoringRulesFactory = scoringRulesFactory;
+                                _callRepository = callRepository;
+                                _mapper = mapper;
+                            }
+                        
+                            public async Task&lt;EvaluateCallForSpeechCommandResponse&gt; Handle(EvaluateCallForSpeechCommand request,
+                                CancellationToken cancellationToken)
+                            {
+                                var idc = new CallForSpeechUniqueId(request.CallForSpeechUniqueId);
+                                var databaseOperation = await _callRepository.GetByIdAsync(idc);
+                        
+                                if (databaseOperation.Success == false)
+                                {
+                                    if (databaseOperation.Reason == Reason.ReturnedNull)
+                                        return new EvaluateCallForSpeechCommandResponse(ResponseStatus.BadQuery);
+                                    if (databaseOperation.Reason == Reason.Error)
+                                        return new EvaluateCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
+                                }
+                        
+                                //try
+                                //{
+                                //    cfs.Evaluate(_scoringRulesFactory.DefaultSet);
+                                //}
+                                //catch (Exception ex)
+                                //{
+                                //    return new EvaluateCallForSpeechCommandResponse();
+                                //}
+                                
+                                var cfs = databaseOperation.Value;
+                                var result = cfs.TryEvaluate(_scoringRulesFactory.DefaultSet);
+                                if (!result.Success)
+                                    return new EvaluateCallForSpeechCommandResponse(result);
+                        
+                                var saveop = await _callRepository.SaveEvaluatationAsync(idc, cfs.Score, cfs.Status);
+                        
+                                if (!saveop.Success)
+                                    return new EvaluateCallForSpeechCommandResponse(saveop);
+                        
+                                var scoredto = _mapper.Map&lt;ScoreDto&gt;(cfs.Score);
+                                return new EvaluateCallForSpeechCommandResponse(scoredto);
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
             Command dla odmowy zgłoszenia na mowę<br />
             <span>🔎</span>
         </span>
@@ -11437,6 +11562,8 @@
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 16px !important;">
+
+
 
 
 
@@ -11545,7 +11672,6 @@
                         :
                         IRequest&lt;PreliminaryAcceptCallForSpeechCommandResponse&gt;
                         {
-
                             public Guid CallForSpeechUniqueId { get; set; }
                             public int JudgeId { get; set; }
                         }
@@ -11600,7 +11726,8 @@
                                 _mapper = mapper;
                             }
                         
-                            public async Task&lt;PreliminaryAcceptCallForSpeechCommandResponse&gt; Handle(PreliminaryAcceptCallForSpeechCommand request, CancellationToken cancellationToken)
+                            public async Task&lt;PreliminaryAcceptCallForSpeechCommandResponse&gt; 
+                            Handle(PreliminaryAcceptCallForSpeechCommand request, CancellationToken cancellationToken)
                             {
                                 var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
                                 var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
@@ -11687,7 +11814,15 @@
 
 
 
-                        
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11695,10 +11830,14 @@
                         public class AcceptCallForSpeechComandHandler
                         : IRequestHandler&lt;AcceptCallForSpeechCommand, AcceptCallForSpeechCommandResponse&gt;
                         {
+
+
                             private readonly ICallForSpeechRepository _callRepository;
                             private readonly IJudgeRepository _judegRepository;
                             private readonly IMapper _mapper;
                         
+
+
                             public AcceptCallForSpeechComandHandler(ICallForSpeechRepository callRepository,
                                 IJudgeRepository judegRepository, IMapper mapper
                             )
@@ -11709,7 +11848,8 @@
                             }
                         
                         
-                            public async Task&lt;AcceptCallForSpeechCommandResponse&gt; Handle(AcceptCallForSpeechCommand request, CancellationToken cancellationToken)
+                            public async Task&lt;AcceptCallForSpeechCommandResponse&gt; 
+                            Handle(AcceptCallForSpeechCommand request, CancellationToken cancellationToken)
                             {
                                 var cfsuniqueId = _mapper.Map&lt;CallForSpeechUniqueId&gt;(request.CallForSpeechUniqueId);
                                 var judgeId = _mapper.Map&lt;JudgeId&gt;(request.JudgeId);
@@ -11761,102 +11901,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class EvaluateCallForSpeechCommand
-                        : IRequest&lt;EvaluateCallForSpeechCommandResponse&gt;
-                    {
-                    
-                    
-                        public Guid CallForSpeechUniqueId { get; set; }
-                    }
-                    </code>
-                </pre>
-            </div>
-        </div>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Teraz zobaczmy armię klas Dto do mapowania<br />
+            <span>🔎</span>
+        </span>
     </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">EvaluateCallForSpeechCommandHandler</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public class EvaluateCallForSpeechCommandHandler :
-                        IRequestHandler&lt;EvaluateCallForSpeechCommand,
-                            EvaluateCallForSpeechCommandResponse&gt;
-                        {
-                            private readonly ICallForSpeechRepository _callRepository;
-                            private readonly IScoringRulesFactory _scoringRulesFactory;
-                            private readonly IMapper _mapper;
-                        
-                            public EvaluateCallForSpeechCommandHandler(ICallForSpeechRepository callRepository,
-                                IScoringRulesFactory scoringRulesFactory, IMapper mapper)
-                            {
-                                _scoringRulesFactory = scoringRulesFactory;
-                                _callRepository = callRepository;
-                                _mapper = mapper;
-                            }
-                        
-                            public async Task&lt;EvaluateCallForSpeechCommandResponse&gt; Handle(EvaluateCallForSpeechCommand request,
-                                CancellationToken cancellationToken)
-                            {
-                                var idc = new CallForSpeechUniqueId(request.CallForSpeechUniqueId);
-                                var databaseOperation = await _callRepository.GetByIdAsync(idc);
-                        
-                                if (databaseOperation.Success == false)
-                                {
-                                    if (databaseOperation.Reason == Reason.ReturnedNull)
-                                        return new EvaluateCallForSpeechCommandResponse(ResponseStatus.BadQuery);
-                                    if (databaseOperation.Reason == Reason.Error)
-                                        return new EvaluateCallForSpeechCommandResponse(ResponseStatus.DataBaseError);
-                                }
-                        
-                                //try
-                                //{
-                                //    cfs.Evaluate(_scoringRulesFactory.DefaultSet);
-                                //}
-                                //catch (Exception ex)
-                                //{
-                                //    return new EvaluateCallForSpeechCommandResponse();
-                                //}
-                                var cfs = databaseOperation.Value;
-                                var result = cfs.TryEvaluate(_scoringRulesFactory.DefaultSet);
-                                if (!result.Success)
-                                    return new EvaluateCallForSpeechCommandResponse(result);
-                        
-                                var saveop = await _callRepository.SaveEvaluatationAsync(idc, cfs.Score, cfs.Status);
-                        
-                                if (!saveop.Success)
-                                    return new EvaluateCallForSpeechCommandResponse(saveop);
-                        
-                                var scoredto = _mapper.Map&lt;ScoreDto&gt;(cfs.Score);
-                                return new EvaluateCallForSpeechCommandResponse(scoredto);
-                            }
-                        
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
+
+
+  
 
 
     <section class="slide" style="background-color:black">
@@ -11868,11 +11921,115 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Wszystkie klasy Dto</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 21px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 21px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class AddressDto
                         {
                             public string Country { get; set; }
@@ -12003,15 +12160,26 @@
             </div>
         </div>
     </section>
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Jak wygląda profil mapujący ID na int, Guid czy string<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">MappingIds</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
                         public class MappingIds : Profile
                         {
                             public MappingIds()
@@ -12048,15 +12216,26 @@
             </div>
         </div>
     </section>
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Teraz zobaczmy mapujący profil value object na string<br />
+            <span>🔎</span>
+        </span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">MappingToString</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
                         public class MappingToString : Profile
                         {
                             public MappingToString()
@@ -12089,14 +12268,62 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Teraz zobaczmy mapujący profil  ValueObject/Command na klasy Dto i ViewModel<br />
+            <span>🔎</span>
+        </span>
+    </section>
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Mapping Profile for Command</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class MappingProfile : Profile
                         {
                             public MappingProfile()
@@ -12166,7 +12393,12 @@
 
 
 
-
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >
+            Na koniec zostało nam napisać instalator dla aplikacji ASP.NET CORE<br />
+            <span>🔎</span>
+        </span>
+    </section>
 
 
 
@@ -12178,11 +12410,11 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">GeekLemonConferenceInstallers</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 22px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 22px !important;">
                         public static partial class GeekLemonConferenceInstallers
                         {
                             public static IServiceCollection AddGeekLemonConferenceCQRS
@@ -12242,7 +12474,7 @@
                 <ol class="nonumbers">
                     <li class="next bold">Co idzie do Infrastructure?</li>
                     <ol class="nonumbers">
-                        <li class="next">Dostęp do danych (EF Core)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                        <li class="next">Dostęp do danych (EF Core, Dapper)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                         <li class="next">Loggowanie</li>
                         <li class="next">Autoryzacja</li>
                         <li class="next">API Klienckie</li>
@@ -12253,7 +12485,7 @@
           </div>
     </section> 
     <section class="slide creamPPPGragient">
-        <span class="shout colors" >Wybieramy EF czy Dappera
+        <span class="shout colors" >Wybieramy <span>EF</span> czy <span>Dappera</span>
         </span></span>
     </section>
     <section class="slide creamGG fullscreen smaller">
@@ -12265,13 +12497,13 @@
                 <ol class="nonumbers ">
                     <li class="next bold">Zalety Entity Framework Core</li>
                     <ol class="nonumbers">
-                        <li class="next">MediatR</li>
-                        <li class="next">AutoMapper</li>
-                        <li class="next">Fluent Validation</li>
-                        <li class="next">Swagger UI</li>
-                        <li class="next">Dapper (zamiast EF Core)</li>
-                        <li class="next">Newtonsoft.Json do serializacji&nbsp;&nbsp; &nbsp;&nbsp;</li>
-                        <li class="next">xUnit,Moq,FluentAssertions</li>
+                        <li class="next">Mapowania ułatwiają polecenia CRUD</li>
+                        <li class="next">Mapowania tworzą gotowy mechanizm walidacji</li>
+                        <li class="next">Mapowania pozwalają szybciej zmieniać struturę danych</li>
+                        <li class="next">ORM działa z każdą bazą danych</li>
+                        <li class="next">Możliwość Caching</li>
+                        <li class="next">Nie musisz pisać SQL</li>
+                        <li class="next">Super do dużych projektów</li>
                     </ol>
                 </ol>
             </div>
@@ -12286,23 +12518,28 @@
                 <ol class="nonumbers ">
                     <li class="next bold">Zalety Dapper</li>
                     <ol class="nonumbers">
-                        <li class="next">MediatR</li>
-                        <li class="next">AutoMapper</li>
-                        <li class="next">Fluent Validation</li>
-                        <li class="next">Swagger UI</li>
-                        <li class="next">Dapper (zamiast EF Core)</li>
-                        <li class="next">Newtonsoft.Json do serializacji&nbsp;&nbsp; &nbsp;&nbsp;</li>
-                        <li class="next">xUnit,Moq,FluentAssertions</li>
+                        <li class="next">Dapper jest bardzo szybki (w końcu wysyłasz SQL)</li>
+                        <li class="next">Dapper jest lekki</li>
+                        <li class="next">Masz pełną kontrolę nad tym jakie zapytania SQL wysyłasz</li>
+                        <li class="next">Zapytania SQL możesz sprawdzać</li>
+                        <li class="next">Super do małych projektów</li>
                     </ol>
                 </ol>
             </div>
           </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Wybrałem <span>Dappera</span> bo na poprzednim webinarze był EF</span>
+        </span></span>
+    </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" >Moim zdaniem projekt już jest zbyt duży na  <span>Dappera</span></span>
+    </section>
 
     <section class="slide creamPPPGragient">
-        <span class="shout colors" > Jakie paczki Nuget
+        <span class="shout colors" > Jakie paczki <span>Nuget</span>
             👨‍💻
-        </span></span>
+       </span>
     </section>
     <section class="slide" style="background-color:black">
         <figure>
@@ -12325,11 +12562,18 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">Paczki do projektu</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-xml">
+                    <code style="line-height: 16px !important;">
+
+
+
+
+
+
+
                         &lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
 
                         &lt;PropertyGroup&gt;
@@ -12373,28 +12617,320 @@
         </div>
     </section>
     <section class="slide creamPPPGragient">
-        <span class="shout colors" > Problem 1 : Gigatyczny ilość kodu w repozytorium
-            👨‍💻
-        </span></span>
+        <span class="shout colors" > <span>Problem 1 :</span><br /> Gigatyczny ilość kodu w repozytorium
+        🤨
+        </span>
     </section>
     <section class="slide creamPPPGragient">
-        <span class="shout colors" > Problem 2 : Chcemy odpytywać dwie bazy ale nie chcemy dublować kodu
-            👨‍💻
-        </span></span>
+        <span class="shout colors" > <span>Problem 2 :</span><br /> Chcemy odpytywać dwie bazy ale nie chcemy dublować kodu
+        🤨
+       </span>
     </section>
     <section class="slide creamPPPGragient">
-        <span class="shout colors" > Problem 3 : Jak zmapować obiekty domenowe na takie co mają trafić do bazy
-            👨‍💻
-        </span></span>
+        <span class="shout colors" > <span>Problem 3 :</span><br /> Jak zmapować obiekty domenowe na takie co mają trafić do bazy
+        🤨
+      </span>
     </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechRepository </h2>
             </div>
             <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
+                <pre style="font-size: 18px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 18px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class CallForSpeechRepository : ICallForSpeechRepository
                         {
                             private IGeekLemonDBContext _geekLemonContext;
@@ -12407,7 +12943,8 @@
                                 _mapper = mapper;
                             }
                         
-                            public async Task&lt;ExecutionStatus&gt; SaveAcceptenceAsyncById(CallForSpeechId Id, JudgeId judge,
+                            public async Task&lt;ExecutionStatus&gt; SaveAcceptenceAsyncById
+                            (CallForSpeechId Id, JudgeId judge,
                                 CallForSpeechStatus status)
                             {
                                 using var connection = new SqliteConnection(_geekLemonContext.ConnectionString);
@@ -12439,7 +12976,8 @@
                         
                             }
                         
-                            public async Task&lt;ExecutionStatus&gt; SaveEvaluatationByIdAsync(CallForSpeechId Id,
+                            public async Task&lt;ExecutionStatus&gt; SaveEvaluatationByIdAsync
+                            (CallForSpeechId Id,
                                 CallForSpeechScoringResult score, CallForSpeechStatus status)
                             {
                                 using var connection = new SqliteConnection(_geekLemonContext.ConnectionString);
@@ -12471,7 +13009,8 @@
                         
                             }
                         
-                            public async Task&lt;ExecutionStatus&gt; SaveRejectionByIdAsync(CallForSpeechId Id, JudgeId judge,
+                            public async Task&lt;ExecutionStatus&gt; SaveRejectionByIdAsync
+                            (CallForSpeechId Id, JudgeId judge,
                                 CallForSpeechStatus status)
                             {
                                 using var connection = new SqliteConnection(_geekLemonContext.ConnectionString);
@@ -12500,7 +13039,8 @@
                                      });
                             }
                         
-                            public async Task&lt;ExecutionStatus&lt;int&gt;&gt; SubmitByIdAsync(CallForSpeech entity)
+                            public async Task&lt;ExecutionStatus&lt;int&gt;&gt; SubmitByIdAsync
+                            (CallForSpeech entity)
                             {
                                 var temp = _mapper.Map&lt;CallForSpeechTemp&gt;(entity);
                         
@@ -12635,7 +13175,8 @@
                         
                             }
                         
-                            public async Task&lt;ExecutionStatus&gt; SavePreliminaryAcceptenceByIdAsync(CallForSpeechId Id, JudgeId judge, CallForSpeechStatus status)
+                            public async Task&lt;ExecutionStatus&gt; SavePreliminaryAcceptenceByIdAsync
+                            (CallForSpeechId Id, JudgeId judge, CallForSpeechStatus status)
                             {
                                 using var connection = new SqliteConnection(_geekLemonContext.ConnectionString);
                         
@@ -12666,39 +13207,87 @@
                         
                             }
                         
-                            public Task&lt;ExecutionStatus&gt; SavePreliminaryAcceptenceAsync(CallForSpeechUniqueId id, JudgeId judge, CallForSpeechStatus status)
+                            public Task&lt;ExecutionStatus&gt; SavePreliminaryAcceptenceAsync(
+                                CallForSpeechUniqueId id, JudgeId judge, CallForSpeechStatus status)
                             {
                                 throw new NotImplementedException();
                             }
                         
-                            public Task&lt;ExecutionStatus&gt; SaveAcceptenceAsync(CallForSpeechUniqueId id, JudgeId judge, CallForSpeechStatus status)
+                            public Task&lt;ExecutionStatus&gt; SaveAcceptenceAsync
+                            (CallForSpeechUniqueId id, JudgeId judge, CallForSpeechStatus status)
                             {
                                 throw new NotImplementedException();
                             }
                         
-                            public Task&lt;ExecutionStatus&gt; SaveRejectionAsync(CallForSpeechUniqueId id, JudgeId judge, CallForSpeechStatus status)
+                            public Task&lt;ExecutionStatus&gt; SaveRejectionAsync
+                            (CallForSpeechUniqueId id, JudgeId judge, CallForSpeechStatus status)
                             {
                                 throw new NotImplementedException();
                             }
                         
-                            public Task&lt;ExecutionStatus&gt; SaveEvaluatationAsync(CallForSpeechUniqueId id, CallForSpeechScoringResult score, CallForSpeechStatus status)
+                            public Task&lt;ExecutionStatus&gt; SaveEvaluatationAsync
+                            (CallForSpeechUniqueId id, CallForSpeechScoringResult score, CallForSpeechStatus status)
                             {
                                 throw new NotImplementedException();
                             }
                         
-                            public Task&lt;ExecutionStatus&gt; SaveAcceptenceByIdAsync(CallForSpeechId id, JudgeId judge, CallForSpeechStatus status)
+                            public Task&lt;ExecutionStatus&gt; SaveAcceptenceByIdAsync
+                            (CallForSpeechId id, JudgeId judge, CallForSpeechStatus status)
                             {
                                 throw new NotImplementedException();
                             }
                         
-                            public Task&lt;ExecutionStatus&lt;CallForSpeech&gt;&gt; GetByUniqueIdAsync(Guid id)
+                            public Task&lt;ExecutionStatus&lt;CallForSpeech&gt;&gt; GetByUniqueIdAsync
+                            (Guid id)
                             {
                                 throw new NotImplementedException();
                             }
                         
-                            public Task&lt;ExecutionStatus&lt;Ids&gt;&gt; SubmitAsync(CallForSpeech callForSpeech)
+                            public Task&lt;ExecutionStatus&lt;Ids&gt;&gt; SubmitAsync
+                            (CallForSpeech callForSpeech)
                             {
                                 throw new NotImplementedException();
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/infra/01.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/infra/02.PNG" alt="blog">
+            <figcaption class="white">Copyright © 2021 Diagram</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle PP PP"> 
+                <h2 class="headerCODE PP PP">IBeforeDoer</h2>
+            </div>
+            <div class="PlaceCodeHere canscroll">
+                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 19px !important;">
+                        public interface IBeforeDoer
+                        {
+                            void ChangeDBContext(IGeekLemonDBContext context);
+                        }
+                        
+                        public abstract class BeforeDoer : IBeforeDoer
+                        {
+                            protected IGeekLemonDBContext _geekLemonContext;
+                        
+                            public void ChangeDBContext(IGeekLemonDBContext context)
+                            {
+                                _geekLemonContext = context;
                             }
                         }
                     </code>
@@ -12710,61 +13299,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IBeforeDoer
-                        {
-                            void ChangeDBContext(IGeekLemonDBContext context);
-                        }
-                        
-                        public abstract class BeforeDoer : IBeforeDoer
-                        {
-                            protected IGeekLemonDBContext _geekLemonContext;
-                        
-                            public void ChangeDBContext(IGeekLemonDBContext context)
-                            {
-                                _geekLemonContext = context;
-                            }
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IBeforeDoer
-                        {
-                            void ChangeDBContext(IGeekLemonDBContext context);
-                        }
-                        
-                        public abstract class BeforeDoer : IBeforeDoer
-                        {
-                            protected IGeekLemonDBContext _geekLemonContext;
-                        
-                            public void ChangeDBContext(IGeekLemonDBContext context)
-                            {
-                                _geekLemonContext = context;
-                            }
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">IGeekLemonDBContext</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -12800,79 +13335,7 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IZEsGeekLemonDBContext
-                        {
-                            string ConnectionString { get; }
-                        }
-                        
-                        
-                        public class ZEsGeekLemonDBContext : IZEsGeekLemonDBContext
-                        {
-                            public ZEsGeekLemonDBContext(string connectionString)
-                            {
-                                _connectionString = connectionString;
-                            }
-                        
-                            private string _connectionString;
-                        
-                            public string ConnectionString
-                            {
-                                get
-                                {
-                                    return _connectionString;
-                                }
-                            }
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
-            </div>
-            <div class="PlaceCodeHere canscroll">
-                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
-                    <code style="line-height: 19px !important;">
-                        public interface IZEsGeekLemonDBContext
-                        {
-                            string ConnectionString { get; }
-                        }
-                        
-                        
-                        public class ZEsGeekLemonDBContext : IZEsGeekLemonDBContext
-                        {
-                            public ZEsGeekLemonDBContext(string connectionString)
-                            {
-                                _connectionString = connectionString;
-                            }
-                        
-                            private string _connectionString;
-                        
-                            public string ConnectionString
-                            {
-                                get
-                                {
-                                    return _connectionString;
-                                }
-                            }
-                        }
-                    </code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide prism over bhgry">
-        <div class="grid-container">
-            <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">IZEsGeekLemonDBContext</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
@@ -12906,30 +13369,134 @@
         </div>
     </section>
 
+
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">AgeInYearsTests</h2>
+                <h2 class="headerCODE PP PP">IBeforeDoer</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public interface IBeforeDoer
                         {
                             void ChangeDBContext(IGeekLemonDBContext context);
                         }
 
+
+
+
                         public interface ICallForSpeechGetByIdDoer : IBeforeDoer
                         {
-                        Task&lt;ExecutionStatus&lt;CallForSpeech&gt;&gt; Run(CallForSpeechId id);
-                        
-                        Task&lt;ExecutionStatus&lt;CallForSpeech&gt;&gt; Run(CallForSpeechUniqueId id);
+                            Task&lt;ExecutionStatus&lt;CallForSpeech&gt;&gt; Run(CallForSpeechId id);
+                            
+                            Task&lt;ExecutionStatus&lt;CallForSpeech&gt;&gt; Run(CallForSpeechUniqueId id);
                         }
                         
                         public interface ICallForSpeechGetCollectionDoer : IBeforeDoer
                         {
-                        Task&lt;ExecutionStatus&lt;IReadOnlyList&lt;CallForSpeech&gt;&gt;&gt; Run(
-                         FilterCallForSpeechStyles filtrer);
+                            Task&lt;ExecutionStatus&lt;IReadOnlyList&lt;CallForSpeech&gt;&gt;&gt; Run(
+                            FilterCallForSpeechStyles filtrer);
                         }
                         
                         public interface ICallForSpeechSaveAcceptenceDoer : IBeforeDoer
@@ -13037,7 +13604,7 @@
             </div>
         </div>
     </section>
-    <section class="slide creamG">
+    <section class="slide creamPPPGragient">
         <span class="shout colors" ><span>Pokaż mi repozytoria
         </span></span>
     </section>
@@ -13046,11 +13613,58 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ByWhatId</h2>
+                <h2 class="headerCODE PP PP">CategoryRepository</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class CategoryRepository : ICategoryRepository
                         {
                             private ICategoryAddDoer _categoryAddDoer;
@@ -13127,11 +13741,71 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ByWhatId</h2>
+                <h2 class="headerCODE PP PP">JugdeRepository</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class JugdeRepository : IJudgeRepository
                         {
                     
@@ -13210,11 +13884,28 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ByWhatId</h2>
+                <h2 class="headerCODE PP PP">CallForSpeechRepository</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         public class CallForSpeechRepository : ICallForSpeechRepository
                         {
                             private ICallForSpeechGetByIdDoer _callForSpeechGetByIdDoer;
@@ -13318,14 +14009,22 @@
             </div>
         </div>
     </section>
+    <section class="slide creamPPPGragient">
+        <span class="shout colors" ><span>Pokaż mi repozytoriado bazy na ścieżce EventSourcing
+        </span></span>
+    </section>
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ByWhatId</h2>
+                <h2 class="headerCODE PP PP">ZEsCategoryRepository</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
                         public class ZEsCategoryRepository : CategoryRepository, IZEsCategoryRepository
                         {
                         
@@ -13354,11 +14053,16 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ByWhatId</h2>
+                <h2 class="headerCODE PP PP">ZEsJugdeRepository</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
                         public class ZEsJugdeRepository : JugdeRepository, IZEsJudgeRepository
                         {
                     
@@ -13384,36 +14088,41 @@
     <section class="slide prism over bhgry">
         <div class="grid-container">
             <div class="HeaderTitle PP PP"> 
-                <h2 class="headerCODE PP PP">ByWhatId</h2>
+                <h2 class="headerCODE PP PP">ZEsCallForSpeechRepository</h2>
             </div>
             <div class="PlaceCodeHere canscroll">
                 <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
                     <code style="line-height: 19px !important;">
+
+
+
+
+
                         public class ZEsCallForSpeechRepository : CallForSpeechRepository,
                         IZEsCallForSpeechRepository
-                    {
-                
-                        public ZEsCallForSpeechRepository(ICallForSpeechGetByIdDoer callForSpeechGetByIdDoer,
-                            ICallForSpeechGetCollectionDoer callForSpeechGetCollectionDoer,
-                            ICallForSpeechSaveAcceptenceDoer callForSpeechSaveAcceptenceDoer,
-                            ICallForSpeechSaveEvaluatationDoer callForSpeechSaveEvaluatationDoer,
-                            ICallForSpeechSavePreliminaryAcceptenceDoer callForSpeechSavePreliminaryAcceptenceDoer,
-                            ICallForSpeechSaveRejectionDoer callForSpeechSaveRejectionDoer,
-                            ICallForSpeechSubmitDoer callForSpeechSubmitDoer,
-                            IZEsGeekLemonDBContext _zEsGeekLemonDBContext)
-                            : base(callForSpeechGetByIdDoer, callForSpeechGetCollectionDoer,
-                                  callForSpeechSaveAcceptenceDoer, callForSpeechSaveEvaluatationDoer,
-                                  callForSpeechSavePreliminaryAcceptenceDoer, callForSpeechSaveRejectionDoer,
-                                  callForSpeechSubmitDoer)
                         {
-                            GeekLemonDBContext context =
-                                new GeekLemonDBContext(_zEsGeekLemonDBContext.ConnectionString);
-                
-                            this.ChangeContext(context);
-                
+                    
+                            public ZEsCallForSpeechRepository(ICallForSpeechGetByIdDoer callForSpeechGetByIdDoer,
+                                ICallForSpeechGetCollectionDoer callForSpeechGetCollectionDoer,
+                                ICallForSpeechSaveAcceptenceDoer callForSpeechSaveAcceptenceDoer,
+                                ICallForSpeechSaveEvaluatationDoer callForSpeechSaveEvaluatationDoer,
+                                ICallForSpeechSavePreliminaryAcceptenceDoer callForSpeechSavePreliminaryAcceptenceDoer,
+                                ICallForSpeechSaveRejectionDoer callForSpeechSaveRejectionDoer,
+                                ICallForSpeechSubmitDoer callForSpeechSubmitDoer,
+                                IZEsGeekLemonDBContext _zEsGeekLemonDBContext)
+                                : base(callForSpeechGetByIdDoer, callForSpeechGetCollectionDoer,
+                                    callForSpeechSaveAcceptenceDoer, callForSpeechSaveEvaluatationDoer,
+                                    callForSpeechSavePreliminaryAcceptenceDoer, callForSpeechSaveRejectionDoer,
+                                    callForSpeechSubmitDoer)
+                            {
+                                GeekLemonDBContext context =
+                                    new GeekLemonDBContext(_zEsGeekLemonDBContext.ConnectionString);
+                    
+                                this.ChangeContext(context);
+                    
+                            }
+                    
                         }
-                
-                    }
                     </code>
                 </pre>
             </div>
@@ -21149,6 +21858,7 @@
             <img class="cover" src="pictures/eventstore/howthisworks.gif" alt="blog">
             <figcaption class="white">Copyright © 2021 Diagram</figcaption>
         </figure>
+    </section>
     <section class="slide creamPPPGragient">
         <span class="shout colors" >Fakty i mity EventSourcing <br />
            <span> 😎
